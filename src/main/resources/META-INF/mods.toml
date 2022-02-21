@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[32,)"
+issueTrackerURL = "https://github.com/team-abnormals/woodworks/issues"
+license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
+
+[[mods]]
+    modId = "woodworks"
+    version = "${file.jarVersion}"
+    logoFile = "logo.png"
+    itemIcon = "woodworks:sawmill"
+    configBackground = "minecraft:textures/block/spruce_planks.png"
+    authors = "Team Abnormals"
+    credits = "bageldotjpg"
+    displayURL = "https://www.teamabnormals.com/mods/woodworks"
+    displayName = "Woodworks"
+    description = '''
+    Template description.
+    '''
+
+[[dependencies.woodworks]]
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.18.1,1.19)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.woodworks]]
+    modId = "forge"
+    mandatory = true
+    versionRange = "[39.0.20,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.woodworks]]
+    modId = "blueprint"
+    mandatory = true
+    versionRange = "[5.1.1,)"
+    ordering = "AFTER"
+    side = "BOTH"

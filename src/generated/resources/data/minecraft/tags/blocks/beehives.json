@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "woodworks:birch_beehive",
+    "woodworks:spruce_beehive",
+    "woodworks:jungle_beehive",
+    "woodworks:acacia_beehive",
+    "woodworks:dark_oak_beehive",
+    "woodworks:crimson_beehive",
+    "woodworks:warped_beehive"
+  ]
+}
