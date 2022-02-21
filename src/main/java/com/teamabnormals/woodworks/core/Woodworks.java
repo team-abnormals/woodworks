@@ -2,6 +2,7 @@ package com.teamabnormals.woodworks.core;
 
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
+import com.teamabnormals.woodworks.core.data.client.WoodworksLanguageProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvider;
 import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
 import com.teamabnormals.woodworks.core.other.WoodworksCompat;
@@ -56,6 +57,7 @@ public class Woodworks {
 
 		if (event.includeClient()) {
 			generator.addProvider(new WoodworksBlockStateProvider(generator, fileHelper));
+			generator.addProvider(new WoodworksLanguageProvider(generator));
 		}
 	}
 }
