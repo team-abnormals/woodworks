@@ -20,8 +20,6 @@ public class WoodworksLanguageProvider extends LanguageProvider {
 		this.add("oak_bookshelf");
 		this.add("oak_ladder");
 		this.add("oak_beehive");
-		this.add("antique_chest");
-		this.add("antique_trapped_chest");
 
 		WoodworksBlocks.HELPER.getDeferredRegister().getEntries().forEach(block -> {
 			add(block.get(), block.get() instanceof LeafPileBlock ? "Pile of " + format(block.getId()).replace("Leaf Pile", "Leaves") : format(block.getId()));

@@ -16,9 +16,6 @@ public class WoodworksCompat {
 		DataUtil.changeBlockLocalization(Blocks.BOOKSHELF, Woodworks.MOD_ID, "oak_bookshelf");
 		DataUtil.changeBlockLocalization(Blocks.LADDER, Woodworks.MOD_ID, "oak_ladder");
 		DataUtil.changeBlockLocalization(Blocks.BEEHIVE, Woodworks.MOD_ID, "oak_beehive");
-
-		DataUtil.changeBlockLocalization(Blocks.CHEST, Woodworks.MOD_ID, "antique_chest");
-		DataUtil.changeBlockLocalization(Blocks.TRAPPED_CHEST, Woodworks.MOD_ID, "antique_trapped_chest");
 	}
 
 	private static void registerFlammables() {
