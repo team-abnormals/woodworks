@@ -19,6 +19,28 @@ public class WoodworksCompat {
 	}
 
 	private static void registerFlammables() {
+		DataUtil.registerFlammable(WoodworksBlocks.OAK_BOARDS.get(), 5, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.SPRUCE_BOARDS.get(), 5, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.BIRCH_BOARDS.get(), 5, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.JUNGLE_BOARDS.get(), 5, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.ACACIA_BOARDS.get(), 5, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.DARK_OAK_BOARDS.get(), 5, 20);
+
+		DataUtil.registerFlammable(WoodworksBlocks.OAK_LEAF_PILE.get(), 30, 60);
+		DataUtil.registerFlammable(WoodworksBlocks.SPRUCE_LEAF_PILE.get(), 30, 60);
+		DataUtil.registerFlammable(WoodworksBlocks.BIRCH_LEAF_PILE.get(), 30, 60);
+		DataUtil.registerFlammable(WoodworksBlocks.JUNGLE_LEAF_PILE.get(), 30, 60);
+		DataUtil.registerFlammable(WoodworksBlocks.ACACIA_LEAF_PILE.get(), 30, 60);
+		DataUtil.registerFlammable(WoodworksBlocks.DARK_OAK_LEAF_PILE.get(), 30, 60);
+		DataUtil.registerFlammable(WoodworksBlocks.AZALEA_LEAF_PILE.get(), 30, 60);
+		DataUtil.registerFlammable(WoodworksBlocks.FLOWERING_AZALEA_LEAF_PILE.get(), 30, 60);
+
+		DataUtil.registerFlammable(WoodworksBlocks.SPRUCE_BOOKSHELF.get(), 30, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.BIRCH_BOOKSHELF.get(), 30, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.JUNGLE_BOOKSHELF.get(), 30, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.ACACIA_BOOKSHELF.get(), 30, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.DARK_OAK_BOOKSHELF.get(), 30, 20);
+		
 		DataUtil.registerFlammable(WoodworksBlocks.SPRUCE_BEEHIVE.get(), 5, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.BIRCH_BEEHIVE.get(), 5, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.JUNGLE_BEEHIVE.get(), 5, 20);

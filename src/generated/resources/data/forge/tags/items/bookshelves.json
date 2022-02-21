@@ -1,12 +1,12 @@
 {
   "replace": false,
   "values": [
-    "woodworks:spruce_beehive",
-    "woodworks:birch_beehive",
-    "woodworks:jungle_beehive",
-    "woodworks:acacia_beehive",
-    "woodworks:dark_oak_beehive",
-    "woodworks:crimson_beehive",
-    "woodworks:warped_beehive"
+    "woodworks:spruce_bookshelf",
+    "woodworks:birch_bookshelf",
+    "woodworks:jungle_bookshelf",
+    "woodworks:acacia_bookshelf",
+    "woodworks:dark_oak_bookshelf",
+    "woodworks:crimson_bookshelf",
+    "woodworks:warped_bookshelf"
   ]
 }
