@@ -30,7 +30,6 @@ public class LeafPileBlock extends MultifaceBlock implements BonemealableBlock, 
 		this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false));
 	}
 
-
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
 		builder.add(WATERLOGGED);
