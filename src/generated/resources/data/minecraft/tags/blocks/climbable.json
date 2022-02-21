@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "woodworks:spruce_ladder",
+    "woodworks:birch_ladder",
+    "woodworks:jungle_ladder",
+    "woodworks:acacia_ladder",
+    "woodworks:dark_oak_ladder",
+    "woodworks:crimson_ladder",
+    "woodworks:warped_ladder"
+  ]
+}

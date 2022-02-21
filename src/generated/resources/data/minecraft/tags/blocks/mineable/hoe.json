@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "woodworks:oak_leaf_pile",
+    "woodworks:spruce_leaf_pile",
+    "woodworks:birch_leaf_pile",
+    "woodworks:jungle_leaf_pile",
+    "woodworks:acacia_leaf_pile",
+    "woodworks:dark_oak_leaf_pile",
+    "woodworks:azalea_leaf_pile",
+    "woodworks:flowering_azalea_leaf_pile"
+  ]
+}
