@@ -3,6 +3,7 @@ package com.teamabnormals.woodworks.core;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksLanguageProvider;
+import com.teamabnormals.woodworks.core.data.server.WoodworksLootTableProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvider;
 import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
@@ -31,8 +32,6 @@ public class Woodworks {
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::dataSetup);
-
-
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
@@ -55,6 +54,7 @@ public class Woodworks {
 			WoodworksBlockTagsProvider blockTags = new WoodworksBlockTagsProvider(generator, fileHelper);
 			generator.addProvider(blockTags);
 			generator.addProvider(new WoodworksItemTagsProvider(generator, blockTags, fileHelper));
+			generator.addProvider(new WoodworksLootTableProvider(generator));
 		}
 
 		if (event.includeClient()) {
