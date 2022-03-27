@@ -35,15 +35,11 @@ public class Woodworks {
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
-		event.enqueueWork(() -> {
-			WoodworksCompat.register();
-		});
+		event.enqueueWork(WoodworksCompat::register);
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {
-		event.enqueueWork(() -> {
-			WoodworksClientCompat.register();
-		});
+		event.enqueueWork(WoodworksClientCompat::register);
 	}
 
 	private void dataSetup(GatherDataEvent event) {
