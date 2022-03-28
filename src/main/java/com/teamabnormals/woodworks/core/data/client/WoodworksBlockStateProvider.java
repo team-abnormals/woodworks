@@ -27,52 +27,52 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		this.boardsBlock(Blocks.OAK_PLANKS, WoodworksBlocks.OAK_BOARDS.get());
+		this.boardsBlock(WoodworksBlocks.OAK_BOARDS.get());
 		this.leafPileBlock(Blocks.OAK_LEAVES, WoodworksBlocks.OAK_LEAF_PILE.get());
 		this.chestBlocks(Blocks.OAK_PLANKS, WoodworksBlocks.OAK_CHEST.get(), WoodworksBlocks.OAK_TRAPPED_CHEST.get());
 
-		this.boardsBlock(Blocks.SPRUCE_PLANKS, WoodworksBlocks.SPRUCE_BOARDS.get());
+		this.boardsBlock(WoodworksBlocks.SPRUCE_BOARDS.get());
 		this.leafPileBlock(Blocks.SPRUCE_LEAVES, WoodworksBlocks.SPRUCE_LEAF_PILE.get());
 		this.bookshelfBlock(Blocks.SPRUCE_PLANKS, WoodworksBlocks.SPRUCE_BOOKSHELF.get());
 		this.ladderBlock(WoodworksBlocks.SPRUCE_LADDER.get());
 		this.beehiveBlock(WoodworksBlocks.SPRUCE_BEEHIVE.get());
 		this.chestBlocks(Blocks.SPRUCE_PLANKS, WoodworksBlocks.SPRUCE_CHEST.get(), WoodworksBlocks.SPRUCE_TRAPPED_CHEST.get());
 
-		this.boardsBlock(Blocks.BIRCH_PLANKS, WoodworksBlocks.BIRCH_BOARDS.get());
+		this.boardsBlock(WoodworksBlocks.BIRCH_BOARDS.get());
 		this.leafPileBlock(Blocks.BIRCH_LEAVES, WoodworksBlocks.BIRCH_LEAF_PILE.get());
 		this.bookshelfBlock(Blocks.BIRCH_PLANKS, WoodworksBlocks.BIRCH_BOOKSHELF.get());
 		this.ladderBlock(WoodworksBlocks.BIRCH_LADDER.get());
 		this.beehiveBlock(WoodworksBlocks.BIRCH_BEEHIVE.get());
 		this.chestBlocks(Blocks.BIRCH_PLANKS, WoodworksBlocks.BIRCH_CHEST.get(), WoodworksBlocks.BIRCH_TRAPPED_CHEST.get());
 
-		this.boardsBlock(Blocks.JUNGLE_PLANKS, WoodworksBlocks.JUNGLE_BOARDS.get());
+		this.boardsBlock(WoodworksBlocks.JUNGLE_BOARDS.get());
 		this.leafPileBlock(Blocks.JUNGLE_LEAVES, WoodworksBlocks.JUNGLE_LEAF_PILE.get());
 		this.bookshelfBlock(Blocks.JUNGLE_PLANKS, WoodworksBlocks.JUNGLE_BOOKSHELF.get());
 		this.ladderBlock(WoodworksBlocks.JUNGLE_LADDER.get());
 		this.beehiveBlock(WoodworksBlocks.JUNGLE_BEEHIVE.get());
 		this.chestBlocks(Blocks.JUNGLE_PLANKS, WoodworksBlocks.JUNGLE_CHEST.get(), WoodworksBlocks.JUNGLE_TRAPPED_CHEST.get());
 
-		this.boardsBlock(Blocks.ACACIA_PLANKS, WoodworksBlocks.ACACIA_BOARDS.get());
+		this.boardsBlock(WoodworksBlocks.ACACIA_BOARDS.get());
 		this.leafPileBlock(Blocks.ACACIA_LEAVES, WoodworksBlocks.ACACIA_LEAF_PILE.get());
 		this.bookshelfBlock(Blocks.ACACIA_PLANKS, WoodworksBlocks.ACACIA_BOOKSHELF.get());
 		this.ladderBlock(WoodworksBlocks.ACACIA_LADDER.get());
 		this.beehiveBlock(WoodworksBlocks.ACACIA_BEEHIVE.get());
 		this.chestBlocks(Blocks.ACACIA_PLANKS, WoodworksBlocks.ACACIA_CHEST.get(), WoodworksBlocks.ACACIA_TRAPPED_CHEST.get());
 
-		this.boardsBlock(Blocks.DARK_OAK_PLANKS, WoodworksBlocks.DARK_OAK_BOARDS.get());
+		this.boardsBlock(WoodworksBlocks.DARK_OAK_BOARDS.get());
 		this.leafPileBlock(Blocks.DARK_OAK_LEAVES, WoodworksBlocks.DARK_OAK_LEAF_PILE.get());
 		this.bookshelfBlock(Blocks.DARK_OAK_PLANKS, WoodworksBlocks.DARK_OAK_BOOKSHELF.get());
 		this.ladderBlock(WoodworksBlocks.DARK_OAK_LADDER.get());
 		this.beehiveBlock(WoodworksBlocks.DARK_OAK_BEEHIVE.get());
 		this.chestBlocks(Blocks.DARK_OAK_PLANKS, WoodworksBlocks.DARK_OAK_CHEST.get(), WoodworksBlocks.DARK_OAK_TRAPPED_CHEST.get());
 
-		this.boardsBlock(Blocks.CRIMSON_PLANKS, WoodworksBlocks.CRIMSON_BOARDS.get());
+		this.boardsBlock(WoodworksBlocks.CRIMSON_BOARDS.get());
 		this.bookshelfBlock(Blocks.CRIMSON_PLANKS, WoodworksBlocks.CRIMSON_BOOKSHELF.get());
 		this.ladderBlock(WoodworksBlocks.CRIMSON_LADDER.get());
 		this.beehiveBlock(WoodworksBlocks.CRIMSON_BEEHIVE.get());
 		this.chestBlocks(Blocks.CRIMSON_PLANKS, WoodworksBlocks.CRIMSON_CHEST.get(), WoodworksBlocks.CRIMSON_TRAPPED_CHEST.get());
 
-		this.boardsBlock(Blocks.WARPED_PLANKS, WoodworksBlocks.WARPED_BOARDS.get());
+		this.boardsBlock(WoodworksBlocks.WARPED_BOARDS.get());
 		this.bookshelfBlock(Blocks.WARPED_PLANKS, WoodworksBlocks.WARPED_BOOKSHELF.get());
 		this.ladderBlock(WoodworksBlocks.WARPED_LADDER.get());
 		this.beehiveBlock(WoodworksBlocks.WARPED_BEEHIVE.get());
@@ -94,8 +94,8 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 		itemModels().withExistingParent(item.asItem().getRegistryName().getPath(), "item/generated").texture("layer0", new ResourceLocation(texture.asItem().getRegistryName().getNamespace(), type + "/" + texture.asItem().getRegistryName().getPath()));
 	}
 
-	public void boardsBlock(Block planks, Block boards) {
-		this.simpleBlock(boards, models().getBuilder(name(boards)).parent(new UncheckedModelFile(new ResourceLocation(Blueprint.MOD_ID, "block/vertical_planks"))).texture("all", blockTexture(planks)));
+	public void boardsBlock(Block boards) {
+		this.simpleBlock(boards);
 		this.simpleBlockItem(boards);
 	}
 

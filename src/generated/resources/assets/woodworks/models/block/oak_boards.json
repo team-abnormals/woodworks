@@ -1,6 +1,6 @@
 {
-  "parent": "blueprint:block/vertical_planks",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "minecraft:block/oak_planks"
+    "all": "woodworks:block/oak_boards"
   }
 }
