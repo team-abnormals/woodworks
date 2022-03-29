@@ -11,8 +11,6 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -48,24 +46,16 @@ public class WoodworksRecipeProvider extends RecipeProvider {
 	}
 
 	public void baseRecipes(Consumer<FinishedRecipe> consumer, Block planks, Block boards, Block bookshelf, Block ladder, Block beehive, Block chest, Block trappedChest) {
-		ShapedRecipeBuilder.shaped(boards, 3).define('#', planks).pattern("#").pattern("#").pattern("#").group("boards").unlockedBy(getHasName(planks), has(planks)).save(consumer);
+		ShapedRecipeBuilder.shaped(boards, 3).define('#', planks).pattern("#").pattern("#").pattern("#").group("wooden_boards").unlockedBy(getHasName(planks), has(planks)).save(consumer);
 		ShapedRecipeBuilder.shaped(bookshelf).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").group("wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)).save(consumer);
 		ShapedRecipeBuilder.shaped(ladder, 4).define('#', planks).define('S', Items.STICK).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_stick", has(Items.STICK)).save(consumer);
 		ShapedRecipeBuilder.shaped(beehive).define('#', planks).define('H', Items.HONEYCOMB).pattern("###").pattern("HHH").pattern("###").group("wooden_beehive").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)).save(consumer);
 		ShapedRecipeBuilder.shaped(chest).define('#', planks).pattern("###").pattern("# #").pattern("###").group("wooden_chest").unlockedBy("has_lots_of_items", new InventoryChangeTrigger.TriggerInstance(EntityPredicate.Composite.ANY, MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, new ItemPredicate[0])).save(consumer);
 		ShapelessRecipeBuilder.shapeless(trappedChest).requires(chest).requires(Blocks.TRIPWIRE_HOOK).group("wooden_trapped_chest").unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)).save(consumer);
 	}
-	
+
 	public void leafPile(Consumer<FinishedRecipe> consumer, Block leaves, Block leafPile) {
 		ShapedRecipeBuilder.shaped(leafPile, 3).define('#', leaves).pattern("##").group("leaf_pile").unlockedBy(getHasName(leaves), has(leaves)).save(consumer);
-	}
-
-	private static InventoryChangeTrigger.TriggerInstance has(TagKey<Item> p_206407_) {
-		return inventoryTrigger(ItemPredicate.Builder.item().of(p_206407_).build());
-	}
-
-	private static String getSimpleRecipeName(ItemLike p_176645_) {
-		return getItemName(p_176645_);
 	}
 
 	private static String getHasName(ItemLike item) {
