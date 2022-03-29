@@ -9,6 +9,7 @@ public class WoodworksCompat {
 
 	public static void register() {
 		registerFlammables();
+		registerCompostables();
 		changeLocalizationKeys();
 	}
 
@@ -46,5 +47,16 @@ public class WoodworksCompat {
 		DataUtil.registerFlammable(WoodworksBlocks.JUNGLE_BEEHIVE.get(), 5, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.DARK_OAK_BEEHIVE.get(), 5, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.ACACIA_BEEHIVE.get(), 5, 20);
+	}
+	
+	private static void registerCompostables() {
+		DataUtil.registerCompostable(WoodworksBlocks.OAK_LEAF_PILE.get(), 0.3F);
+		DataUtil.registerCompostable(WoodworksBlocks.SPRUCE_LEAF_PILE.get(), 0.3F);
+		DataUtil.registerCompostable(WoodworksBlocks.BIRCH_LEAF_PILE.get(), 0.3F);
+		DataUtil.registerCompostable(WoodworksBlocks.JUNGLE_LEAF_PILE.get(), 0.3F);
+		DataUtil.registerCompostable(WoodworksBlocks.ACACIA_LEAF_PILE.get(), 0.3F);
+		DataUtil.registerCompostable(WoodworksBlocks.DARK_OAK_LEAF_PILE.get(), 0.3F);
+		DataUtil.registerCompostable(WoodworksBlocks.AZALEA_LEAF_PILE.get(), 0.3F);
+		DataUtil.registerCompostable(WoodworksBlocks.FLOWERING_AZALEA_LEAF_PILE.get(), 0.3F);
 	}
 }
