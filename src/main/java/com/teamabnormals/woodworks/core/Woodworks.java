@@ -4,6 +4,7 @@ import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksLanguageProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksLootTableProvider;
+import com.teamabnormals.woodworks.core.data.server.WoodworksRecipeProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvider;
 import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
@@ -51,6 +52,7 @@ public class Woodworks {
 			generator.addProvider(blockTags);
 			generator.addProvider(new WoodworksItemTagsProvider(generator, blockTags, fileHelper));
 			generator.addProvider(new WoodworksLootTableProvider(generator));
+			generator.addProvider(new WoodworksRecipeProvider(generator));
 		}
 
 		if (event.includeClient()) {
