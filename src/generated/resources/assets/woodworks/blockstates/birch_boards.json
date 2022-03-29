@@ -1,7 +1,14 @@
 {
   "variants": {
-    "": {
+    "axis=x": {
+      "model": "woodworks:block/birch_boards_horizontal",
+      "y": 90
+    },
+    "axis=y": {
       "model": "woodworks:block/birch_boards"
+    },
+    "axis=z": {
+      "model": "woodworks:block/birch_boards_horizontal"
     }
   }
 }

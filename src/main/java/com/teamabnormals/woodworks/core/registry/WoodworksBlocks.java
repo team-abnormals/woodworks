@@ -12,6 +12,7 @@ import com.teamabnormals.woodworks.common.block.LeafPileBlock;
 import com.teamabnormals.woodworks.core.Woodworks;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -23,14 +24,14 @@ import net.minecraftforge.registries.RegistryObject;
 public class WoodworksBlocks {
 	public static final BlockSubRegistryHelper HELPER = Woodworks.REGISTRY_HELPER.getBlockSubHelper();
 
-	public static final RegistryObject<Block> OAK_BOARDS = HELPER.createBlock("oak_boards", () -> new Block(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> SPRUCE_BOARDS = HELPER.createBlock("spruce_boards", () -> new Block(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> BIRCH_BOARDS = HELPER.createBlock("birch_boards", () -> new Block(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> JUNGLE_BOARDS = HELPER.createBlock("jungle_boards", () -> new Block(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> ACACIA_BOARDS = HELPER.createBlock("acacia_boards", () -> new Block(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> DARK_OAK_BOARDS = HELPER.createBlock("dark_oak_boards", () -> new Block(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> CRIMSON_BOARDS = HELPER.createBlock("crimson_boards", () -> new Block(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> WARPED_BOARDS = HELPER.createBlock("warped_boards", () -> new Block(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> OAK_BOARDS = HELPER.createBlock("oak_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> SPRUCE_BOARDS = HELPER.createBlock("spruce_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> BIRCH_BOARDS = HELPER.createBlock("birch_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> JUNGLE_BOARDS = HELPER.createBlock("jungle_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> ACACIA_BOARDS = HELPER.createBlock("acacia_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> DARK_OAK_BOARDS = HELPER.createBlock("dark_oak_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> CRIMSON_BOARDS = HELPER.createBlock("crimson_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> WARPED_BOARDS = HELPER.createBlock("warped_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
 	public static final RegistryObject<Block> OAK_LEAF_PILE = HELPER.createBlock("oak_leaf_pile", () -> new LeafPileBlock(WoodworksProperties.LEAF_PILE), CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<Block> SPRUCE_LEAF_PILE = HELPER.createBlock("spruce_leaf_pile", () -> new LeafPileBlock(WoodworksProperties.LEAF_PILE), CreativeModeTab.TAB_DECORATIONS);

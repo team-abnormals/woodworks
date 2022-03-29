@@ -1,5 +1,5 @@
 {
-  "parent": "woodworks:block/template_boards",
+  "parent": "woodworks:block/template_boards_horizontal",
   "textures": {
     "all": "woodworks:block/oak_boards"
   }

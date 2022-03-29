@@ -20,7 +20,6 @@ public class WoodworksItemTagsProvider extends ItemTagsProvider {
 
 	@Override
 	protected void addTags() {
-		this.copy(BlockTags.PLANKS, ItemTags.PLANKS);
 		this.tag(ItemTags.NON_FLAMMABLE_WOOD).add(WoodworksBlocks.CRIMSON_BOARDS.get().asItem(), WoodworksBlocks.WARPED_BOARDS.get().asItem(), WoodworksBlocks.CRIMSON_BOOKSHELF.get().asItem(), WoodworksBlocks.WARPED_BOOKSHELF.get().asItem(), WoodworksBlocks.CRIMSON_LADDER.get().asItem(), WoodworksBlocks.WARPED_LADDER.get().asItem(), WoodworksBlocks.CRIMSON_BEEHIVE.get().asItem(), WoodworksBlocks.WARPED_BEEHIVE.get().asItem(), WoodworksBlocks.CRIMSON_CHEST.get().asItem(), WoodworksBlocks.WARPED_CHEST.get().asItem(), WoodworksBlocks.CRIMSON_TRAPPED_CHEST.get().asItem(), WoodworksBlocks.WARPED_TRAPPED_CHEST.get().asItem());
 
 		this.copy(Tags.Blocks.CHESTS_WOODEN, Tags.Items.CHESTS_WOODEN);
