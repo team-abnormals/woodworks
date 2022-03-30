@@ -14,7 +14,7 @@ license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
     displayURL = "https://www.teamabnormals.com/mods/woodworks"
     displayName = "Woodworks"
     description = '''
-    Template description.
+    Adds very varying wood variant blocks to improve your building capabilities!
     '''
 
 [[dependencies.woodworks]]
@@ -34,6 +34,6 @@ license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
 [[dependencies.woodworks]]
     modId = "blueprint"
     mandatory = true
-    versionRange = "[5.2.3,)"
+    versionRange = "[5.3.0,)"
     ordering = "AFTER"
     side = "BOTH"

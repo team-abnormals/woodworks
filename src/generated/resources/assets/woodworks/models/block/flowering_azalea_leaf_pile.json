@@ -1,5 +1,5 @@
 {
-  "parent": "woodworks:block/leaf_pile",
+  "parent": "blueprint:block/leaf_pile",
   "textures": {
     "all": "minecraft:block/flowering_azalea_leaves"
   }

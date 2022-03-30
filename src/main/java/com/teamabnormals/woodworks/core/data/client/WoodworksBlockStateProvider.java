@@ -97,8 +97,8 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 	}
 
 	public void boardsBlock(Block boards) {
-		ModelFile boardsModel = models().getBuilder(name(boards)).parent(new UncheckedModelFile(new ResourceLocation(Woodworks.MOD_ID, "block/template_boards"))).texture("all", blockTexture(boards));
-		ModelFile boardsHorizontalModel = models().getBuilder(name(boards) + "_horizontal").parent(new UncheckedModelFile(new ResourceLocation(Woodworks.MOD_ID, "block/template_boards_horizontal"))).texture("all", blockTexture(boards));
+		ModelFile boardsModel = models().getBuilder(name(boards)).parent(new UncheckedModelFile(new ResourceLocation(Blueprint.MOD_ID, "block/template_boards"))).texture("all", blockTexture(boards));
+		ModelFile boardsHorizontalModel = models().getBuilder(name(boards) + "_horizontal").parent(new UncheckedModelFile(new ResourceLocation(Blueprint.MOD_ID, "block/template_boards_horizontal"))).texture("all", blockTexture(boards));
 		this.getVariantBuilder(boards).partialState().with(RotatedPillarBlock.AXIS, Axis.Y).modelForState().modelFile(boardsModel).addModel().partialState().with(RotatedPillarBlock.AXIS, Axis.Z).modelForState().modelFile(boardsHorizontalModel).addModel().partialState().with(RotatedPillarBlock.AXIS, Axis.X).modelForState().modelFile(boardsHorizontalModel).rotationY(90).addModel();
 		this.simpleBlockItem(boards);
 	}
@@ -108,7 +108,7 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 	}
 
 	public void leafPileBlock(Block leaves, Block leafPile, boolean tinted) {
-		ModelFile leafPileModel = models().getBuilder(name(leafPile)).parent(new UncheckedModelFile(new ResourceLocation(Woodworks.MOD_ID, "block/" + (tinted ? "tinted_" : "") + "leaf_pile"))).texture("all", blockTexture(leaves));
+		ModelFile leafPileModel = models().getBuilder(name(leafPile)).parent(new UncheckedModelFile(new ResourceLocation(Blueprint.MOD_ID, "block/" + (tinted ? "tinted_" : "") + "leaf_pile"))).texture("all", blockTexture(leaves));
 		MultiPartBlockStateBuilder builder = getMultipartBuilder(leafPile);
 		builder.part().modelFile(leafPileModel).rotationX(270).uvLock(true).addModel().condition(BlockStateProperties.UP, true);
 		builder.part().modelFile(leafPileModel).rotationX(270).uvLock(true).addModel().condition(BlockStateProperties.UP, false).condition(BlockStateProperties.NORTH, false).condition(BlockStateProperties.WEST, false).condition(BlockStateProperties.SOUTH, false).condition(BlockStateProperties.EAST, false).condition(BlockStateProperties.DOWN, false);

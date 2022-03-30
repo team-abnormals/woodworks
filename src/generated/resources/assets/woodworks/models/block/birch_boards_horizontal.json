@@ -1,5 +1,5 @@
 {
-  "parent": "woodworks:block/template_boards_horizontal",
+  "parent": "blueprint:block/template_boards_horizontal",
   "textures": {
     "all": "woodworks:block/birch_boards"
   }

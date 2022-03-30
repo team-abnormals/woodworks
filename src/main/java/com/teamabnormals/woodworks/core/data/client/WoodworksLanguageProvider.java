@@ -1,6 +1,6 @@
 package com.teamabnormals.woodworks.core.data.client;
 
-import com.teamabnormals.woodworks.common.block.LeafPileBlock;
+import com.teamabnormals.blueprint.common.block.LeafPileBlock;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
 import net.minecraft.Util;
