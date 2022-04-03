@@ -73,12 +73,16 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 	}
 
 	public void conditionalRecipe(Consumer<FinishedRecipe> consumer, ICondition condition, RecipeBuilder recipe) {
-		ResourceLocation id = RecipeBuilder.getDefaultRecipeId(recipe.getResult());
+		this.conditionalRecipe(consumer, condition, recipe, RecipeBuilder.getDefaultRecipeId(recipe.getResult()));
+	}
+
+	public void conditionalRecipe(Consumer<FinishedRecipe> consumer, ICondition condition, RecipeBuilder recipe, ResourceLocation id) {
 		ConditionalRecipe.builder().addCondition(condition).addRecipe(recipe::save).generateAdvancement(new ResourceLocation(id.getNamespace(), "recipes/" + recipe.getResult().getItemCategory().getRecipeFolderName() + "/" + id.getPath())).build(consumer, id);
 	}
 
 	public void leafPile(Consumer<FinishedRecipe> consumer, Block leaves, Block leafPile) {
-		this.conditionalRecipe(consumer, config(COMMON.leafPiles, "leaf_piles"), ShapedRecipeBuilder.shaped(leafPile, 3).define('#', leaves).pattern("##").group("leaf_pile").unlockedBy(getHasName(leaves), has(leaves)));
+		this.conditionalRecipe(consumer, config(COMMON.leafPiles, "leaf_piles"), ShapelessRecipeBuilder.shapeless(leafPile, 4).requires(leaves, 1).group("leaf_pile").unlockedBy(getHasName(leaves), has(leaves)));
+		this.conditionalRecipe(consumer, config(COMMON.leafPiles, "leaf_piles"), ShapedRecipeBuilder.shaped(leaves, 1).define('#', leafPile).pattern("##").pattern("##").group("leaves").unlockedBy(getHasName(leafPile), has(leafPile)), new ResourceLocation(Woodworks.MOD_ID, leaves.getRegistryName().getPath() + "_from_leaf_piles"));
 	}
 
 	private static ConfigValueCondition config(ForgeConfigSpec.ConfigValue<?> value, String key, boolean inverted) {

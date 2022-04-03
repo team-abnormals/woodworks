@@ -1,0 +1,46 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "leaf_piles",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "minecraft:acacia_leaves"
+          ]
+        },
+        "criteria": {
+          "has_acacia_leaf_pile": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "woodworks:acacia_leaf_pile"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "minecraft:acacia_leaves"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_acacia_leaf_pile",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

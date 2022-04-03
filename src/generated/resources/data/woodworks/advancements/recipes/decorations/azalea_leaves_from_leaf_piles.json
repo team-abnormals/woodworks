@@ -1,0 +1,46 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "leaf_piles",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "minecraft:azalea_leaves"
+          ]
+        },
+        "criteria": {
+          "has_azalea_leaf_pile": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "woodworks:azalea_leaf_pile"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "minecraft:azalea_leaves"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_azalea_leaf_pile",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

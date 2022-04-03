@@ -9,19 +9,16 @@
         }
       ],
       "recipe": {
-        "type": "minecraft:crafting_shaped",
+        "type": "minecraft:crafting_shapeless",
         "group": "leaf_pile",
-        "pattern": [
-          "##"
-        ],
-        "key": {
-          "#": {
+        "ingredients": [
+          {
             "item": "minecraft:oak_leaves"
           }
-        },
+        ],
         "result": {
           "item": "woodworks:oak_leaf_pile",
-          "count": 3
+          "count": 4
         }
       }
     }
