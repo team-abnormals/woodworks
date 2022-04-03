@@ -1,34 +1,46 @@
 {
-  "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "woodworks:acacia_boards"
-    ]
-  },
-  "criteria": {
-    "has_acacia_planks": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:acacia_planks"
-            ]
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "wooden_boards",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:acacia_boards"
+          ]
+        },
+        "criteria": {
+          "has_acacia_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:acacia_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:acacia_boards"
+            }
           }
+        },
+        "requirements": [
+          [
+            "has_acacia_planks",
+            "has_the_recipe"
+          ]
         ]
       }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "woodworks:acacia_boards"
-      }
     }
-  },
-  "requirements": [
-    [
-      "has_acacia_planks",
-      "has_the_recipe"
-    ]
   ]
 }

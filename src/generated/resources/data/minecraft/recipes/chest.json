@@ -4,26 +4,25 @@
     {
       "conditions": [
         {
-          "value": "wooden_boards",
+          "value": "wooden_chests",
+          "inverted": true,
           "type": "woodworks:config"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "group": "wooden_boards",
         "pattern": [
-          "#",
-          "#",
-          "#"
+          "###",
+          "# #",
+          "###"
         ],
         "key": {
           "#": {
-            "item": "minecraft:warped_planks"
+            "tag": "minecraft:planks"
           }
         },
         "result": {
-          "item": "woodworks:warped_boards",
-          "count": 3
+          "item": "minecraft:chest"
         }
       }
     }

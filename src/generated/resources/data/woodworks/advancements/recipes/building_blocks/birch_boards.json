@@ -1,34 +1,46 @@
 {
-  "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "woodworks:birch_boards"
-    ]
-  },
-  "criteria": {
-    "has_birch_planks": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:birch_planks"
-            ]
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "wooden_boards",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:birch_boards"
+          ]
+        },
+        "criteria": {
+          "has_birch_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:birch_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:birch_boards"
+            }
           }
+        },
+        "requirements": [
+          [
+            "has_birch_planks",
+            "has_the_recipe"
+          ]
         ]
       }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "woodworks:birch_boards"
-      }
     }
-  },
-  "requirements": [
-    [
-      "has_birch_planks",
-      "has_the_recipe"
-    ]
   ]
 }

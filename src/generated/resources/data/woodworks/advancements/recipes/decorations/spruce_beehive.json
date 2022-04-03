@@ -1,34 +1,46 @@
 {
-  "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "woodworks:spruce_beehive"
-    ]
-  },
-  "criteria": {
-    "has_honeycomb": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:honeycomb"
-            ]
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "wooden_beehives",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:spruce_beehive"
+          ]
+        },
+        "criteria": {
+          "has_honeycomb": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:honeycomb"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:spruce_beehive"
+            }
           }
+        },
+        "requirements": [
+          [
+            "has_honeycomb",
+            "has_the_recipe"
+          ]
         ]
       }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "woodworks:spruce_beehive"
-      }
     }
-  },
-  "requirements": [
-    [
-      "has_honeycomb",
-      "has_the_recipe"
-    ]
   ]
 }

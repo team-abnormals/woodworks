@@ -1,32 +1,44 @@
 {
-  "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "woodworks:acacia_chest"
-    ]
-  },
-  "criteria": {
-    "has_lots_of_items": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "slots": {
-          "occupied": {
-            "min": 10
-          }
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "wooden_chests",
+          "type": "woodworks:config"
         }
-      }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "woodworks:acacia_chest"
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:acacia_chest"
+          ]
+        },
+        "criteria": {
+          "has_lots_of_items": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "slots": {
+                "occupied": {
+                  "min": 10
+                }
+              }
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:acacia_chest"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_lots_of_items",
+            "has_the_recipe"
+          ]
+        ]
       }
     }
-  },
-  "requirements": [
-    [
-      "has_lots_of_items",
-      "has_the_recipe"
-    ]
   ]
 }

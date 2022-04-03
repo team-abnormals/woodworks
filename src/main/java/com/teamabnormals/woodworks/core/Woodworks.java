@@ -1,5 +1,6 @@
 package com.teamabnormals.woodworks.core;
 
+import com.teamabnormals.blueprint.core.util.DataUtil;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksLanguageProvider;
@@ -10,10 +11,14 @@ import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvid
 import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
 import com.teamabnormals.woodworks.core.other.WoodworksCompat;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -26,6 +31,7 @@ public class Woodworks {
 
 	public Woodworks() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		ModLoadingContext context = ModLoadingContext.get();
 		MinecraftForge.EVENT_BUS.register(this);
 
 		REGISTRY_HELPER.register(bus);
@@ -33,6 +39,14 @@ public class Woodworks {
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::dataSetup);
+
+		bus.addGenericListener(Block.class, this::registerConfigConditions);
+
+		context.registerConfig(ModConfig.Type.COMMON, WoodworksConfig.COMMON_SPEC);
+	}
+
+	private void registerConfigConditions(RegistryEvent.Register<Block> event) {
+		DataUtil.registerConfigCondition(Woodworks.MOD_ID, WoodworksConfig.COMMON);
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {

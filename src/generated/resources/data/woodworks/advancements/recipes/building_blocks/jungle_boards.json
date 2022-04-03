@@ -1,34 +1,46 @@
 {
-  "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "woodworks:jungle_boards"
-    ]
-  },
-  "criteria": {
-    "has_jungle_planks": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:jungle_planks"
-            ]
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "wooden_boards",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:jungle_boards"
+          ]
+        },
+        "criteria": {
+          "has_jungle_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:jungle_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:jungle_boards"
+            }
           }
+        },
+        "requirements": [
+          [
+            "has_jungle_planks",
+            "has_the_recipe"
+          ]
         ]
       }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "woodworks:jungle_boards"
-      }
     }
-  },
-  "requirements": [
-    [
-      "has_jungle_planks",
-      "has_the_recipe"
-    ]
   ]
 }

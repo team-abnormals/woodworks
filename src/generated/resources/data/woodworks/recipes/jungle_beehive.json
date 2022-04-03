@@ -1,20 +1,33 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "wooden_beehive",
-  "pattern": [
-    "###",
-    "HHH",
-    "###"
-  ],
-  "key": {
-    "#": {
-      "item": "minecraft:jungle_planks"
-    },
-    "H": {
-      "item": "minecraft:honeycomb"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "wooden_beehives",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "wooden_beehive",
+        "pattern": [
+          "###",
+          "HHH",
+          "###"
+        ],
+        "key": {
+          "#": {
+            "item": "minecraft:jungle_planks"
+          },
+          "H": {
+            "item": "minecraft:honeycomb"
+          }
+        },
+        "result": {
+          "item": "woodworks:jungle_beehive"
+        }
+      }
     }
-  },
-  "result": {
-    "item": "woodworks:jungle_beehive"
-  }
+  ]
 }

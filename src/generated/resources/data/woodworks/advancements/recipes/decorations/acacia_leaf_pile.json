@@ -1,34 +1,46 @@
 {
-  "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "woodworks:acacia_leaf_pile"
-    ]
-  },
-  "criteria": {
-    "has_acacia_leaves": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:acacia_leaves"
-            ]
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "leaf_piles",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:acacia_leaf_pile"
+          ]
+        },
+        "criteria": {
+          "has_acacia_leaves": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:acacia_leaves"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:acacia_leaf_pile"
+            }
           }
+        },
+        "requirements": [
+          [
+            "has_acacia_leaves",
+            "has_the_recipe"
+          ]
         ]
       }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "woodworks:acacia_leaf_pile"
-      }
     }
-  },
-  "requirements": [
-    [
-      "has_acacia_leaves",
-      "has_the_recipe"
-    ]
   ]
 }

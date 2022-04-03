@@ -1,34 +1,46 @@
 {
-  "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "woodworks:oak_boards"
-    ]
-  },
-  "criteria": {
-    "has_oak_planks": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:oak_planks"
-            ]
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "wooden_boards",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:oak_boards"
+          ]
+        },
+        "criteria": {
+          "has_oak_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:oak_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:oak_boards"
+            }
           }
+        },
+        "requirements": [
+          [
+            "has_oak_planks",
+            "has_the_recipe"
+          ]
         ]
       }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "woodworks:oak_boards"
-      }
     }
-  },
-  "requirements": [
-    [
-      "has_oak_planks",
-      "has_the_recipe"
-    ]
   ]
 }

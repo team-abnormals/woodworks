@@ -1,15 +1,28 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "wooden_trapped_chest",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "woodworks:acacia_chest"
-    },
-    {
-      "item": "minecraft:tripwire_hook"
+      "conditions": [
+        {
+          "value": "wooden_chests",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "group": "wooden_trapped_chest",
+        "ingredients": [
+          {
+            "item": "woodworks:acacia_chest"
+          },
+          {
+            "item": "minecraft:tripwire_hook"
+          }
+        ],
+        "result": {
+          "item": "woodworks:acacia_trapped_chest"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "woodworks:acacia_trapped_chest"
-  }
+  ]
 }

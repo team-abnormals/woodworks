@@ -1,16 +1,29 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "leaf_pile",
-  "pattern": [
-    "##"
-  ],
-  "key": {
-    "#": {
-      "item": "minecraft:jungle_leaves"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "leaf_piles",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "leaf_pile",
+        "pattern": [
+          "##"
+        ],
+        "key": {
+          "#": {
+            "item": "minecraft:jungle_leaves"
+          }
+        },
+        "result": {
+          "item": "woodworks:jungle_leaf_pile",
+          "count": 3
+        }
+      }
     }
-  },
-  "result": {
-    "item": "woodworks:jungle_leaf_pile",
-    "count": 3
-  }
+  ]
 }

@@ -1,18 +1,31 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "wooden_boards",
-  "pattern": [
-    "#",
-    "#",
-    "#"
-  ],
-  "key": {
-    "#": {
-      "item": "minecraft:birch_planks"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "wooden_boards",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "wooden_boards",
+        "pattern": [
+          "#",
+          "#",
+          "#"
+        ],
+        "key": {
+          "#": {
+            "item": "minecraft:birch_planks"
+          }
+        },
+        "result": {
+          "item": "woodworks:birch_boards",
+          "count": 3
+        }
+      }
     }
-  },
-  "result": {
-    "item": "woodworks:birch_boards",
-    "count": 3
-  }
+  ]
 }

@@ -1,17 +1,30 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "wooden_chest",
-  "pattern": [
-    "###",
-    "# #",
-    "###"
-  ],
-  "key": {
-    "#": {
-      "item": "minecraft:acacia_planks"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "wooden_chests",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "wooden_chest",
+        "pattern": [
+          "###",
+          "# #",
+          "###"
+        ],
+        "key": {
+          "#": {
+            "item": "minecraft:acacia_planks"
+          }
+        },
+        "result": {
+          "item": "woodworks:acacia_chest"
+        }
+      }
     }
-  },
-  "result": {
-    "item": "woodworks:acacia_chest"
-  }
+  ]
 }

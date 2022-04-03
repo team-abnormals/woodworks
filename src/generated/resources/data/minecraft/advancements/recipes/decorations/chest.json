@@ -3,7 +3,8 @@
     {
       "conditions": [
         {
-          "value": "wooden_bookshelves",
+          "value": "wooden_chests",
+          "inverted": true,
           "type": "woodworks:config"
         }
       ],
@@ -11,32 +12,30 @@
         "parent": "minecraft:recipes/root",
         "rewards": {
           "recipes": [
-            "woodworks:warped_bookshelf"
+            "minecraft:chest"
           ]
         },
         "criteria": {
-          "has_book": {
+          "has_lots_of_items": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
-              "items": [
-                {
-                  "items": [
-                    "minecraft:book"
-                  ]
+              "slots": {
+                "occupied": {
+                  "min": 10
                 }
-              ]
+              }
             }
           },
           "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-              "recipe": "woodworks:warped_bookshelf"
+              "recipe": "minecraft:chest"
             }
           }
         },
         "requirements": [
           [
-            "has_book",
+            "has_lots_of_items",
             "has_the_recipe"
           ]
         ]
