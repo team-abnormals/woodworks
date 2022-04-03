@@ -4,6 +4,7 @@
       "conditions": [
         {
           "value": "wooden_beehives",
+          "inverted": true,
           "type": "woodworks:config"
         }
       ],

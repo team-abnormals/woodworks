@@ -11,7 +11,7 @@
         "parent": "minecraft:recipes/root",
         "rewards": {
           "recipes": [
-            "minecraft:dark_oak_leaves"
+            "woodworks:dark_oak_leaves_from_leaf_piles"
           ]
         },
         "criteria": {
@@ -30,7 +30,7 @@
           "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-              "recipe": "minecraft:dark_oak_leaves"
+              "recipe": "woodworks:dark_oak_leaves_from_leaf_piles"
             }
           }
         },

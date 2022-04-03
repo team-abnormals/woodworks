@@ -4,6 +4,7 @@
       "conditions": [
         {
           "value": "wooden_ladders",
+          "inverted": true,
           "type": "woodworks:config"
         }
       ],

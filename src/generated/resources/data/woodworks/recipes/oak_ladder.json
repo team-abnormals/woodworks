@@ -4,28 +4,29 @@
     {
       "conditions": [
         {
-          "value": "wooden_bookshelves",
-          "inverted": true,
+          "value": "wooden_ladders",
           "type": "woodworks:config"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "group": "wooden_ladder",
         "pattern": [
-          "###",
-          "XXX",
-          "###"
+          "S S",
+          "S#S",
+          "S S"
         ],
         "key": {
           "#": {
-            "tag": "minecraft:planks"
+            "item": "minecraft:oak_planks"
           },
-          "X": {
-            "item": "minecraft:book"
+          "S": {
+            "item": "minecraft:stick"
           }
         },
         "result": {
-          "item": "minecraft:bookshelf"
+          "item": "minecraft:ladder",
+          "count": 4
         }
       }
     }

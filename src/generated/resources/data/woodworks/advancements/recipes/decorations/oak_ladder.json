@@ -3,8 +3,7 @@
     {
       "conditions": [
         {
-          "value": "wooden_bookshelves",
-          "inverted": true,
+          "value": "wooden_ladders",
           "type": "woodworks:config"
         }
       ],
@@ -12,17 +11,17 @@
         "parent": "minecraft:recipes/root",
         "rewards": {
           "recipes": [
-            "minecraft:bookshelf"
+            "woodworks:oak_ladder"
           ]
         },
         "criteria": {
-          "has_book": {
+          "has_stick": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
                   "items": [
-                    "minecraft:book"
+                    "minecraft:stick"
                   ]
                 }
               ]
@@ -31,13 +30,13 @@
           "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-              "recipe": "minecraft:bookshelf"
+              "recipe": "woodworks:oak_ladder"
             }
           }
         },
         "requirements": [
           [
-            "has_book",
+            "has_stick",
             "has_the_recipe"
           ]
         ]

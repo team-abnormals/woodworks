@@ -5,12 +5,12 @@
       "conditions": [
         {
           "value": "wooden_bookshelves",
-          "inverted": true,
           "type": "woodworks:config"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "group": "wooden_bookshelf",
         "pattern": [
           "###",
           "XXX",
@@ -18,7 +18,7 @@
         ],
         "key": {
           "#": {
-            "tag": "minecraft:planks"
+            "item": "minecraft:oak_planks"
           },
           "X": {
             "item": "minecraft:book"

@@ -4,7 +4,6 @@
       "conditions": [
         {
           "value": "wooden_bookshelves",
-          "inverted": true,
           "type": "woodworks:config"
         }
       ],
@@ -12,7 +11,7 @@
         "parent": "minecraft:recipes/root",
         "rewards": {
           "recipes": [
-            "minecraft:bookshelf"
+            "woodworks:oak_bookshelf"
           ]
         },
         "criteria": {
@@ -31,7 +30,7 @@
           "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-              "recipe": "minecraft:bookshelf"
+              "recipe": "woodworks:oak_bookshelf"
             }
           }
         },

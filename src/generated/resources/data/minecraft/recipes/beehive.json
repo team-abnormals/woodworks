@@ -5,20 +5,20 @@
       "conditions": [
         {
           "value": "wooden_beehives",
+          "inverted": true,
           "type": "woodworks:config"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "group": "wooden_beehive",
         "pattern": [
-          "###",
+          "PPP",
           "HHH",
-          "###"
+          "PPP"
         ],
         "key": {
-          "#": {
-            "item": "minecraft:oak_planks"
+          "P": {
+            "tag": "minecraft:planks"
           },
           "H": {
             "item": "minecraft:honeycomb"

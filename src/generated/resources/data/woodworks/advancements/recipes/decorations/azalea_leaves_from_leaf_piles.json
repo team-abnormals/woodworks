@@ -11,7 +11,7 @@
         "parent": "minecraft:recipes/root",
         "rewards": {
           "recipes": [
-            "minecraft:azalea_leaves"
+            "woodworks:azalea_leaves_from_leaf_piles"
           ]
         },
         "criteria": {
@@ -30,7 +30,7 @@
           "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-              "recipe": "minecraft:azalea_leaves"
+              "recipe": "woodworks:azalea_leaves_from_leaf_piles"
             }
           }
         },
