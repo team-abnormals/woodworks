@@ -8,6 +8,8 @@ import org.apache.commons.lang3.tuple.Pair;
 public class WoodworksConfig {
 
 	public static class Common {
+		@ConfigKey("sawmill")
+		public final BooleanValue sawmill;
 		@ConfigKey("wooden_boards")
 		public final BooleanValue woodenBoards;
 		@ConfigKey("wooden_bookshelves")
@@ -23,6 +25,7 @@ public class WoodworksConfig {
 
 		public Common(ForgeConfigSpec.Builder builder) {
 			builder.push("blocks");
+			this.sawmill = builder.define("Sawmill", true);
 			this.woodenBoards = builder.define("Wooden boards", true);
 			this.woodenBookshelves = builder.define("Wooden bookshelves", true);
 			this.woodenLadders = builder.define("Wooden ladders", true);

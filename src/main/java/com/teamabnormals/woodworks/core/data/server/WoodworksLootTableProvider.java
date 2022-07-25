@@ -46,11 +46,13 @@ public class WoodworksLootTableProvider extends LootTableProvider {
 
 		@Override
 		public void addTables() {
+			this.dropSelf(SAWMILL.get());
+
 			this.dropSelf(OAK_BOARDS.get());
 			this.add(OAK_LEAF_PILE.get(), BlockLoot::createGlowLichenDrops);
 			this.add(OAK_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
 			this.add(OAK_TRAPPED_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
-			
+
 			this.dropSelf(SPRUCE_BOARDS.get());
 			this.add(SPRUCE_LEAF_PILE.get(), BlockLoot::createGlowLichenDrops);
 			this.add(SPRUCE_BOOKSHELF.get(), WoodworksBlockLoot::createBookshelfDrops);
@@ -104,7 +106,7 @@ public class WoodworksLootTableProvider extends LootTableProvider {
 			this.add(WARPED_BEEHIVE.get(), BlockLoot::createBeeHiveDrop);
 			this.add(WARPED_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
 			this.add(WARPED_TRAPPED_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
-			
+
 			this.add(AZALEA_LEAF_PILE.get(), BlockLoot::createGlowLichenDrops);
 			this.add(FLOWERING_AZALEA_LEAF_PILE.get(), BlockLoot::createGlowLichenDrops);
 		}

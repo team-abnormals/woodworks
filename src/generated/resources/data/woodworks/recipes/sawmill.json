@@ -1,0 +1,35 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "#I",
+          "# ",
+          "#S"
+        ],
+        "key": {
+          "I": {
+            "tag": "forge:ingots/iron"
+          },
+          "#": {
+            "tag": "minecraft:planks"
+          },
+          "S": {
+            "tag": "minecraft:wooden_slabs"
+          }
+        },
+        "result": {
+          "item": "woodworks:sawmill"
+        }
+      }
+    }
+  ]
+}

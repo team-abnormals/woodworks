@@ -10,6 +10,9 @@ import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvi
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvider;
 import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
 import com.teamabnormals.woodworks.core.other.WoodworksCompat;
+import com.teamabnormals.woodworks.core.registry.WoodworksMenuTypes;
+import com.teamabnormals.woodworks.core.registry.WoodworksRecipes.WoodworksRecipeSerializers;
+import com.teamabnormals.woodworks.core.registry.WoodworksRecipes.WoodworksRecipeTypes;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,6 +38,9 @@ public class Woodworks {
 		MinecraftForge.EVENT_BUS.register(this);
 
 		REGISTRY_HELPER.register(bus);
+		WoodworksMenuTypes.MENU_TYPES.register(bus);
+		WoodworksRecipeSerializers.RECIPE_SERIALIZERS.register(bus);
+		WoodworksRecipeTypes.RECIPE_TYPES.register(bus);
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
