@@ -95,11 +95,11 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		return config(value, key, false);
 	}
 
-	private static String getHasName(ItemLike item) {
+	protected static String getHasName(ItemLike item) {
 		return "has_" + getItemName(item);
 	}
 
-	private static String getItemName(ItemLike item) {
+	protected static String getItemName(ItemLike item) {
 		return Registry.ITEM.getKey(item.asItem()).getPath();
 	}
 }

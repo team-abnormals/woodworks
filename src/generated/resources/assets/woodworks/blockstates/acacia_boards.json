@@ -2,7 +2,7 @@
   "variants": {
     "axis=x": {
       "model": "woodworks:block/acacia_boards_horizontal",
-      "y": 90
+      "y": 270
     },
     "axis=y": {
       "model": "woodworks:block/acacia_boards"

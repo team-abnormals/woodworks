@@ -13,8 +13,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class WoodworksItemTagsProvider extends ItemTagsProvider {
 
-	public WoodworksItemTagsProvider(DataGenerator generator, BlockTagsProvider blockTags, ExistingFileHelper fileHelper) {
-		super(generator, blockTags, Woodworks.MOD_ID, fileHelper);
+	public WoodworksItemTagsProvider(DataGenerator generator, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
+		super(generator, blockTags, Woodworks.MOD_ID, existingFileHelper);
 	}
 
 	@Override

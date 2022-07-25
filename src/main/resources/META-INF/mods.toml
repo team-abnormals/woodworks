@@ -10,7 +10,7 @@ license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
     itemIcon = "woodworks:spruce_chest"
     configBackground = "woodworks:textures/block/spruce_boards.png"
     authors = "Team Abnormals"
-    credits = "bageldotjpg"
+    credits = "bageldotjpg, five, hatsondogs, Rye"
     displayURL = "https://www.teamabnormals.com/mods/woodworks"
     displayName = "Woodworks"
     description = '''
@@ -27,13 +27,13 @@ license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
 [[dependencies.woodworks]]
     modId = "forge"
     mandatory = true
-    versionRange = "[40.0.18,)"
+    versionRange = "[40.1.0,)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.woodworks]]
     modId = "blueprint"
     mandatory = true
-    versionRange = "[5.3.0,)"
+    versionRange = "[5.4.1,)"
     ordering = "AFTER"
     side = "BOTH"
