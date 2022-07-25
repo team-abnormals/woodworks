@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_boards",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "ingredient": {
+          "item": "minecraft:acacia_planks"
+        },
+        "result": "woodworks:acacia_boards",
+        "count": 1
+      }
+    }
+  ]
+}

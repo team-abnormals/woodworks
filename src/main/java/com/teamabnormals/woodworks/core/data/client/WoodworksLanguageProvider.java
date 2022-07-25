@@ -4,6 +4,8 @@ import com.teamabnormals.blueprint.common.block.LeafPileBlock;
 import com.teamabnormals.woodworks.common.block.SawmillBlock;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
+import com.teamabnormals.woodworks.integration.jei.SawingRecipeCategory;
+import com.teamabnormals.woodworks.integration.jei.WoodworksPlugin;
 import net.minecraft.Util;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -27,6 +29,7 @@ public class WoodworksLanguageProvider extends LanguageProvider {
 		});
 
 		this.add(SawmillBlock.CONTAINER_TITLE.getString(), "Sawmill");
+		this.add(SawingRecipeCategory.TRANSLATION.getString(), "Sawing");
 	}
 
 	private void add(String block) {

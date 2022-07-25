@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "ingredient": {
+          "tag": "minecraft:acacia_logs"
+        },
+        "result": "minecraft:acacia_fence_gate",
+        "count": 1
+      }
+    }
+  ]
+}

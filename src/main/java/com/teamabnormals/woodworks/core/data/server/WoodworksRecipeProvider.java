@@ -9,10 +9,14 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
+import net.minecraft.data.BlockFamilies;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -24,6 +28,7 @@ import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.AndCondition;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import org.lwjgl.system.CallbackI.B;
 
 import java.util.function.Consumer;
 
@@ -44,6 +49,20 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		this.conditionalRecipe(consumer, config(COMMON.woodenChests, "wooden_chests", true), ShapedRecipeBuilder.shaped(Blocks.CHEST).define('#', ItemTags.PLANKS).pattern("###").pattern("# #").pattern("###").unlockedBy("has_lots_of_items", new InventoryChangeTrigger.TriggerInstance(EntityPredicate.Composite.ANY, MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, new ItemPredicate[0])));
 		ShapedRecipeBuilder.shaped(Blocks.LECTERN).define('S', ItemTags.WOODEN_SLABS).define('B', Tags.Items.BOOKSHELVES).pattern("SSS").pattern(" B ").pattern(" S ").unlockedBy("has_book", has(Items.BOOK)).save(consumer);
 
+		this.conditionalSawmillRecipe(consumer, config(COMMON.woodenBoards, "wooden_ladders", true), Blocks.OAK_PLANKS, Blocks.LADDER, 1, false);
+		this.conditionalSawmillRecipe(consumer, config(COMMON.woodenBoards, "wooden_ladders", true), ItemTags.OAK_LOGS, Blocks.LADDER, 4, false);
+		this.sawmillRecipe(consumer, ItemTags.PLANKS, Items.STICK, 2);
+		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.STICK, 8);
+		this.sawmillRecipe(consumer, ItemTags.LOGS, Blocks.CRAFTING_TABLE, 1);
+		this.sawmillRecipe(consumer, ItemTags.LOGS, Blocks.COMPOSTER, 1);
+		this.sawmillRecipe(consumer, ItemTags.PLANKS, Items.BOWL, 1);
+		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.BOWL, 4);
+		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_AXE, 1);
+		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_HOE, 1);
+		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_PICKAXE, 1);
+		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_SHOVEL, 1);
+		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_SWORD, 1);
+
 		this.baseRecipes(consumer, Blocks.OAK_PLANKS, WoodworksBlocks.OAK_BOARDS.get(), Blocks.BOOKSHELF, Blocks.LADDER, Blocks.BEEHIVE, WoodworksBlocks.OAK_CHEST.get(), WoodworksBlocks.OAK_TRAPPED_CHEST.get());
 		this.baseRecipes(consumer, Blocks.SPRUCE_PLANKS, WoodworksBlocks.SPRUCE_BOARDS.get(), WoodworksBlocks.SPRUCE_BOOKSHELF.get(), WoodworksBlocks.SPRUCE_LADDER.get(), WoodworksBlocks.SPRUCE_BEEHIVE.get(), WoodworksBlocks.SPRUCE_CHEST.get(), WoodworksBlocks.SPRUCE_TRAPPED_CHEST.get());
 		this.baseRecipes(consumer, Blocks.BIRCH_PLANKS, WoodworksBlocks.BIRCH_BOARDS.get(), WoodworksBlocks.BIRCH_BOOKSHELF.get(), WoodworksBlocks.BIRCH_LADDER.get(), WoodworksBlocks.BIRCH_BEEHIVE.get(), WoodworksBlocks.BIRCH_CHEST.get(), WoodworksBlocks.BIRCH_TRAPPED_CHEST.get());
@@ -61,6 +80,15 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		this.leafPile(consumer, Blocks.DARK_OAK_LEAVES, WoodworksBlocks.DARK_OAK_LEAF_PILE.get());
 		this.leafPile(consumer, Blocks.AZALEA_LEAVES, WoodworksBlocks.AZALEA_LEAF_PILE.get());
 		this.leafPile(consumer, Blocks.FLOWERING_AZALEA_LEAVES, WoodworksBlocks.FLOWERING_AZALEA_LEAF_PILE.get());
+
+		this.sawmillRecipes(consumer, BlockFamilies.OAK_PLANKS, ItemTags.OAK_LOGS, WoodworksBlocks.OAK_BOARDS.get(), Blocks.LADDER);
+		this.sawmillRecipes(consumer, BlockFamilies.SPRUCE_PLANKS, ItemTags.SPRUCE_LOGS, WoodworksBlocks.SPRUCE_BOARDS.get(), WoodworksBlocks.SPRUCE_LADDER.get());
+		this.sawmillRecipes(consumer, BlockFamilies.BIRCH_PLANKS, ItemTags.BIRCH_LOGS, WoodworksBlocks.BIRCH_BOARDS.get(), WoodworksBlocks.BIRCH_LADDER.get());
+		this.sawmillRecipes(consumer, BlockFamilies.JUNGLE_PLANKS, ItemTags.JUNGLE_LOGS, WoodworksBlocks.JUNGLE_BOARDS.get(), WoodworksBlocks.JUNGLE_LADDER.get());
+		this.sawmillRecipes(consumer, BlockFamilies.ACACIA_PLANKS, ItemTags.ACACIA_LOGS, WoodworksBlocks.ACACIA_BOARDS.get(), WoodworksBlocks.ACACIA_LADDER.get());
+		this.sawmillRecipes(consumer, BlockFamilies.DARK_OAK_PLANKS, ItemTags.DARK_OAK_LOGS, WoodworksBlocks.DARK_OAK_BOARDS.get(), WoodworksBlocks.DARK_OAK_LADDER.get());
+		this.sawmillRecipes(consumer, BlockFamilies.CRIMSON_PLANKS, ItemTags.CRIMSON_STEMS, WoodworksBlocks.CRIMSON_BOARDS.get(), WoodworksBlocks.CRIMSON_LADDER.get());
+		this.sawmillRecipes(consumer, BlockFamilies.WARPED_PLANKS, ItemTags.WARPED_STEMS, WoodworksBlocks.WARPED_BOARDS.get(), WoodworksBlocks.WARPED_LADDER.get());
 	}
 
 	public void baseRecipes(Consumer<FinishedRecipe> consumer, Block planks, Block boards, Block bookshelf, Block ladder, Block beehive, Block chest, Block trappedChest) {
@@ -71,6 +99,39 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		this.conditionalRecipe(consumer, config(COMMON.woodenBeehives, "wooden_beehives"), ShapedRecipeBuilder.shaped(beehive).define('#', planks).define('H', Items.HONEYCOMB).pattern("###").pattern("HHH").pattern("###").group("wooden_beehive").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)), new ResourceLocation(Woodworks.MOD_ID, prefix + beehive.getRegistryName().getPath()));
 		this.conditionalRecipe(consumer, config(COMMON.woodenChests, "wooden_chests"), ShapedRecipeBuilder.shaped(chest).define('#', planks).pattern("###").pattern("# #").pattern("###").group("wooden_chest").unlockedBy("has_lots_of_items", new InventoryChangeTrigger.TriggerInstance(EntityPredicate.Composite.ANY, MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, new ItemPredicate[0])));
 		this.conditionalRecipe(consumer, config(COMMON.woodenChests, "wooden_chests"), ShapelessRecipeBuilder.shapeless(trappedChest).requires(chest).requires(Blocks.TRIPWIRE_HOOK).group("wooden_trapped_chest").unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)));
+	}
+
+	public void sawmillRecipes(Consumer<FinishedRecipe> consumer, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder) {
+		Block planks = family.getBaseBlock();
+		Block button = family.get(BlockFamily.Variant.BUTTON);
+		Block door = family.get(BlockFamily.Variant.DOOR);
+		Block fence = family.get(BlockFamily.Variant.FENCE);
+		Block fenceGate = family.get(BlockFamily.Variant.FENCE_GATE);
+		Block pressurePlate = family.get(BlockFamily.Variant.PRESSURE_PLATE);
+		Block sign = family.get(BlockFamily.Variant.SIGN);
+		Block slab = family.get(BlockFamily.Variant.SLAB);
+		Block stairs = family.get(BlockFamily.Variant.STAIRS);
+		Block trapdoor = family.get(BlockFamily.Variant.TRAPDOOR);
+
+		this.sawmillRecipe(consumer, logs, planks, 4);
+		this.sawmillRecipe(consumer, planks, button, 1);
+		this.sawmillRecipe(consumer, logs, button, 4);
+		this.sawmillRecipe(consumer, logs, door, 2);
+		this.sawmillRecipe(consumer, planks, fence, 1);
+		this.sawmillRecipe(consumer, logs, fence, 4);
+		this.sawmillRecipe(consumer, logs, fenceGate, 1);
+		this.sawmillRecipe(consumer, logs, pressurePlate, 2);
+		this.sawmillRecipe(consumer, logs, sign, 2);
+		this.sawmillRecipe(consumer, planks, slab, 2);
+		this.sawmillRecipe(consumer, logs, slab, 8);
+		this.sawmillRecipe(consumer, planks, stairs, 1);
+		this.sawmillRecipe(consumer, logs, stairs, 4);
+		this.sawmillRecipe(consumer, logs, trapdoor, 2);
+
+		this.conditionalSawmillRecipe(consumer, config(COMMON.woodenBoards, "wooden_boards"), planks, boards);
+		this.conditionalSawmillRecipe(consumer, config(COMMON.woodenBoards, "wooden_boards"), logs, boards, 4);
+		this.conditionalSawmillRecipe(consumer, config(COMMON.woodenBoards, "wooden_ladders"), planks, ladder, 1);
+		this.conditionalSawmillRecipe(consumer, config(COMMON.woodenBoards, "wooden_ladders"), logs, ladder, 4);
 	}
 
 	public void conditionalRecipe(Consumer<FinishedRecipe> consumer, ICondition condition, RecipeBuilder recipe) {
@@ -85,8 +146,36 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		conditionalSawmillRecipe(consumer, condition, input, output, 1);
 	}
 
-	public void conditionalSawmillRecipe(Consumer<FinishedRecipe> consumer, ICondition condition, ItemLike input, ItemLike output, int count) {
+	public void sawmillRecipe(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, int count) {
 		ResourceLocation id = new ResourceLocation(Woodworks.MOD_ID, getConversionRecipeName(output, input) + "_sawing");
+		RecipeBuilder recipe = sawmillResultFromBase(output, input, count);
+		ConditionalRecipe.builder().addCondition(config(COMMON.sawmill, "sawmill")).addRecipe(consumer1 -> recipe.save(consumer1, id)).generateAdvancement(new ResourceLocation(id.getNamespace(), "recipes/" + recipe.getResult().getItemCategory().getRecipeFolderName() + "/" + id.getPath())).build(consumer, id);
+	}
+
+	public void sawmillRecipe(Consumer<FinishedRecipe> consumer, TagKey<Item> input, ItemLike output, int count) {
+		ResourceLocation id = new ResourceLocation(Woodworks.MOD_ID, getConversionRecipeName(output, input) + "_sawing");
+		RecipeBuilder recipe = sawmillResultFromBase(output, input, count);
+		ConditionalRecipe.builder().addCondition(config(COMMON.sawmill, "sawmill")).addRecipe(consumer1 -> recipe.save(consumer1, id)).generateAdvancement(new ResourceLocation(id.getNamespace(), "recipes/" + recipe.getResult().getItemCategory().getRecipeFolderName() + "/" + id.getPath())).build(consumer, id);
+	}
+
+	public void conditionalSawmillRecipe(Consumer<FinishedRecipe> consumer, ICondition condition, ItemLike input, ItemLike output, int count) {
+		conditionalSawmillRecipe(consumer, condition, input, output, count, true);
+	}
+
+	public void conditionalSawmillRecipe(Consumer<FinishedRecipe> consumer, ICondition condition, ItemLike input, ItemLike output, int count, boolean doPrefix) {
+		String prefix = doPrefix ? "oak_" : "";
+		ResourceLocation id = new ResourceLocation(Woodworks.MOD_ID, prefix + getConversionRecipeName(output, input) + "_sawing");
+		RecipeBuilder recipe = sawmillResultFromBase(output, input, count);
+		ConditionalRecipe.builder().addCondition(new AndCondition(config(COMMON.sawmill, "sawmill"), condition)).addRecipe(consumer1 -> recipe.save(consumer1, id)).generateAdvancement(new ResourceLocation(id.getNamespace(), "recipes/" + recipe.getResult().getItemCategory().getRecipeFolderName() + "/" + id.getPath())).build(consumer, id);
+	}
+
+	public void conditionalSawmillRecipe(Consumer<FinishedRecipe> consumer, ICondition condition, TagKey<Item> input, ItemLike output, int count) {
+		conditionalSawmillRecipe(consumer, condition, input, output, count, true);
+	}
+
+	public void conditionalSawmillRecipe(Consumer<FinishedRecipe> consumer, ICondition condition, TagKey<Item> input, ItemLike output, int count, boolean doPrefix) {
+		String prefix = doPrefix ? "oak_" : "";
+		ResourceLocation id = new ResourceLocation(Woodworks.MOD_ID, prefix + getConversionRecipeName(output, input) + "_sawing");
 		RecipeBuilder recipe = sawmillResultFromBase(output, input, count);
 		ConditionalRecipe.builder().addCondition(new AndCondition(config(COMMON.sawmill, "sawmill"), condition)).addRecipe(consumer1 -> recipe.save(consumer1, id)).generateAdvancement(new ResourceLocation(id.getNamespace(), "recipes/" + recipe.getResult().getItemCategory().getRecipeFolderName() + "/" + id.getPath())).build(consumer, id);
 	}
@@ -108,11 +197,15 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		return new SingleItemRecipeBuilder(WoodworksRecipeSerializers.SAWMILL.get(), ingredient, item, count);
 	}
 
-	protected static SingleItemRecipeBuilder sawmillResultFromBase(ItemLike output, ItemLike input) {
-		return sawmillResultFromBase(output, input, 1);
-	}
-
 	protected static SingleItemRecipeBuilder sawmillResultFromBase(ItemLike output, ItemLike input, int count) {
 		return sawing(Ingredient.of(input), output, count).unlockedBy(getHasName(input), has(input));
+	}
+
+	protected static SingleItemRecipeBuilder sawmillResultFromBase(ItemLike output, TagKey<Item> input, int count) {
+		return sawing(Ingredient.of(input), output, count).unlockedBy("has_" + input.location().getPath(), has(input));
+	}
+
+	protected static String getConversionRecipeName(ItemLike output, TagKey<Item> input) {
+		return getItemName(output) + "_from_" + input.location().getPath();
 	}
 }

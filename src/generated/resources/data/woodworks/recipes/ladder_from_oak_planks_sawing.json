@@ -1,0 +1,31 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_ladders",
+              "inverted": true,
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "ingredient": {
+          "item": "minecraft:oak_planks"
+        },
+        "result": "minecraft:ladder",
+        "count": 1
+      }
+    }
+  ]
+}

@@ -99,7 +99,7 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 	}
 
 	public void sawmillBlock(Block sawmill) {
-		this.simpleBlock(sawmill, new UncheckedModelFile(new ResourceLocation(Woodworks.MOD_ID, "block/sawmill")));
+		this.horizontalBlock(sawmill, new UncheckedModelFile(new ResourceLocation(Woodworks.MOD_ID, "block/sawmill")));
 		this.simpleBlockItem(sawmill);
 	}
 

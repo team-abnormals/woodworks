@@ -1,0 +1,46 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:oak_fence_from_oak_planks_sawing"
+          ]
+        },
+        "criteria": {
+          "has_oak_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:oak_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:oak_fence_from_oak_planks_sawing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_oak_planks",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_ladders",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "ingredient": {
+          "tag": "minecraft:birch_logs"
+        },
+        "result": "woodworks:birch_ladder",
+        "count": 4
+      }
+    }
+  ]
+}

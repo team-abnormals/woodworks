@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_ladders",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "ingredient": {
+          "tag": "minecraft:acacia_logs"
+        },
+        "result": "woodworks:acacia_ladder",
+        "count": 4
+      }
+    }
+  ]
+}

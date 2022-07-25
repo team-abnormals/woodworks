@@ -1,0 +1,46 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:birch_slab_from_birch_planks_sawing"
+          ]
+        },
+        "criteria": {
+          "has_birch_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:birch_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:birch_slab_from_birch_planks_sawing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_birch_planks",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

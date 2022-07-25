@@ -56,5 +56,6 @@
   "block.woodworks.warped_chest": "Warped Chest",
   "block.woodworks.warped_ladder": "Warped Ladder",
   "block.woodworks.warped_trapped_chest": "Warped Trapped Chest",
-  "container.woodworks.sawmill": "Sawmill"
+  "container.woodworks.sawmill": "Sawmill",
+  "gui.woodworks.category.sawmill": "Sawing"
 }

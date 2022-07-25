@@ -1,0 +1,46 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:spruce_stairs_from_spruce_planks_sawing"
+          ]
+        },
+        "criteria": {
+          "has_spruce_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:spruce_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:spruce_stairs_from_spruce_planks_sawing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_spruce_planks",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

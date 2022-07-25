@@ -1,0 +1,46 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:warped_slab_from_warped_planks_sawing"
+          ]
+        },
+        "criteria": {
+          "has_warped_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:warped_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:warped_slab_from_warped_planks_sawing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_warped_planks",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:jungle_slab_from_jungle_planks_sawing"
+          ]
+        },
+        "criteria": {
+          "has_jungle_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:jungle_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:jungle_slab_from_jungle_planks_sawing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_jungle_planks",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

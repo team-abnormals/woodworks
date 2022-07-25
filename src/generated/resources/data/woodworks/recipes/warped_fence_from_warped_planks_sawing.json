@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "ingredient": {
+          "item": "minecraft:warped_planks"
+        },
+        "result": "minecraft:warped_fence",
+        "count": 1
+      }
+    }
+  ]
+}

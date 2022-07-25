@@ -1,0 +1,53 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_boards",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:oak_jungle_boards_from_jungle_logs_sawing"
+          ]
+        },
+        "criteria": {
+          "has_jungle_logs": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "tag": "minecraft:jungle_logs"
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:oak_jungle_boards_from_jungle_logs_sawing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_jungle_logs",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

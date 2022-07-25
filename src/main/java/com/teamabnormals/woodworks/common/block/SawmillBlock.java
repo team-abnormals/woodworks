@@ -1,6 +1,7 @@
 package com.teamabnormals.woodworks.common.block;
 
 import com.teamabnormals.blueprint.core.util.item.filling.TargetedItemCategoryFiller;
+import com.teamabnormals.woodworks.common.inventory.SawmillMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -13,7 +14,6 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.StonecutterMenu;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -68,7 +68,7 @@ public class SawmillBlock extends Block {
 	@Nullable
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
-		return new SimpleMenuProvider((p_57074_, p_57075_, p_57076_) -> new StonecutterMenu(p_57074_, p_57075_, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE);
+		return new SimpleMenuProvider((p_57074_, p_57075_, p_57076_) -> new SawmillMenu(p_57074_, p_57075_, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE);
 	}
 
 	@Override

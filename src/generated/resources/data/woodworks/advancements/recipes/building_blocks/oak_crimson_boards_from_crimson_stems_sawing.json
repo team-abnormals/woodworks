@@ -1,0 +1,53 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_boards",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:oak_crimson_boards_from_crimson_stems_sawing"
+          ]
+        },
+        "criteria": {
+          "has_crimson_stems": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "tag": "minecraft:crimson_stems"
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:oak_crimson_boards_from_crimson_stems_sawing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_crimson_stems",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

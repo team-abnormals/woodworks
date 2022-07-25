@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "ingredient": {
+          "item": "minecraft:acacia_planks"
+        },
+        "result": "minecraft:acacia_button",
+        "count": 1
+      }
+    }
+  ]
+}

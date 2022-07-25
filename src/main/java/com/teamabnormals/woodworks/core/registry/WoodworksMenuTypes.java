@@ -14,7 +14,7 @@ public class WoodworksMenuTypes {
 
 	public static final RegistryObject<MenuType<SawmillMenu>> SAWMILL = MENU_TYPES.register("sawmill", () -> new MenuType<>(SawmillMenu::new));
 
-	public static void registerScreenFactories() {
+	public static void registerScreens() {
 		MenuScreens.register(WoodworksMenuTypes.SAWMILL.get(), SawmillScreen::new);
 	}
 }

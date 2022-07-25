@@ -1,0 +1,54 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_ladders",
+              "inverted": true,
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:ladder_from_oak_logs_sawing"
+          ]
+        },
+        "criteria": {
+          "has_oak_logs": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "tag": "minecraft:oak_logs"
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:ladder_from_oak_logs_sawing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_oak_logs",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

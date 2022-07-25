@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "ingredient": {
+          "tag": "minecraft:oak_logs"
+        },
+        "result": "minecraft:oak_pressure_plate",
+        "count": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "ingredient": {
+          "item": "minecraft:crimson_planks"
+        },
+        "result": "minecraft:crimson_stairs",
+        "count": 1
+      }
+    }
+  ]
+}

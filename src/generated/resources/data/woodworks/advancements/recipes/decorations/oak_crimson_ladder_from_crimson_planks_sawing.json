@@ -1,0 +1,55 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_ladders",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:oak_crimson_ladder_from_crimson_planks_sawing"
+          ]
+        },
+        "criteria": {
+          "has_crimson_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:crimson_planks"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:oak_crimson_ladder_from_crimson_planks_sawing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_crimson_planks",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}
