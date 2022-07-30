@@ -1,6 +1,5 @@
 package com.teamabnormals.woodworks.core;
 
-import com.google.common.collect.ImmutableList;
 import com.teamabnormals.blueprint.core.util.DataUtil;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
@@ -15,11 +14,8 @@ import com.teamabnormals.woodworks.core.registry.WoodworksMenuTypes;
 import com.teamabnormals.woodworks.core.registry.WoodworksRecipes;
 import com.teamabnormals.woodworks.core.registry.WoodworksRecipes.WoodworksRecipeSerializers;
 import com.teamabnormals.woodworks.core.registry.WoodworksRecipes.WoodworksRecipeTypes;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.RecipeBookRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.event.RegistryEvent;

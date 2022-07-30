@@ -5,7 +5,6 @@ import com.teamabnormals.woodworks.common.block.SawmillBlock;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
 import com.teamabnormals.woodworks.integration.jei.SawingRecipeCategory;
-import com.teamabnormals.woodworks.integration.jei.WoodworksPlugin;
 import net.minecraft.Util;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
