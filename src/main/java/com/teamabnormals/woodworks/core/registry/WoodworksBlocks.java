@@ -22,12 +22,12 @@ import net.minecraftforge.registries.RegistryObject;
 public class WoodworksBlocks {
 	public static final WoodworksBlockSubRegistryHelper HELPER = Woodworks.REGISTRY_HELPER.getBlockSubHelper();
 
-	public static final RegistryObject<Block> OAK_BOARDS = HELPER.createBlock("oak_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> SPRUCE_BOARDS = HELPER.createBlock("spruce_boards", () -> new RotatedPillarBlock(WoodworksProperties.SPRUCE_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> BIRCH_BOARDS = HELPER.createBlock("birch_boards", () -> new RotatedPillarBlock(WoodworksProperties.BIRCH_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> JUNGLE_BOARDS = HELPER.createBlock("jungle_boards", () -> new RotatedPillarBlock(WoodworksProperties.JUNGLE_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> ACACIA_BOARDS = HELPER.createBlock("acacia_boards", () -> new RotatedPillarBlock(WoodworksProperties.ACACIA_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> DARK_OAK_BOARDS = HELPER.createBlock("dark_oak_boards", () -> new RotatedPillarBlock(WoodworksProperties.DARK_OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> OAK_BOARDS = HELPER.createFuelBlock("oak_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> SPRUCE_BOARDS = HELPER.createFuelBlock("spruce_boards", () -> new RotatedPillarBlock(WoodworksProperties.SPRUCE_WOOD.planks()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> BIRCH_BOARDS = HELPER.createFuelBlock("birch_boards", () -> new RotatedPillarBlock(WoodworksProperties.BIRCH_WOOD.planks()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> JUNGLE_BOARDS = HELPER.createFuelBlock("jungle_boards", () -> new RotatedPillarBlock(WoodworksProperties.JUNGLE_WOOD.planks()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> ACACIA_BOARDS = HELPER.createFuelBlock("acacia_boards", () -> new RotatedPillarBlock(WoodworksProperties.ACACIA_WOOD.planks()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> DARK_OAK_BOARDS = HELPER.createFuelBlock("dark_oak_boards", () -> new RotatedPillarBlock(WoodworksProperties.DARK_OAK_WOOD.planks()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Block> CRIMSON_BOARDS = HELPER.createBlock("crimson_boards", () -> new RotatedPillarBlock(WoodworksProperties.CRIMSON_STEM.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Block> WARPED_BOARDS = HELPER.createBlock("warped_boards", () -> new RotatedPillarBlock(WoodworksProperties.WARPED_STEM.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
