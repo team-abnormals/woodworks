@@ -7,8 +7,8 @@ import com.teamabnormals.blueprint.common.block.LeafPileBlock;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintChestBlock;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintTrappedChestBlock;
 import com.teamabnormals.blueprint.core.util.PropertyUtil.WoodSetProperties;
-import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import com.teamabnormals.woodworks.core.Woodworks;
+import com.teamabnormals.woodworks.core.registry.helper.WoodworksBlockSubRegistryHelper;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -20,7 +20,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 @EventBusSubscriber(modid = Woodworks.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class WoodworksBlocks {
-	public static final BlockSubRegistryHelper HELPER = Woodworks.REGISTRY_HELPER.getBlockSubHelper();
+	public static final WoodworksBlockSubRegistryHelper HELPER = Woodworks.REGISTRY_HELPER.getBlockSubHelper();
 
 	public static final RegistryObject<Block> OAK_BOARDS = HELPER.createBlock("oak_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Block> SPRUCE_BOARDS = HELPER.createBlock("spruce_boards", () -> new RotatedPillarBlock(WoodworksProperties.SPRUCE_WOOD.planks()), CreativeModeTab.TAB_BUILDING_BLOCKS);
@@ -45,16 +45,16 @@ public class WoodworksBlocks {
 	public static final RegistryObject<Block> JUNGLE_BOOKSHELF = HELPER.createFuelBlock("jungle_bookshelf", () -> new BookshelfBlock(WoodworksProperties.JUNGLE_WOOD.bookshelf()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Block> ACACIA_BOOKSHELF = HELPER.createFuelBlock("acacia_bookshelf", () -> new BookshelfBlock(WoodworksProperties.ACACIA_WOOD.bookshelf()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Block> DARK_OAK_BOOKSHELF = HELPER.createFuelBlock("dark_oak_bookshelf", () -> new BookshelfBlock(WoodworksProperties.DARK_OAK_WOOD.bookshelf()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> CRIMSON_BOOKSHELF = HELPER.createFuelBlock("crimson_bookshelf", () -> new BookshelfBlock(WoodworksProperties.CRIMSON_STEM.bookshelf()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
-	public static final RegistryObject<Block> WARPED_BOOKSHELF = HELPER.createFuelBlock("warped_bookshelf", () -> new BookshelfBlock(WoodworksProperties.WARPED_STEM.bookshelf()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> CRIMSON_BOOKSHELF = HELPER.createBlock("crimson_bookshelf", () -> new BookshelfBlock(WoodworksProperties.CRIMSON_STEM.bookshelf()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> WARPED_BOOKSHELF = HELPER.createBlock("warped_bookshelf", () -> new BookshelfBlock(WoodworksProperties.WARPED_STEM.bookshelf()), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
 	public static final RegistryObject<Block> SPRUCE_LADDER = HELPER.createFuelBlock("spruce_ladder", () -> new BlueprintLadderBlock(WoodworksProperties.SPRUCE_WOOD.ladder()), 300, CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<Block> BIRCH_LADDER = HELPER.createFuelBlock("birch_ladder", () -> new BlueprintLadderBlock(WoodworksProperties.BIRCH_WOOD.ladder()), 300, CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<Block> JUNGLE_LADDER = HELPER.createFuelBlock("jungle_ladder", () -> new BlueprintLadderBlock(WoodworksProperties.JUNGLE_WOOD.ladder()), 300, CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<Block> ACACIA_LADDER = HELPER.createFuelBlock("acacia_ladder", () -> new BlueprintLadderBlock(WoodworksProperties.ACACIA_WOOD.ladder()), 300, CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<Block> DARK_OAK_LADDER = HELPER.createFuelBlock("dark_oak_ladder", () -> new BlueprintLadderBlock(WoodworksProperties.DARK_OAK_WOOD.ladder()), 300, CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<Block> CRIMSON_LADDER = HELPER.createFuelBlock("crimson_ladder", () -> new BlueprintLadderBlock(WoodworksProperties.CRIMSON_STEM.ladder()), 300, CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<Block> WARPED_LADDER = HELPER.createFuelBlock("warped_ladder", () -> new BlueprintLadderBlock(WoodworksProperties.WARPED_STEM.ladder()), 300, CreativeModeTab.TAB_DECORATIONS);
+	public static final RegistryObject<Block> CRIMSON_LADDER = HELPER.createBlock("crimson_ladder", () -> new BlueprintLadderBlock(WoodworksProperties.CRIMSON_STEM.ladder()), CreativeModeTab.TAB_DECORATIONS);
+	public static final RegistryObject<Block> WARPED_LADDER = HELPER.createBlock("warped_ladder", () -> new BlueprintLadderBlock(WoodworksProperties.WARPED_STEM.ladder()), CreativeModeTab.TAB_DECORATIONS);
 
 	public static final RegistryObject<Block> SPRUCE_BEEHIVE = HELPER.createBlock("spruce_beehive", () -> new BlueprintBeehiveBlock(WoodworksProperties.SPRUCE_WOOD.beehive()), CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<Block> BIRCH_BEEHIVE = HELPER.createBlock("birch_beehive", () -> new BlueprintBeehiveBlock(WoodworksProperties.BIRCH_WOOD.beehive()), CreativeModeTab.TAB_DECORATIONS);
@@ -70,8 +70,8 @@ public class WoodworksBlocks {
 	public static final RegistryObject<BlueprintChestBlock> JUNGLE_CHEST = HELPER.createChestBlock("jungle", WoodworksProperties.JUNGLE_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<BlueprintChestBlock> ACACIA_CHEST = HELPER.createChestBlock("acacia", WoodworksProperties.ACACIA_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<BlueprintChestBlock> DARK_OAK_CHEST = HELPER.createChestBlock("dark_oak", WoodworksProperties.DARK_OAK_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintChestBlock> CRIMSON_CHEST = HELPER.createChestBlock("crimson", WoodworksProperties.CRIMSON_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintChestBlock> WARPED_CHEST = HELPER.createChestBlock("warped", WoodworksProperties.WARPED_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
+	public static final RegistryObject<BlueprintChestBlock> CRIMSON_CHEST = HELPER.createNonFuelChestBlock("crimson", WoodworksProperties.CRIMSON_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
+	public static final RegistryObject<BlueprintChestBlock> WARPED_CHEST = HELPER.createNonFuelChestBlock("warped", WoodworksProperties.WARPED_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
 
 	public static final RegistryObject<BlueprintTrappedChestBlock> OAK_TRAPPED_CHEST = HELPER.createTrappedChestBlock("oak", WoodworksProperties.OAK_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<BlueprintTrappedChestBlock> SPRUCE_TRAPPED_CHEST = HELPER.createTrappedChestBlock("spruce", WoodworksProperties.SPRUCE_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
@@ -79,8 +79,8 @@ public class WoodworksBlocks {
 	public static final RegistryObject<BlueprintTrappedChestBlock> JUNGLE_TRAPPED_CHEST = HELPER.createTrappedChestBlock("jungle", WoodworksProperties.JUNGLE_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<BlueprintTrappedChestBlock> ACACIA_TRAPPED_CHEST = HELPER.createTrappedChestBlock("acacia", WoodworksProperties.ACACIA_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<BlueprintTrappedChestBlock> DARK_OAK_TRAPPED_CHEST = HELPER.createTrappedChestBlock("dark_oak", WoodworksProperties.DARK_OAK_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintTrappedChestBlock> CRIMSON_TRAPPED_CHEST = HELPER.createTrappedChestBlock("crimson", WoodworksProperties.CRIMSON_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintTrappedChestBlock> WARPED_TRAPPED_CHEST = HELPER.createTrappedChestBlock("warped", WoodworksProperties.WARPED_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
+	public static final RegistryObject<BlueprintTrappedChestBlock> CRIMSON_TRAPPED_CHEST = HELPER.createNonFuelTrappedChestBlock("crimson", WoodworksProperties.CRIMSON_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
+	public static final RegistryObject<BlueprintTrappedChestBlock> WARPED_TRAPPED_CHEST = HELPER.createNonFuelTrappedChestBlock("warped", WoodworksProperties.WARPED_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
 
 	public static final class WoodworksProperties {
 		public static final WoodSetProperties OAK_WOOD = WoodSetProperties.builder(MaterialColor.WOOD).build();

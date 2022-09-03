@@ -10,6 +10,7 @@ import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvi
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvider;
 import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
 import com.teamabnormals.woodworks.core.other.WoodworksCompat;
+import com.teamabnormals.woodworks.core.registry.helper.WoodworksBlockSubRegistryHelper;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,11 +24,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod(Woodworks.MOD_ID)
 public class Woodworks {
 	public static final String MOD_ID = "woodworks";
-	public static final RegistryHelper REGISTRY_HELPER = new RegistryHelper(MOD_ID);
+	public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper -> helper.putSubHelper(ForgeRegistries.BLOCKS, new WoodworksBlockSubRegistryHelper(helper)));
 
 	public Woodworks() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
