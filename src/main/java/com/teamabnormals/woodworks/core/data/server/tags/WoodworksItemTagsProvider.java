@@ -25,6 +25,7 @@ public class WoodworksItemTagsProvider extends ItemTagsProvider {
 		this.copy(Tags.Blocks.CHESTS_TRAPPED, Tags.Items.CHESTS_TRAPPED);
 		this.tag(Tags.Items.BOOKSHELVES).add(WoodworksBlocks.SPRUCE_BOOKSHELF.get().asItem(), WoodworksBlocks.BIRCH_BOOKSHELF.get().asItem(), WoodworksBlocks.JUNGLE_BOOKSHELF.get().asItem(), WoodworksBlocks.ACACIA_BOOKSHELF.get().asItem(), WoodworksBlocks.DARK_OAK_BOOKSHELF.get().asItem(), WoodworksBlocks.CRIMSON_BOOKSHELF.get().asItem(), WoodworksBlocks.WARPED_BOOKSHELF.get().asItem());
 
+		this.tag(BlueprintItemTags.BOATABLE_CHESTS).add(WoodworksBlocks.OAK_CHEST.get().asItem(), WoodworksBlocks.SPRUCE_CHEST.get().asItem(), WoodworksBlocks.BIRCH_CHEST.get().asItem(), WoodworksBlocks.JUNGLE_CHEST.get().asItem(), WoodworksBlocks.ACACIA_CHEST.get().asItem(), WoodworksBlocks.DARK_OAK_CHEST.get().asItem(), WoodworksBlocks.CRIMSON_CHEST.get().asItem(), WoodworksBlocks.WARPED_CHEST.get().asItem());
 		this.copy(BlueprintBlockTags.LADDERS, BlueprintItemTags.LADDERS);
 	}
 }
