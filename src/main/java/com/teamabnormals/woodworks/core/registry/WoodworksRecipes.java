@@ -22,6 +22,7 @@ public class WoodworksRecipes {
 	public static final Supplier<RecipeBookCategories> SAWING = Suppliers.memoize(() -> RecipeBookCategories.create("SAWING", new ItemStack(WoodworksBlocks.OAK_BOARDS.get())));
 	public static final RecipeBookType SAWING_TYPE = RecipeBookType.create("SAWING");
 
+	//TODO: Fix unknown recipe category
 	public static class WoodworksRecipeSerializers {
 		public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Woodworks.MOD_ID);
 		public static final RegistryObject<RecipeSerializer<SawmillRecipe>> SAWMILL = RECIPE_SERIALIZERS.register("sawmill", () -> new SingleItemRecipe.Serializer<>(SawmillRecipe::new) {
