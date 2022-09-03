@@ -10,11 +10,6 @@ import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvi
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvider;
 import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
 import com.teamabnormals.woodworks.core.other.WoodworksCompat;
-import com.teamabnormals.woodworks.core.registry.WoodworksMenuTypes;
-import com.teamabnormals.woodworks.core.registry.WoodworksRecipes;
-import com.teamabnormals.woodworks.core.registry.WoodworksRecipes.WoodworksRecipeSerializers;
-import com.teamabnormals.woodworks.core.registry.WoodworksRecipes.WoodworksRecipeTypes;
-import com.teamabnormals.woodworks.core.registry.WoodworksVillagerProfessions;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
@@ -40,11 +35,6 @@ public class Woodworks {
 		MinecraftForge.EVENT_BUS.register(this);
 
 		REGISTRY_HELPER.register(bus);
-		WoodworksMenuTypes.MENU_TYPES.register(bus);
-		WoodworksRecipeSerializers.RECIPE_SERIALIZERS.register(bus);
-		WoodworksRecipeTypes.RECIPE_TYPES.register(bus);
-		WoodworksVillagerProfessions.POI_TYPES.register(bus);
-		WoodworksVillagerProfessions.PROFESSIONS.register(bus);
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
@@ -60,18 +50,11 @@ public class Woodworks {
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
-		event.enqueueWork(() -> {
-			WoodworksVillagerProfessions.setupVillagerHouses();
-			WoodworksCompat.register();
-		});
+		event.enqueueWork(WoodworksCompat::register);
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {
-		event.enqueueWork(() -> {
-			WoodworksClientCompat.register();
-			WoodworksMenuTypes.registerScreens();
-			WoodworksRecipes.registerRecipeBookExtensions();
-		});
+		event.enqueueWork(WoodworksClientCompat::register);
 	}
 
 	private void dataSetup(GatherDataEvent event) {

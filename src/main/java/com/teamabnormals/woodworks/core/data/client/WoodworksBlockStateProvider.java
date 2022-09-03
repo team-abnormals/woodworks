@@ -29,8 +29,6 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		this.sawmillBlock(WoodworksBlocks.SAWMILL.get());
-
 		this.boardsBlock(WoodworksBlocks.OAK_BOARDS.get());
 		this.leafPileBlock(Blocks.OAK_LEAVES, WoodworksBlocks.OAK_LEAF_PILE.get());
 		this.chestBlocks(Blocks.OAK_PLANKS, WoodworksBlocks.OAK_CHEST.get(), WoodworksBlocks.OAK_TRAPPED_CHEST.get());
@@ -96,11 +94,6 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 
 	private void generatedItem(ItemLike item, ItemLike texture, String type) {
 		itemModels().withExistingParent(item.asItem().getRegistryName().getPath(), "item/generated").texture("layer0", new ResourceLocation(texture.asItem().getRegistryName().getNamespace(), type + "/" + texture.asItem().getRegistryName().getPath()));
-	}
-
-	public void sawmillBlock(Block sawmill) {
-		this.horizontalBlock(sawmill, new UncheckedModelFile(new ResourceLocation(Woodworks.MOD_ID, "block/sawmill")));
-		this.simpleBlockItem(sawmill);
 	}
 
 	public void boardsBlock(Block boards) {

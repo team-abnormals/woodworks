@@ -23,8 +23,6 @@ public class WoodworksClientCompat {
 	}
 
 	private static void registerRenderLayers() {
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.SAWMILL.get(), RenderType.cutout());
-
 		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.OAK_LEAF_PILE.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.SPRUCE_LEAF_PILE.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.BIRCH_LEAF_PILE.get(), RenderType.cutout());
