@@ -73,14 +73,14 @@ public class WoodworksBlocks {
 	public static final RegistryObject<BlueprintChestBlock> CRIMSON_CHEST = HELPER.createNonFuelChestBlock("crimson", WoodworksProperties.CRIMSON_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<BlueprintChestBlock> WARPED_CHEST = HELPER.createNonFuelChestBlock("warped", WoodworksProperties.WARPED_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
 
-	public static final RegistryObject<BlueprintTrappedChestBlock> OAK_TRAPPED_CHEST = HELPER.createTrappedChestBlock("oak", WoodworksProperties.OAK_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintTrappedChestBlock> SPRUCE_TRAPPED_CHEST = HELPER.createTrappedChestBlock("spruce", WoodworksProperties.SPRUCE_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintTrappedChestBlock> BIRCH_TRAPPED_CHEST = HELPER.createTrappedChestBlock("birch", WoodworksProperties.BIRCH_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintTrappedChestBlock> JUNGLE_TRAPPED_CHEST = HELPER.createTrappedChestBlock("jungle", WoodworksProperties.JUNGLE_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintTrappedChestBlock> ACACIA_TRAPPED_CHEST = HELPER.createTrappedChestBlock("acacia", WoodworksProperties.ACACIA_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintTrappedChestBlock> DARK_OAK_TRAPPED_CHEST = HELPER.createTrappedChestBlock("dark_oak", WoodworksProperties.DARK_OAK_WOOD.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintTrappedChestBlock> CRIMSON_TRAPPED_CHEST = HELPER.createNonFuelTrappedChestBlock("crimson", WoodworksProperties.CRIMSON_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
-	public static final RegistryObject<BlueprintTrappedChestBlock> WARPED_TRAPPED_CHEST = HELPER.createNonFuelTrappedChestBlock("warped", WoodworksProperties.WARPED_STEM.chest(), CreativeModeTab.TAB_DECORATIONS);
+	public static final RegistryObject<BlueprintTrappedChestBlock> OAK_TRAPPED_CHEST = HELPER.createTrappedChestBlock("oak", WoodworksProperties.OAK_WOOD.chest(), CreativeModeTab.TAB_REDSTONE);
+	public static final RegistryObject<BlueprintTrappedChestBlock> SPRUCE_TRAPPED_CHEST = HELPER.createTrappedChestBlock("spruce", WoodworksProperties.SPRUCE_WOOD.chest(), CreativeModeTab.TAB_REDSTONE);
+	public static final RegistryObject<BlueprintTrappedChestBlock> BIRCH_TRAPPED_CHEST = HELPER.createTrappedChestBlock("birch", WoodworksProperties.BIRCH_WOOD.chest(), CreativeModeTab.TAB_REDSTONE);
+	public static final RegistryObject<BlueprintTrappedChestBlock> JUNGLE_TRAPPED_CHEST = HELPER.createTrappedChestBlock("jungle", WoodworksProperties.JUNGLE_WOOD.chest(), CreativeModeTab.TAB_REDSTONE);
+	public static final RegistryObject<BlueprintTrappedChestBlock> ACACIA_TRAPPED_CHEST = HELPER.createTrappedChestBlock("acacia", WoodworksProperties.ACACIA_WOOD.chest(), CreativeModeTab.TAB_REDSTONE);
+	public static final RegistryObject<BlueprintTrappedChestBlock> DARK_OAK_TRAPPED_CHEST = HELPER.createTrappedChestBlock("dark_oak", WoodworksProperties.DARK_OAK_WOOD.chest(), CreativeModeTab.TAB_REDSTONE);
+	public static final RegistryObject<BlueprintTrappedChestBlock> CRIMSON_TRAPPED_CHEST = HELPER.createNonFuelTrappedChestBlock("crimson", WoodworksProperties.CRIMSON_STEM.chest(), CreativeModeTab.TAB_REDSTONE);
+	public static final RegistryObject<BlueprintTrappedChestBlock> WARPED_TRAPPED_CHEST = HELPER.createNonFuelTrappedChestBlock("warped", WoodworksProperties.WARPED_STEM.chest(), CreativeModeTab.TAB_REDSTONE);
 
 	public static final class WoodworksProperties {
 		public static final WoodSetProperties OAK_WOOD = WoodSetProperties.builder(MaterialColor.WOOD).build();
