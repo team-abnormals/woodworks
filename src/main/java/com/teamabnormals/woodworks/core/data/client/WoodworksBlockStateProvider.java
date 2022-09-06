@@ -69,6 +69,13 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 		this.beehiveBlock(WoodworksBlocks.DARK_OAK_BEEHIVE.get());
 		this.chestBlocks(Blocks.DARK_OAK_PLANKS, WoodworksBlocks.DARK_OAK_CHEST.get(), WoodworksBlocks.DARK_OAK_TRAPPED_CHEST.get());
 
+		this.boardsBlock(WoodworksBlocks.MANGROVE_BOARDS.get());
+		this.leafPileBlock(Blocks.MANGROVE_LEAVES, WoodworksBlocks.MANGROVE_LEAF_PILE.get());
+		this.bookshelfBlock(Blocks.MANGROVE_PLANKS, WoodworksBlocks.MANGROVE_BOOKSHELF.get());
+		this.ladderBlock(WoodworksBlocks.MANGROVE_LADDER.get());
+		this.beehiveBlock(WoodworksBlocks.MANGROVE_BEEHIVE.get());
+		this.chestBlocks(Blocks.MANGROVE_PLANKS, WoodworksBlocks.MANGROVE_CHEST.get(), WoodworksBlocks.MANGROVE_TRAPPED_CHEST.get());
+
 		this.boardsBlock(WoodworksBlocks.CRIMSON_BOARDS.get());
 		this.bookshelfBlock(Blocks.CRIMSON_PLANKS, WoodworksBlocks.CRIMSON_BOOKSHELF.get());
 		this.ladderBlock(WoodworksBlocks.CRIMSON_LADDER.get());

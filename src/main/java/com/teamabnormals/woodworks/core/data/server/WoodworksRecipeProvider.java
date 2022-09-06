@@ -46,6 +46,7 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		this.baseRecipes(consumer, Blocks.JUNGLE_PLANKS, WoodworksBlocks.JUNGLE_BOARDS.get(), WoodworksBlocks.JUNGLE_BOOKSHELF.get(), WoodworksBlocks.JUNGLE_LADDER.get(), WoodworksBlocks.JUNGLE_BEEHIVE.get(), WoodworksBlocks.JUNGLE_CHEST.get(), WoodworksBlocks.JUNGLE_TRAPPED_CHEST.get());
 		this.baseRecipes(consumer, Blocks.ACACIA_PLANKS, WoodworksBlocks.ACACIA_BOARDS.get(), WoodworksBlocks.ACACIA_BOOKSHELF.get(), WoodworksBlocks.ACACIA_LADDER.get(), WoodworksBlocks.ACACIA_BEEHIVE.get(), WoodworksBlocks.ACACIA_CHEST.get(), WoodworksBlocks.ACACIA_TRAPPED_CHEST.get());
 		this.baseRecipes(consumer, Blocks.DARK_OAK_PLANKS, WoodworksBlocks.DARK_OAK_BOARDS.get(), WoodworksBlocks.DARK_OAK_BOOKSHELF.get(), WoodworksBlocks.DARK_OAK_LADDER.get(), WoodworksBlocks.DARK_OAK_BEEHIVE.get(), WoodworksBlocks.DARK_OAK_CHEST.get(), WoodworksBlocks.DARK_OAK_TRAPPED_CHEST.get());
+		this.baseRecipes(consumer, Blocks.MANGROVE_PLANKS, WoodworksBlocks.MANGROVE_BOARDS.get(), WoodworksBlocks.MANGROVE_BOOKSHELF.get(), WoodworksBlocks.MANGROVE_LADDER.get(), WoodworksBlocks.MANGROVE_BEEHIVE.get(), WoodworksBlocks.MANGROVE_CHEST.get(), WoodworksBlocks.MANGROVE_TRAPPED_CHEST.get());
 		this.baseRecipes(consumer, Blocks.CRIMSON_PLANKS, WoodworksBlocks.CRIMSON_BOARDS.get(), WoodworksBlocks.CRIMSON_BOOKSHELF.get(), WoodworksBlocks.CRIMSON_LADDER.get(), WoodworksBlocks.CRIMSON_BEEHIVE.get(), WoodworksBlocks.CRIMSON_CHEST.get(), WoodworksBlocks.CRIMSON_TRAPPED_CHEST.get());
 		this.baseRecipes(consumer, Blocks.WARPED_PLANKS, WoodworksBlocks.WARPED_BOARDS.get(), WoodworksBlocks.WARPED_BOOKSHELF.get(), WoodworksBlocks.WARPED_LADDER.get(), WoodworksBlocks.WARPED_BEEHIVE.get(), WoodworksBlocks.WARPED_CHEST.get(), WoodworksBlocks.WARPED_TRAPPED_CHEST.get());
 
@@ -55,6 +56,7 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		this.leafPile(consumer, Blocks.JUNGLE_LEAVES, WoodworksBlocks.JUNGLE_LEAF_PILE.get());
 		this.leafPile(consumer, Blocks.ACACIA_LEAVES, WoodworksBlocks.ACACIA_LEAF_PILE.get());
 		this.leafPile(consumer, Blocks.DARK_OAK_LEAVES, WoodworksBlocks.DARK_OAK_LEAF_PILE.get());
+		this.leafPile(consumer, Blocks.MANGROVE_LEAVES, WoodworksBlocks.MANGROVE_LEAF_PILE.get());
 		this.leafPile(consumer, Blocks.AZALEA_LEAVES, WoodworksBlocks.AZALEA_LEAF_PILE.get());
 		this.leafPile(consumer, Blocks.FLOWERING_AZALEA_LEAVES, WoodworksBlocks.FLOWERING_AZALEA_LEAF_PILE.get());
 	}

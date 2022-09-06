@@ -6,6 +6,7 @@
     "woodworks:jungle_chest",
     "woodworks:acacia_chest",
     "woodworks:dark_oak_chest",
+    "woodworks:mangrove_chest",
     "woodworks:crimson_chest",
     "woodworks:warped_chest",
     "woodworks:oak_trapped_chest",
@@ -14,6 +15,7 @@
     "woodworks:jungle_trapped_chest",
     "woodworks:acacia_trapped_chest",
     "woodworks:dark_oak_trapped_chest",
+    "woodworks:mangrove_trapped_chest",
     "woodworks:crimson_trapped_chest",
     "woodworks:warped_trapped_chest"
   ]

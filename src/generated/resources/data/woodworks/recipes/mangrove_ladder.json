@@ -1,0 +1,34 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "woodworks:config",
+          "value": "wooden_ladders"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "wooden_ladder",
+        "key": {
+          "#": {
+            "item": "minecraft:mangrove_planks"
+          },
+          "S": {
+            "item": "minecraft:stick"
+          }
+        },
+        "pattern": [
+          "S S",
+          "S#S",
+          "S S"
+        ],
+        "result": {
+          "count": 4,
+          "item": "woodworks:mangrove_ladder"
+        }
+      }
+    }
+  ]
+}

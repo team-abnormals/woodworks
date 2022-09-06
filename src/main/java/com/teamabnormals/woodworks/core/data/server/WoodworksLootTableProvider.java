@@ -78,6 +78,14 @@ public class WoodworksLootTableProvider extends LootTableProvider {
 			this.add(JUNGLE_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
 			this.add(JUNGLE_TRAPPED_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
 
+			this.dropSelf(ACACIA_BOARDS.get());
+			this.add(ACACIA_LEAF_PILE.get(), WoodworksBlockLoot::createLeafPileDrops);
+			this.add(ACACIA_BOOKSHELF.get(), WoodworksBlockLoot::createBookshelfDrops);
+			this.dropSelf(ACACIA_LADDER.get());
+			this.add(ACACIA_BEEHIVE.get(), BlockLoot::createBeeHiveDrop);
+			this.add(ACACIA_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
+			this.add(ACACIA_TRAPPED_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
+
 			this.dropSelf(DARK_OAK_BOARDS.get());
 			this.add(DARK_OAK_LEAF_PILE.get(), WoodworksBlockLoot::createLeafPileDrops);
 			this.add(DARK_OAK_BOOKSHELF.get(), WoodworksBlockLoot::createBookshelfDrops);
@@ -86,13 +94,13 @@ public class WoodworksLootTableProvider extends LootTableProvider {
 			this.add(DARK_OAK_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
 			this.add(DARK_OAK_TRAPPED_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
 
-			this.dropSelf(ACACIA_BOARDS.get());
-			this.add(ACACIA_LEAF_PILE.get(), WoodworksBlockLoot::createLeafPileDrops);
-			this.add(ACACIA_BOOKSHELF.get(), WoodworksBlockLoot::createBookshelfDrops);
-			this.dropSelf(ACACIA_LADDER.get());
-			this.add(ACACIA_BEEHIVE.get(), BlockLoot::createBeeHiveDrop);
-			this.add(ACACIA_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
-			this.add(ACACIA_TRAPPED_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
+			this.dropSelf(MANGROVE_BOARDS.get());
+			this.add(MANGROVE_LEAF_PILE.get(), WoodworksBlockLoot::createLeafPileDrops);
+			this.add(MANGROVE_BOOKSHELF.get(), WoodworksBlockLoot::createBookshelfDrops);
+			this.dropSelf(MANGROVE_LADDER.get());
+			this.add(MANGROVE_BEEHIVE.get(), BlockLoot::createBeeHiveDrop);
+			this.add(MANGROVE_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
+			this.add(MANGROVE_TRAPPED_CHEST.get(), BlockLoot::createNameableBlockEntityTable);
 
 			this.dropSelf(CRIMSON_BOARDS.get());
 			this.add(CRIMSON_BOOKSHELF.get(), WoodworksBlockLoot::createBookshelfDrops);

@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "woodworks:block/mangrove_boards_horizontal",
+      "y": 270
+    },
+    "axis=y": {
+      "model": "woodworks:block/mangrove_boards"
+    },
+    "axis=z": {
+      "model": "woodworks:block/mangrove_boards_horizontal"
+    }
+  }
+}
