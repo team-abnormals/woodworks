@@ -4,23 +4,23 @@
     {
       "conditions": [
         {
-          "value": "wooden_chests",
+          "type": "woodworks:config",
           "inverted": true,
-          "type": "woodworks:config"
+          "value": "wooden_chests"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "pattern": [
-          "###",
-          "# #",
-          "###"
-        ],
         "key": {
           "#": {
             "tag": "minecraft:planks"
           }
         },
+        "pattern": [
+          "###",
+          "# #",
+          "###"
+        ],
         "result": {
           "item": "minecraft:chest"
         }

@@ -20,6 +20,7 @@ import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Consumer;
 
@@ -61,9 +62,9 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 	public void baseRecipes(Consumer<FinishedRecipe> consumer, Block planks, Block boards, Block bookshelf, Block ladder, Block beehive, Block chest, Block trappedChest) {
 		String prefix = planks == Blocks.OAK_PLANKS ? "oak_" : "";
 		this.conditionalRecipe(consumer, config(COMMON.woodenBoards, "wooden_boards"), ShapedRecipeBuilder.shaped(boards, 3).define('#', planks).pattern("#").pattern("#").pattern("#").group("wooden_boards").unlockedBy(getHasName(planks), has(planks)));
-		this.conditionalRecipe(consumer, config(COMMON.woodenBookshelves, "wooden_bookshelves"), ShapedRecipeBuilder.shaped(bookshelf).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").group("wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)), new ResourceLocation(Woodworks.MOD_ID, prefix + bookshelf.getRegistryName().getPath()));
-		this.conditionalRecipe(consumer, config(COMMON.woodenLadders, "wooden_ladders"), ShapedRecipeBuilder.shaped(ladder, 4).define('#', planks).define('S', Items.STICK).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_stick", has(Items.STICK)), new ResourceLocation(Woodworks.MOD_ID, prefix + ladder.getRegistryName().getPath()));
-		this.conditionalRecipe(consumer, config(COMMON.woodenBeehives, "wooden_beehives"), ShapedRecipeBuilder.shaped(beehive).define('#', planks).define('H', Items.HONEYCOMB).pattern("###").pattern("HHH").pattern("###").group("wooden_beehive").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)), new ResourceLocation(Woodworks.MOD_ID, prefix + beehive.getRegistryName().getPath()));
+		this.conditionalRecipe(consumer, config(COMMON.woodenBookshelves, "wooden_bookshelves"), ShapedRecipeBuilder.shaped(bookshelf).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").group("wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)), new ResourceLocation(Woodworks.MOD_ID, prefix + ForgeRegistries.BLOCKS.getKey(bookshelf).getPath()));
+		this.conditionalRecipe(consumer, config(COMMON.woodenLadders, "wooden_ladders"), ShapedRecipeBuilder.shaped(ladder, 4).define('#', planks).define('S', Items.STICK).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_stick", has(Items.STICK)), new ResourceLocation(Woodworks.MOD_ID, prefix + ForgeRegistries.BLOCKS.getKey(ladder).getPath()));
+		this.conditionalRecipe(consumer, config(COMMON.woodenBeehives, "wooden_beehives"), ShapedRecipeBuilder.shaped(beehive).define('#', planks).define('H', Items.HONEYCOMB).pattern("###").pattern("HHH").pattern("###").group("wooden_beehive").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)), new ResourceLocation(Woodworks.MOD_ID, prefix + ForgeRegistries.BLOCKS.getKey(beehive).getPath()));
 		this.conditionalRecipe(consumer, config(COMMON.woodenChests, "wooden_chests"), ShapedRecipeBuilder.shaped(chest).define('#', planks).pattern("###").pattern("# #").pattern("###").group("wooden_chest").unlockedBy("has_lots_of_items", new InventoryChangeTrigger.TriggerInstance(EntityPredicate.Composite.ANY, MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, new ItemPredicate[0])));
 		this.conditionalRecipe(consumer, config(COMMON.woodenChests, "wooden_chests"), ShapelessRecipeBuilder.shapeless(trappedChest).requires(chest).requires(Blocks.TRIPWIRE_HOOK).group("wooden_trapped_chest").unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)));
 	}
@@ -78,7 +79,7 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 
 	public void leafPile(Consumer<FinishedRecipe> consumer, Block leaves, Block leafPile) {
 		this.conditionalRecipe(consumer, config(COMMON.leafPiles, "leaf_piles"), ShapelessRecipeBuilder.shapeless(leafPile, 4).requires(leaves, 1).group("leaf_pile").unlockedBy(getHasName(leaves), has(leaves)));
-		this.conditionalRecipe(consumer, config(COMMON.leafPiles, "leaf_piles"), ShapedRecipeBuilder.shaped(leaves, 1).define('#', leafPile).pattern("##").pattern("##").group("leaves").unlockedBy(getHasName(leafPile), has(leafPile)), new ResourceLocation(Woodworks.MOD_ID, leaves.getRegistryName().getPath() + "_from_leaf_piles"));
+		this.conditionalRecipe(consumer, config(COMMON.leafPiles, "leaf_piles"), ShapedRecipeBuilder.shaped(leaves, 1).define('#', leafPile).pattern("##").pattern("##").group("leaves").unlockedBy(getHasName(leafPile), has(leafPile)), new ResourceLocation(Woodworks.MOD_ID, ForgeRegistries.BLOCKS.getKey(leaves).getPath() + "_from_leaf_piles"));
 	}
 
 	private static ConfigValueCondition config(ForgeConfigSpec.ConfigValue<?> value, String key, boolean inverted) {

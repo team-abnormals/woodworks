@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/ladder",
+  "render_type": "minecraft:cutout",
   "textures": {
     "particle": "woodworks:block/warped_ladder",
     "texture": "woodworks:block/warped_ladder"

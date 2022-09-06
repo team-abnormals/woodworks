@@ -4,8 +4,8 @@
     {
       "conditions": [
         {
-          "value": "leaf_piles",
-          "type": "woodworks:config"
+          "type": "woodworks:config",
+          "value": "leaf_piles"
         }
       ],
       "recipe": {
@@ -17,8 +17,8 @@
           }
         ],
         "result": {
-          "item": "woodworks:flowering_azalea_leaf_pile",
-          "count": 4
+          "count": 4,
+          "item": "woodworks:flowering_azalea_leaf_pile"
         }
       }
     }

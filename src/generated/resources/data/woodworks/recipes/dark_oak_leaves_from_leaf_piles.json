@@ -4,22 +4,22 @@
     {
       "conditions": [
         {
-          "value": "leaf_piles",
-          "type": "woodworks:config"
+          "type": "woodworks:config",
+          "value": "leaf_piles"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
         "group": "leaves",
-        "pattern": [
-          "##",
-          "##"
-        ],
         "key": {
           "#": {
             "item": "woodworks:dark_oak_leaf_pile"
           }
         },
+        "pattern": [
+          "##",
+          "##"
+        ],
         "result": {
           "item": "minecraft:dark_oak_leaves"
         }

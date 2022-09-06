@@ -5,8 +5,6 @@ import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
@@ -18,27 +16,7 @@ import java.util.List;
 public class WoodworksClientCompat {
 
 	public static void register() {
-		registerRenderLayers();
 		registerBlockColors();
-	}
-
-	private static void registerRenderLayers() {
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.OAK_LEAF_PILE.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.SPRUCE_LEAF_PILE.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.BIRCH_LEAF_PILE.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.JUNGLE_LEAF_PILE.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.ACACIA_LEAF_PILE.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.DARK_OAK_LEAF_PILE.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.AZALEA_LEAF_PILE.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.FLOWERING_AZALEA_LEAF_PILE.get(), RenderType.cutout());
-
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.SPRUCE_LADDER.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.BIRCH_LADDER.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.JUNGLE_LADDER.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.ACACIA_LADDER.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.DARK_OAK_LADDER.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.CRIMSON_LADDER.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(WoodworksBlocks.WARPED_LADDER.get(), RenderType.cutout());
 	}
 
 	private static void registerBlockColors() {
