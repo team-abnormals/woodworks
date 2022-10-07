@@ -1,0 +1,27 @@
+{
+  "selector": {
+    "type": "names",
+    "config": [
+      "minecraft:village_desert"
+    ],
+    "conditions": [
+      {
+        "values": [
+          {
+            "value": "wooden_bookshelves",
+            "type": "woodworks:config"
+          },
+          {
+            "value": "wooden_bookshelves_in_structures",
+            "type": "woodworks:config"
+          }
+        ],
+        "type": "forge:and"
+      }
+    ]
+  },
+  "priority": "normal",
+  "replaces_block": "minecraft:bookshelf",
+  "replaces_with": "woodworks:jungle_bookshelf",
+  "type": "blueprint:simple"
+}

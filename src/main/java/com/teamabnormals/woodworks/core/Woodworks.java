@@ -5,6 +5,7 @@ import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksLanguageProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksLootTableProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksRecipeProvider;
+import com.teamabnormals.woodworks.core.data.server.WoodworksStructureRepaletterProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvider;
 import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
@@ -14,7 +15,6 @@ import com.teamabnormals.woodworks.core.registry.helper.WoodworksBlockSubRegistr
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -22,6 +22,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod(Woodworks.MOD_ID)
@@ -62,6 +63,7 @@ public class Woodworks {
 		generator.addProvider(includeServer, new WoodworksItemTagsProvider(generator, blockTags, fileHelper));
 		generator.addProvider(includeServer, new WoodworksLootTableProvider(generator));
 		generator.addProvider(includeServer, new WoodworksRecipeProvider(generator));
+		generator.addProvider(new WoodworksStructureRepaletterProvider(generator));
 
 		boolean includeClient = event.includeServer();
 		generator.addProvider(includeClient, new WoodworksBlockStateProvider(generator, fileHelper));
