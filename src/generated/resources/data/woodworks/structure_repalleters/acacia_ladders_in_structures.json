@@ -1,0 +1,27 @@
+{
+  "selector": {
+    "type": "names",
+    "config": [
+      "minecraft:village_savanna"
+    ],
+    "conditions": [
+      {
+        "values": [
+          {
+            "value": "wooden_ladders",
+            "type": "woodworks:config"
+          },
+          {
+            "value": "wooden_ladders_in_structures",
+            "type": "woodworks:config"
+          }
+        ],
+        "type": "forge:and"
+      }
+    ]
+  },
+  "priority": "normal",
+  "replaces_block": "minecraft:ladder",
+  "replaces_with": "woodworks:acacia_ladder",
+  "type": "blueprint:simple"
+}

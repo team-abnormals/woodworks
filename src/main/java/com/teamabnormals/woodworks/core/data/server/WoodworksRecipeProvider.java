@@ -81,11 +81,11 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		this.conditionalRecipe(consumer, config(COMMON.leafPiles, "leaf_piles"), ShapedRecipeBuilder.shaped(leaves, 1).define('#', leafPile).pattern("##").pattern("##").group("leaves").unlockedBy(getHasName(leafPile), has(leafPile)), new ResourceLocation(Woodworks.MOD_ID, leaves.getRegistryName().getPath() + "_from_leaf_piles"));
 	}
 
-	private static ConfigValueCondition config(ForgeConfigSpec.ConfigValue<?> value, String key, boolean inverted) {
+	public static ConfigValueCondition config(ForgeConfigSpec.ConfigValue<?> value, String key, boolean inverted) {
 		return new ConfigValueCondition(new ResourceLocation(Woodworks.MOD_ID, "config"), value, key, Maps.newHashMap(), inverted);
 	}
 
-	private static ConfigValueCondition config(ForgeConfigSpec.ConfigValue<?> value, String key) {
+	public static ConfigValueCondition config(ForgeConfigSpec.ConfigValue<?> value, String key) {
 		return config(value, key, false);
 	}
 }
