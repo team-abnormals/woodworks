@@ -1,27 +1,27 @@
 {
-  "selector": {
-    "type": "names",
-    "config": [
-      "minecraft:village_plains"
-    ],
-    "conditions": [
-      {
-        "values": [
-          {
-            "value": "wooden_chests",
-            "type": "woodworks:config"
-          },
-          {
-            "value": "wooden_chests_in_structures",
-            "type": "woodworks:config"
-          }
-        ],
-        "type": "forge:and"
-      }
-    ]
-  },
+  "type": "blueprint:simple",
   "priority": "normal",
   "replaces_block": "minecraft:chest",
   "replaces_with": "woodworks:oak_chest",
-  "type": "blueprint:simple"
+  "selector": {
+    "type": "names",
+    "conditions": [
+      {
+        "type": "forge:and",
+        "values": [
+          {
+            "type": "woodworks:config",
+            "value": "wooden_chests"
+          },
+          {
+            "type": "woodworks:config",
+            "value": "wooden_chests_in_structures"
+          }
+        ]
+      }
+    ],
+    "config": [
+      "minecraft:village_plains"
+    ]
+  }
 }
