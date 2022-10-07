@@ -19,6 +19,7 @@ import net.minecraftforge.client.model.generators.ModelFile.ExistingModelFile;
 import net.minecraftforge.client.model.generators.ModelFile.UncheckedModelFile;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 
 public class WoodworksBlockStateProvider extends BlockStateProvider {
@@ -68,6 +69,13 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 		this.beehiveBlock(WoodworksBlocks.DARK_OAK_BEEHIVE.get());
 		this.chestBlocks(Blocks.DARK_OAK_PLANKS, WoodworksBlocks.DARK_OAK_CHEST.get(), WoodworksBlocks.DARK_OAK_TRAPPED_CHEST.get());
 
+		this.boardsBlock(WoodworksBlocks.MANGROVE_BOARDS.get());
+		this.leafPileBlock(Blocks.MANGROVE_LEAVES, WoodworksBlocks.MANGROVE_LEAF_PILE.get());
+		this.bookshelfBlock(Blocks.MANGROVE_PLANKS, WoodworksBlocks.MANGROVE_BOOKSHELF.get());
+		this.ladderBlock(WoodworksBlocks.MANGROVE_LADDER.get());
+		this.beehiveBlock(WoodworksBlocks.MANGROVE_BEEHIVE.get());
+		this.chestBlocks(Blocks.MANGROVE_PLANKS, WoodworksBlocks.MANGROVE_CHEST.get(), WoodworksBlocks.MANGROVE_TRAPPED_CHEST.get());
+
 		this.boardsBlock(WoodworksBlocks.CRIMSON_BOARDS.get());
 		this.bookshelfBlock(Blocks.CRIMSON_PLANKS, WoodworksBlocks.CRIMSON_BOOKSHELF.get());
 		this.ladderBlock(WoodworksBlocks.CRIMSON_LADDER.get());
@@ -93,7 +101,7 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 	}
 
 	private void generatedItem(ItemLike item, ItemLike texture, String type) {
-		itemModels().withExistingParent(item.asItem().getRegistryName().getPath(), "item/generated").texture("layer0", new ResourceLocation(texture.asItem().getRegistryName().getNamespace(), type + "/" + texture.asItem().getRegistryName().getPath()));
+		itemModels().withExistingParent(ForgeRegistries.ITEMS.getKey(item.asItem()).getPath(), "item/generated").texture("layer0", new ResourceLocation(ForgeRegistries.ITEMS.getKey(texture.asItem()).getNamespace(), type + "/" + ForgeRegistries.ITEMS.getKey(texture.asItem()).getPath()));
 	}
 
 	public void boardsBlock(Block boards) {
@@ -108,7 +116,7 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 	}
 
 	public void leafPileBlock(Block leaves, Block leafPile, boolean tinted) {
-		ModelFile leafPileModel = models().getBuilder(name(leafPile)).parent(new UncheckedModelFile(new ResourceLocation(Blueprint.MOD_ID, "block/" + (tinted ? "tinted_" : "") + "leaf_pile"))).texture("all", blockTexture(leaves));
+		ModelFile leafPileModel = models().getBuilder(name(leafPile)).parent(new UncheckedModelFile(new ResourceLocation(Blueprint.MOD_ID, "block/" + (tinted ? "tinted_" : "") + "leaf_pile"))).renderType("cutout").texture("all", blockTexture(leaves));
 		MultiPartBlockStateBuilder builder = getMultipartBuilder(leafPile);
 		builder.part().modelFile(leafPileModel).rotationX(270).uvLock(true).addModel().condition(BlockStateProperties.UP, true);
 		builder.part().modelFile(leafPileModel).rotationX(270).uvLock(true).addModel().condition(BlockStateProperties.UP, false).condition(BlockStateProperties.NORTH, false).condition(BlockStateProperties.WEST, false).condition(BlockStateProperties.SOUTH, false).condition(BlockStateProperties.EAST, false).condition(BlockStateProperties.DOWN, false);
@@ -131,7 +139,7 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 	}
 
 	public void ladderBlock(Block ladder) {
-		this.horizontalBlock(ladder, models().withExistingParent(name(ladder), "block/ladder").texture("particle", blockTexture(ladder)).texture("texture", blockTexture(ladder)));
+		this.horizontalBlock(ladder, models().withExistingParent(name(ladder), "block/ladder").texture("particle", blockTexture(ladder)).renderType("cutout").texture("texture", blockTexture(ladder)));
 		this.generatedItem(ladder, "block");
 	}
 
@@ -154,7 +162,7 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 	}
 
 	private String name(Block block) {
-		return block.getRegistryName().getPath();
+		return ForgeRegistries.BLOCKS.getKey(block).getPath();
 	}
 
 	private ResourceLocation prefix(String prefix, ResourceLocation rl) {

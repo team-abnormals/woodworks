@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "woodworks:oak_chest",
     "woodworks:spruce_chest",
@@ -7,6 +6,7 @@
     "woodworks:jungle_chest",
     "woodworks:acacia_chest",
     "woodworks:dark_oak_chest",
+    "woodworks:mangrove_chest",
     "woodworks:crimson_chest",
     "woodworks:warped_chest"
   ]

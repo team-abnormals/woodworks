@@ -4,26 +4,26 @@
     {
       "conditions": [
         {
-          "value": "wooden_ladders",
+          "type": "woodworks:config",
           "inverted": true,
-          "type": "woodworks:config"
+          "value": "wooden_ladders"
         }
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "pattern": [
-          "# #",
-          "###",
-          "# #"
-        ],
         "key": {
           "#": {
             "item": "minecraft:stick"
           }
         },
+        "pattern": [
+          "# #",
+          "###",
+          "# #"
+        ],
         "result": {
-          "item": "minecraft:ladder",
-          "count": 3
+          "count": 3,
+          "item": "minecraft:ladder"
         }
       }
     }

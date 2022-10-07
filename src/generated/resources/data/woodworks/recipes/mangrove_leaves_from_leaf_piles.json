@@ -1,0 +1,29 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "woodworks:config",
+          "value": "leaf_piles"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "leaves",
+        "key": {
+          "#": {
+            "item": "woodworks:mangrove_leaf_pile"
+          }
+        },
+        "pattern": [
+          "##",
+          "##"
+        ],
+        "result": {
+          "item": "minecraft:mangrove_leaves"
+        }
+      }
+    }
+  ]
+}
