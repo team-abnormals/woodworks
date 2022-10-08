@@ -7,6 +7,7 @@ import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -19,6 +20,7 @@ public class WoodworksItemTagsProvider extends ItemTagsProvider {
 
 	@Override
 	protected void addTags() {
+		this.copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
 		this.tag(ItemTags.NON_FLAMMABLE_WOOD).add(WoodworksBlocks.CRIMSON_BOARDS.get().asItem(), WoodworksBlocks.WARPED_BOARDS.get().asItem(), WoodworksBlocks.CRIMSON_BOOKSHELF.get().asItem(), WoodworksBlocks.WARPED_BOOKSHELF.get().asItem(), WoodworksBlocks.CRIMSON_LADDER.get().asItem(), WoodworksBlocks.WARPED_LADDER.get().asItem(), WoodworksBlocks.CRIMSON_BEEHIVE.get().asItem(), WoodworksBlocks.WARPED_BEEHIVE.get().asItem(), WoodworksBlocks.CRIMSON_CHEST.get().asItem(), WoodworksBlocks.WARPED_CHEST.get().asItem(), WoodworksBlocks.CRIMSON_TRAPPED_CHEST.get().asItem(), WoodworksBlocks.WARPED_TRAPPED_CHEST.get().asItem());
 
 		this.copy(Tags.Blocks.CHESTS_WOODEN, Tags.Items.CHESTS_WOODEN);
