@@ -38,6 +38,7 @@ public final class WoodworksStructureRepaletterProvider extends StructureRepalet
 		this.basicRepaletter("spruce_ladders_in_structures", ladderSelector(VILLAGE_TAIGA.location(), VILLAGE_SNOWY.location(), IGLOO.location()), Blocks.LADDER, WoodworksBlocks.SPRUCE_LADDER.get());
 		this.basicRepaletter("jungle_ladders_in_structures", ladderSelector(VILLAGE_DESERT.location()), Blocks.LADDER, WoodworksBlocks.JUNGLE_LADDER.get());
 		this.basicRepaletter("acacia_ladders_in_structures", ladderSelector(VILLAGE_SAVANNA.location()), Blocks.LADDER, WoodworksBlocks.ACACIA_LADDER.get());
+		this.basicRepaletter("dark_oak_ladders_in_structures", ladderSelector(ANCIENT_CITY.location()), Blocks.LADDER, WoodworksBlocks.DARK_OAK_LADDER.get());
 	}
 
 	private void basicRepaletter(String name, ConditionedResourceSelector selector, Block replacesBlock, Block replacesWith) {
