@@ -50,20 +50,6 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		this.conditionalRecipe(consumer, config(COMMON.woodenChests, "wooden_chests", false), ShapelessRecipeBuilder.shapeless(Blocks.TRAPPED_CHEST).requires(Blocks.CHEST).requires(Blocks.TRIPWIRE_HOOK).unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)), new ResourceLocation(Woodworks.MOD_ID, "trapped_chest"));
 		ShapedRecipeBuilder.shaped(Blocks.LECTERN).define('S', ItemTags.WOODEN_SLABS).define('B', Tags.Items.BOOKSHELVES).pattern("SSS").pattern(" B ").pattern(" S ").unlockedBy("has_book", has(Items.BOOK)).save(consumer);
 
-		//this.conditionalSawmillRecipe(consumer, config(COMMON.woodenLadders, "wooden_ladders", true), Blocks.OAK_PLANKS, Blocks.LADDER, 1, true);
-		//this.conditionalSawmillRecipe(consumer, config(COMMON.woodenLadders, "wooden_ladders", true), ItemTags.OAK_LOGS, Blocks.LADDER, 4, true);
-		this.sawmillRecipe(consumer, ItemTags.PLANKS, Items.STICK, 2);
-		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.STICK, 8);
-		this.sawmillRecipe(consumer, ItemTags.LOGS, Blocks.CRAFTING_TABLE, 1);
-		this.sawmillRecipe(consumer, ItemTags.LOGS, Blocks.COMPOSTER, 1);
-		this.sawmillRecipe(consumer, ItemTags.PLANKS, Items.BOWL, 1);
-		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.BOWL, 4);
-		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_AXE, 1);
-		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_HOE, 1);
-		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_PICKAXE, 1);
-		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_SHOVEL, 1);
-		this.sawmillRecipe(consumer, ItemTags.LOGS, Items.WOODEN_SWORD, 1);
-
 		this.baseRecipes(consumer, Blocks.OAK_PLANKS, WoodworksBlocks.OAK_BOARDS.get(), Blocks.BOOKSHELF, Blocks.LADDER, Blocks.BEEHIVE, WoodworksBlocks.OAK_CHEST.get(), WoodworksBlocks.OAK_TRAPPED_CHEST.get());
 		this.baseRecipes(consumer, Blocks.SPRUCE_PLANKS, WoodworksBlocks.SPRUCE_BOARDS.get(), WoodworksBlocks.SPRUCE_BOOKSHELF.get(), WoodworksBlocks.SPRUCE_LADDER.get(), WoodworksBlocks.SPRUCE_BEEHIVE.get(), WoodworksBlocks.SPRUCE_CHEST.get(), WoodworksBlocks.SPRUCE_TRAPPED_CHEST.get());
 		this.baseRecipes(consumer, Blocks.BIRCH_PLANKS, WoodworksBlocks.BIRCH_BOARDS.get(), WoodworksBlocks.BIRCH_BOOKSHELF.get(), WoodworksBlocks.BIRCH_LADDER.get(), WoodworksBlocks.BIRCH_BEEHIVE.get(), WoodworksBlocks.BIRCH_CHEST.get(), WoodworksBlocks.BIRCH_TRAPPED_CHEST.get());
