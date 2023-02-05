@@ -49,6 +49,8 @@ public class WoodworksLootTableProvider extends LootTableProvider {
 
 		@Override
 		public void addTables() {
+			this.dropSelf(SAWMILL.get());
+
 			this.dropSelf(OAK_BOARDS.get());
 			this.add(OAK_LEAF_PILE.get(), WoodworksBlockLoot::createLeafPileDrops);
 			this.add(OAK_CHEST.get(), BlockLoot::createNameableBlockEntityTable);

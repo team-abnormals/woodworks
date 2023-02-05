@@ -7,12 +7,14 @@ import com.teamabnormals.blueprint.common.block.LeafPileBlock;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintChestBlock;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintTrappedChestBlock;
 import com.teamabnormals.blueprint.core.util.PropertyUtil.WoodSetProperties;
+import com.teamabnormals.woodworks.common.block.SawmillBlock;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.helper.WoodworksBlockSubRegistryHelper;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -21,6 +23,8 @@ import net.minecraftforge.registries.RegistryObject;
 @EventBusSubscriber(modid = Woodworks.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class WoodworksBlocks {
 	public static final WoodworksBlockSubRegistryHelper HELPER = Woodworks.REGISTRY_HELPER.getBlockSubHelper();
+
+	public static final RegistryObject<Block> SAWMILL = HELPER.createBlock("sawmill", () -> new SawmillBlock(WoodworksProperties.SAWMILL), CreativeModeTab.TAB_DECORATIONS);
 
 	public static final RegistryObject<Block> OAK_BOARDS = HELPER.createFuelBlock("oak_boards", () -> new RotatedPillarBlock(WoodworksProperties.OAK_WOOD.planks()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Block> SPRUCE_BOARDS = HELPER.createFuelBlock("spruce_boards", () -> new RotatedPillarBlock(WoodworksProperties.SPRUCE_WOOD.planks()), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
@@ -90,6 +94,8 @@ public class WoodworksBlocks {
 	public static final RegistryObject<BlueprintTrappedChestBlock> WARPED_TRAPPED_CHEST = HELPER.createNonFuelTrappedChestBlock("warped", WoodworksProperties.WARPED_STEM.chest(), CreativeModeTab.TAB_REDSTONE);
 
 	public static final class WoodworksProperties {
+		public static final BlockBehaviour.Properties SAWMILL = BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.5F);
+
 		public static final WoodSetProperties OAK_WOOD = WoodSetProperties.builder(MaterialColor.WOOD).build();
 		public static final WoodSetProperties SPRUCE_WOOD = WoodSetProperties.builder(MaterialColor.PODZOL).build();
 		public static final WoodSetProperties BIRCH_WOOD = WoodSetProperties.builder(MaterialColor.SAND).build();

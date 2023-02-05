@@ -1,0 +1,53 @@
+{
+  "advancements": [
+    {
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "criteria": {
+          "has_dark_oak_logs": {
+            "conditions": {
+              "items": [
+                {
+                  "tag": "minecraft:dark_oak_logs"
+                }
+              ]
+            },
+            "trigger": "minecraft:inventory_changed"
+          },
+          "has_the_recipe": {
+            "conditions": {
+              "recipe": "woodworks:dark_oak_ladder_from_dark_oak_logs_sawing"
+            },
+            "trigger": "minecraft:recipe_unlocked"
+          }
+        },
+        "requirements": [
+          [
+            "has_dark_oak_logs",
+            "has_the_recipe"
+          ]
+        ],
+        "rewards": {
+          "recipes": [
+            "woodworks:dark_oak_ladder_from_dark_oak_logs_sawing"
+          ]
+        }
+      },
+      "conditions": [
+        {
+          "type": "forge:and",
+          "values": [
+            {
+              "type": "woodworks:config",
+              "value": "sawmill"
+            },
+            {
+              "type": "woodworks:config",
+              "value": "wooden_ladders"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
