@@ -49,6 +49,7 @@
   "block.woodworks.oak_ladder": "Дубова драбина",
   "block.woodworks.oak_leaf_pile": "Купа дубового листя",
   "block.woodworks.oak_trapped_chest": "Дубова скриня-пастка",
+  "block.woodworks.sawmill": "Пилорама",
   "block.woodworks.spruce_beehive": "Смерековий вулик",
   "block.woodworks.spruce_boards": "Смерекові планки",
   "block.woodworks.spruce_bookshelf": "Смерекова книжкова полиця",
@@ -62,4 +63,6 @@
   "block.woodworks.warped_chest": "Химерна скриня",
   "block.woodworks.warped_ladder": "Химерна драбина",
   "block.woodworks.warped_trapped_chest": "Химерна скриня-пастка"
+  "container.woodworks.sawmill": "Пилорама",
+  "gui.woodworks.category.sawmill": "Розпилення"
 }
