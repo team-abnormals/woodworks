@@ -29,7 +29,7 @@ public class WoodworksRecipes {
 		public static final RegistryObject<RecipeType<SawmillRecipe>> SAWING = RECIPE_TYPES.register("sawing", () -> new RecipeType<>() {
 			@Override
 			public String toString() {
-				return "woodworks:sawing";
+				return Woodworks.MOD_ID + ":sawing";
 			}
 		});
 	}
