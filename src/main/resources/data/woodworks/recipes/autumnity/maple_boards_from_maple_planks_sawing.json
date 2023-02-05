@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "autumnity:maple_planks"
         },
-        "result": "woodworks:maple_boards"
+        "result": "autumnity:maple_boards"
       }
     }
   ]

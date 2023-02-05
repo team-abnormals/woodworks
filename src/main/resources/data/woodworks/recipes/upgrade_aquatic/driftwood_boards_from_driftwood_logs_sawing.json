@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "upgrade_aquatic:driftwood_logs"
         },
-        "result": "woodworks:driftwood_boards"
+        "result": "upgrade_aquatic:driftwood_boards"
       }
     }
   ]

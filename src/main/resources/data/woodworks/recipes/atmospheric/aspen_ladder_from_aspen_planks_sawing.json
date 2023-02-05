@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "atmospheric:aspen_planks"
         },
-        "result": "woodworks:aspen_ladder"
+        "result": "atmospheric:aspen_ladder"
       }
     }
   ]

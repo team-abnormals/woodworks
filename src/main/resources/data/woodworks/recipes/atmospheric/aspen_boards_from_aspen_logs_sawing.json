@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "atmospheric:aspen_logs"
         },
-        "result": "woodworks:aspen_boards"
+        "result": "atmospheric:aspen_boards"
       }
     }
   ]

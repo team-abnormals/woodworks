@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "endergetic:poise_planks"
         },
-        "result": "woodworks:poise_boards"
+        "result": "endergetic:poise_boards"
       }
     }
   ]

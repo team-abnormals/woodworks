@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "atmospheric:aspen_logs"
         },
-        "result": "woodworks:aspen_ladder"
+        "result": "atmospheric:aspen_ladder"
       }
     }
   ]

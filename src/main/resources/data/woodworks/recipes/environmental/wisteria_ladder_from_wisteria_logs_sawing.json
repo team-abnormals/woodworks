@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "environmental:wisteria_logs"
         },
-        "result": "woodworks:wisteria_ladder"
+        "result": "environmental:wisteria_ladder"
       }
     }
   ]

@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "atmospheric:rosewood_logs"
         },
-        "result": "woodworks:rosewood_ladder"
+        "result": "atmospheric:rosewood_ladder"
       }
     }
   ]

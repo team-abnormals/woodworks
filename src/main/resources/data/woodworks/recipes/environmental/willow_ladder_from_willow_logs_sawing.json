@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "environmental:willow_logs"
         },
-        "result": "woodworks:willow_ladder"
+        "result": "environmental:willow_ladder"
       }
     }
   ]

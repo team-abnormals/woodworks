@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "environmental:willow_planks"
         },
-        "result": "woodworks:willow_ladder"
+        "result": "environmental:willow_ladder"
       }
     }
   ]

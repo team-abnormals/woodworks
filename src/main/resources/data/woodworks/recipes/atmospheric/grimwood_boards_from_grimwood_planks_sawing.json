@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "atmospheric:grimwood_planks"
         },
-        "result": "woodworks:grimwood_boards"
+        "result": "atmospheric:grimwood_boards"
       }
     }
   ]

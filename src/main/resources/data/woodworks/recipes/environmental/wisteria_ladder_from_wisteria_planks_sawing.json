@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "environmental:wisteria_planks"
         },
-        "result": "woodworks:wisteria_ladder"
+        "result": "environmental:wisteria_ladder"
       }
     }
   ]
