@@ -1,0 +1,34 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:and",
+          "values": [
+            {
+              "type": "forge:mod_loaded",
+              "modid": "upgrade_aquatic"
+            },
+            {
+              "type": "woodworks:config",
+              "value": "sawmill"
+            },
+            {
+              "type": "woodworks:config",
+              "value": "wooden_ladders"
+            }
+          ]
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "count": 1,
+        "ingredient": {
+          "item": "upgrade_aquatic:driftwood_planks"
+        },
+        "result": "woodworks:driftwood_ladder"
+      }
+    }
+  ]
+}
