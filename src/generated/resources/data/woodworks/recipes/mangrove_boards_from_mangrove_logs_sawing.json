@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:and",
+          "values": [
+            {
+              "type": "woodworks:config",
+              "value": "sawmill"
+            },
+            {
+              "type": "woodworks:config",
+              "value": "wooden_boards"
+            }
+          ]
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "count": 4,
+        "ingredient": {
+          "tag": "minecraft:mangrove_logs"
+        },
+        "result": "woodworks:mangrove_boards"
+      }
+    }
+  ]
+}

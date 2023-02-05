@@ -1,8 +1,10 @@
 package com.teamabnormals.woodworks.core.data.client;
 
 import com.teamabnormals.blueprint.common.block.LeafPileBlock;
+import com.teamabnormals.woodworks.common.block.SawmillBlock;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
+import com.teamabnormals.woodworks.integration.jei.SawingRecipeCategory;
 import net.minecraft.Util;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -24,6 +26,9 @@ public class WoodworksLanguageProvider extends LanguageProvider {
 		WoodworksBlocks.HELPER.getDeferredRegister().getEntries().forEach(block -> {
 			add(block.get(), block.get() instanceof LeafPileBlock ? "Pile of " + format(block.getId()).replace("Leaf Pile", "Leaves") : format(block.getId()));
 		});
+
+		this.add(SawmillBlock.CONTAINER_TITLE.getString(), "Sawmill");
+		this.add(SawingRecipeCategory.TRANSLATION.getString(), "Sawing");
 	}
 
 	private void add(String block) {

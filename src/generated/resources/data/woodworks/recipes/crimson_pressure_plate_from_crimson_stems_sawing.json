@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "woodworks:config",
+          "value": "sawmill"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "count": 2,
+        "ingredient": {
+          "tag": "minecraft:crimson_stems"
+        },
+        "result": "minecraft:crimson_pressure_plate"
+      }
+    }
+  ]
+}
