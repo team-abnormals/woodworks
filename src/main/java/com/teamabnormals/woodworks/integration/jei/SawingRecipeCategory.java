@@ -3,7 +3,6 @@ package com.teamabnormals.woodworks.integration.jei;
 import com.teamabnormals.woodworks.common.item.crafting.SawmillRecipe;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
-import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -17,20 +16,19 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class SawingRecipeCategory implements IRecipeCategory<SawmillRecipe> {
-	public static final ResourceLocation SAWING = new ResourceLocation(Woodworks.MOD_ID, "sawing");
+	public static final ResourceLocation RECIPE_GUI_VANILLA = new ResourceLocation("jei", "textures/gui/gui_vanilla.png");
 	public static final MutableComponent TRANSLATION = Component.translatable("gui." + Woodworks.MOD_ID + ".category.sawmill");
 
-	public static final int width = 82;
-	public static final int height = 34;
+	public static final int WIDTH = 82;
+	public static final int HEIGHT = 34;
 
 	private final IDrawable background;
 	private final IDrawable icon;
 	private final Component localizedName;
 
 	public SawingRecipeCategory(IGuiHelper guiHelper) {
-		ResourceLocation location = WoodworksPlugin.RECIPE_GUI_VANILLA;
-		background = guiHelper.createDrawable(location, 0, 220, width, height);
-		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(WoodworksBlocks.SAWMILL.get()));
+		background = guiHelper.createDrawable(RECIPE_GUI_VANILLA, 0, 220, WIDTH, HEIGHT);
+		icon = guiHelper.createDrawableItemStack(new ItemStack(WoodworksBlocks.SAWMILL.get()));
 		localizedName = TRANSLATION;
 	}
 
@@ -62,6 +60,6 @@ public class SawingRecipeCategory implements IRecipeCategory<SawmillRecipe> {
 
 	@Override
 	public boolean isHandled(SawmillRecipe recipe) {
-		return !recipe.isSpecial();
+		return true;
 	}
 }
