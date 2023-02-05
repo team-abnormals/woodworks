@@ -1,16 +1,31 @@
 {
   "advancements": [
     {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_ladders",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
       "advancement": {
         "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:warped_ladder_from_warped_planks_sawing"
+          ]
+        },
         "criteria": {
-          "has_the_recipe": {
-            "conditions": {
-              "recipe": "woodworks:warped_ladder_from_warped_planks_sawing"
-            },
-            "trigger": "minecraft:recipe_unlocked"
-          },
           "has_warped_planks": {
+            "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
@@ -19,8 +34,13 @@
                   ]
                 }
               ]
-            },
-            "trigger": "minecraft:inventory_changed"
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "woodworks:warped_ladder_from_warped_planks_sawing"
+            }
           }
         },
         "requirements": [
@@ -28,28 +48,8 @@
             "has_warped_planks",
             "has_the_recipe"
           ]
-        ],
-        "rewards": {
-          "recipes": [
-            "woodworks:warped_ladder_from_warped_planks_sawing"
-          ]
-        }
-      },
-      "conditions": [
-        {
-          "type": "forge:and",
-          "values": [
-            {
-              "type": "woodworks:config",
-              "value": "sawmill"
-            },
-            {
-              "type": "woodworks:config",
-              "value": "wooden_ladders"
-            }
-          ]
-        }
-      ]
+        ]
+      }
     }
   ]
 }

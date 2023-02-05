@@ -1,24 +1,44 @@
 {
   "advancements": [
     {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_ladders",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
       "advancement": {
         "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:crimson_ladder_from_crimson_stems_sawing"
+          ]
+        },
         "criteria": {
           "has_crimson_stems": {
+            "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
                   "tag": "minecraft:crimson_stems"
                 }
               ]
-            },
-            "trigger": "minecraft:inventory_changed"
+            }
           },
           "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
             "conditions": {
               "recipe": "woodworks:crimson_ladder_from_crimson_stems_sawing"
-            },
-            "trigger": "minecraft:recipe_unlocked"
+            }
           }
         },
         "requirements": [
@@ -26,28 +46,8 @@
             "has_crimson_stems",
             "has_the_recipe"
           ]
-        ],
-        "rewards": {
-          "recipes": [
-            "woodworks:crimson_ladder_from_crimson_stems_sawing"
-          ]
-        }
-      },
-      "conditions": [
-        {
-          "type": "forge:and",
-          "values": [
-            {
-              "type": "woodworks:config",
-              "value": "sawmill"
-            },
-            {
-              "type": "woodworks:config",
-              "value": "wooden_ladders"
-            }
-          ]
-        }
-      ]
+        ]
+      }
     }
   ]
 }

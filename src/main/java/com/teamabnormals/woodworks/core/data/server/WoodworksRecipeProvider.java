@@ -74,7 +74,6 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		this.sawmillRecipes(consumer, BlockFamilies.JUNGLE_PLANKS, ItemTags.JUNGLE_LOGS, WoodworksBlocks.JUNGLE_BOARDS.get(), WoodworksBlocks.JUNGLE_LADDER.get());
 		this.sawmillRecipes(consumer, BlockFamilies.ACACIA_PLANKS, ItemTags.ACACIA_LOGS, WoodworksBlocks.ACACIA_BOARDS.get(), WoodworksBlocks.ACACIA_LADDER.get());
 		this.sawmillRecipes(consumer, BlockFamilies.DARK_OAK_PLANKS, ItemTags.DARK_OAK_LOGS, WoodworksBlocks.DARK_OAK_BOARDS.get(), WoodworksBlocks.DARK_OAK_LADDER.get());
-		this.sawmillRecipes(consumer, BlockFamilies.MANGROVE_PLANKS, ItemTags.MANGROVE_LOGS, WoodworksBlocks.MANGROVE_BOARDS.get(), WoodworksBlocks.MANGROVE_LADDER.get());
 		this.sawmillRecipes(consumer, BlockFamilies.CRIMSON_PLANKS, ItemTags.CRIMSON_STEMS, WoodworksBlocks.CRIMSON_BOARDS.get(), WoodworksBlocks.CRIMSON_LADDER.get());
 		this.sawmillRecipes(consumer, BlockFamilies.WARPED_PLANKS, ItemTags.WARPED_STEMS, WoodworksBlocks.WARPED_BOARDS.get(), WoodworksBlocks.WARPED_LADDER.get());
 	}

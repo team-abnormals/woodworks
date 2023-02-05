@@ -4,17 +4,17 @@
     {
       "conditions": [
         {
-          "type": "woodworks:config",
-          "value": "sawmill"
+          "value": "sawmill",
+          "type": "woodworks:config"
         }
       ],
       "recipe": {
         "type": "woodworks:sawmill",
-        "count": 1,
         "ingredient": {
           "item": "minecraft:oak_planks"
         },
-        "result": "minecraft:oak_button"
+        "result": "minecraft:oak_button",
+        "count": 1
       }
     }
   ]

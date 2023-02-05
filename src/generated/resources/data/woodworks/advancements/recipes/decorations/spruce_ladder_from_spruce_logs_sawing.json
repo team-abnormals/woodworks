@@ -1,24 +1,44 @@
 {
   "advancements": [
     {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_ladders",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
       "advancement": {
         "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:spruce_ladder_from_spruce_logs_sawing"
+          ]
+        },
         "criteria": {
           "has_spruce_logs": {
+            "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
                   "tag": "minecraft:spruce_logs"
                 }
               ]
-            },
-            "trigger": "minecraft:inventory_changed"
+            }
           },
           "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
             "conditions": {
               "recipe": "woodworks:spruce_ladder_from_spruce_logs_sawing"
-            },
-            "trigger": "minecraft:recipe_unlocked"
+            }
           }
         },
         "requirements": [
@@ -26,28 +46,8 @@
             "has_spruce_logs",
             "has_the_recipe"
           ]
-        ],
-        "rewards": {
-          "recipes": [
-            "woodworks:spruce_ladder_from_spruce_logs_sawing"
-          ]
-        }
-      },
-      "conditions": [
-        {
-          "type": "forge:and",
-          "values": [
-            {
-              "type": "woodworks:config",
-              "value": "sawmill"
-            },
-            {
-              "type": "woodworks:config",
-              "value": "wooden_ladders"
-            }
-          ]
-        }
-      ]
+        ]
+      }
     }
   ]
 }

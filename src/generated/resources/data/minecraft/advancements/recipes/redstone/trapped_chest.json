@@ -1,16 +1,23 @@
 {
   "advancements": [
     {
+      "conditions": [
+        {
+          "value": "wooden_chests",
+          "inverted": true,
+          "type": "woodworks:config"
+        }
+      ],
       "advancement": {
         "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "minecraft:trapped_chest"
+          ]
+        },
         "criteria": {
-          "has_the_recipe": {
-            "conditions": {
-              "recipe": "minecraft:trapped_chest"
-            },
-            "trigger": "minecraft:recipe_unlocked"
-          },
           "has_tripwire_hook": {
+            "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
@@ -19,8 +26,13 @@
                   ]
                 }
               ]
-            },
-            "trigger": "minecraft:inventory_changed"
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "minecraft:trapped_chest"
+            }
           }
         },
         "requirements": [
@@ -28,20 +40,8 @@
             "has_tripwire_hook",
             "has_the_recipe"
           ]
-        ],
-        "rewards": {
-          "recipes": [
-            "minecraft:trapped_chest"
-          ]
-        }
-      },
-      "conditions": [
-        {
-          "type": "woodworks:config",
-          "inverted": true,
-          "value": "wooden_chests"
-        }
-      ]
+        ]
+      }
     }
   ]
 }

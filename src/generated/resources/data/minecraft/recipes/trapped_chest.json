@@ -4,9 +4,9 @@
     {
       "conditions": [
         {
-          "type": "woodworks:config",
+          "value": "wooden_chests",
           "inverted": true,
-          "value": "wooden_chests"
+          "type": "woodworks:config"
         }
       ],
       "recipe": {

@@ -1,24 +1,44 @@
 {
   "advancements": [
     {
+      "conditions": [
+        {
+          "values": [
+            {
+              "value": "sawmill",
+              "type": "woodworks:config"
+            },
+            {
+              "value": "wooden_boards",
+              "type": "woodworks:config"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
       "advancement": {
         "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:acacia_boards_from_acacia_logs_sawing"
+          ]
+        },
         "criteria": {
           "has_acacia_logs": {
+            "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
                   "tag": "minecraft:acacia_logs"
                 }
               ]
-            },
-            "trigger": "minecraft:inventory_changed"
+            }
           },
           "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
             "conditions": {
               "recipe": "woodworks:acacia_boards_from_acacia_logs_sawing"
-            },
-            "trigger": "minecraft:recipe_unlocked"
+            }
           }
         },
         "requirements": [
@@ -26,28 +46,8 @@
             "has_acacia_logs",
             "has_the_recipe"
           ]
-        ],
-        "rewards": {
-          "recipes": [
-            "woodworks:acacia_boards_from_acacia_logs_sawing"
-          ]
-        }
-      },
-      "conditions": [
-        {
-          "type": "forge:and",
-          "values": [
-            {
-              "type": "woodworks:config",
-              "value": "sawmill"
-            },
-            {
-              "type": "woodworks:config",
-              "value": "wooden_boards"
-            }
-          ]
-        }
-      ]
+        ]
+      }
     }
   ]
 }

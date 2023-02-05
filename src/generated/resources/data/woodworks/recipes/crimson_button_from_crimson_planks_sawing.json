@@ -4,17 +4,17 @@
     {
       "conditions": [
         {
-          "type": "woodworks:config",
-          "value": "sawmill"
+          "value": "sawmill",
+          "type": "woodworks:config"
         }
       ],
       "recipe": {
         "type": "woodworks:sawmill",
-        "count": 1,
         "ingredient": {
           "item": "minecraft:crimson_planks"
         },
-        "result": "minecraft:crimson_button"
+        "result": "minecraft:crimson_button",
+        "count": 1
       }
     }
   ]

@@ -1,9 +1,5 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "woodworks:block/sawmill",
-      "y": 90
-    },
     "facing=north": {
       "model": "woodworks:block/sawmill"
     },
@@ -14,6 +10,10 @@
     "facing=west": {
       "model": "woodworks:block/sawmill",
       "y": 270
+    },
+    "facing=east": {
+      "model": "woodworks:block/sawmill",
+      "y": 90
     }
   }
 }

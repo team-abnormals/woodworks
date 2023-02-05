@@ -4,26 +4,26 @@
     {
       "conditions": [
         {
-          "type": "forge:and",
           "values": [
             {
-              "type": "woodworks:config",
-              "value": "sawmill"
+              "value": "sawmill",
+              "type": "woodworks:config"
             },
             {
-              "type": "woodworks:config",
-              "value": "wooden_boards"
+              "value": "wooden_boards",
+              "type": "woodworks:config"
             }
-          ]
+          ],
+          "type": "forge:and"
         }
       ],
       "recipe": {
         "type": "woodworks:sawmill",
-        "count": 1,
         "ingredient": {
           "item": "minecraft:oak_planks"
         },
-        "result": "woodworks:oak_boards"
+        "result": "woodworks:oak_boards",
+        "count": 1
       }
     }
   ]

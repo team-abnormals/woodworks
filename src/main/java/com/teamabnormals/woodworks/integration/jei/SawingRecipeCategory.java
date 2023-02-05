@@ -3,6 +3,7 @@ package com.teamabnormals.woodworks.integration.jei;
 import com.teamabnormals.woodworks.common.item.crafting.SawmillRecipe;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -12,12 +13,14 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public class SawingRecipeCategory implements IRecipeCategory<SawmillRecipe> {
+	public static final ResourceLocation SAWING = new ResourceLocation(Woodworks.MOD_ID, "sawing");
 	public static final ResourceLocation RECIPE_GUI_VANILLA = new ResourceLocation("jei", "textures/gui/gui_vanilla.png");
-	public static final MutableComponent TRANSLATION = Component.translatable("gui." + Woodworks.MOD_ID + ".category.sawmill");
+	public static final MutableComponent TRANSLATION = new TranslatableComponent("gui." + Woodworks.MOD_ID + ".category.sawmill");
 
 	public static final int WIDTH = 82;
 	public static final int HEIGHT = 34;
@@ -28,7 +31,7 @@ public class SawingRecipeCategory implements IRecipeCategory<SawmillRecipe> {
 
 	public SawingRecipeCategory(IGuiHelper guiHelper) {
 		background = guiHelper.createDrawable(RECIPE_GUI_VANILLA, 0, 220, WIDTH, HEIGHT);
-		icon = guiHelper.createDrawableItemStack(new ItemStack(WoodworksBlocks.SAWMILL.get()));
+		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(WoodworksBlocks.SAWMILL.get()));
 		localizedName = TRANSLATION;
 	}
 
@@ -61,5 +64,15 @@ public class SawingRecipeCategory implements IRecipeCategory<SawmillRecipe> {
 	@Override
 	public boolean isHandled(SawmillRecipe recipe) {
 		return true;
+	}
+
+	@Override
+	public ResourceLocation getUid() {
+		return SAWING;
+	}
+
+	@Override
+	public Class<? extends SawmillRecipe> getRecipeClass() {
+		return SawmillRecipe.class;
 	}
 }

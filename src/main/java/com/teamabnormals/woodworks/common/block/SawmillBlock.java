@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -33,7 +34,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class SawmillBlock extends Block {
-	public static final Component CONTAINER_TITLE = Component.translatable("container.woodworks.sawmill");
+	public static final Component CONTAINER_TITLE = new TranslatableComponent("container.woodworks.sawmill");
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 	private static final TargetedItemCategoryFiller FILLER = new TargetedItemCategoryFiller(() -> Items.STONECUTTER);
 	public static final VoxelShape[] SHAPES = new VoxelShape[]{

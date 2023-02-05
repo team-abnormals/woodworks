@@ -1,10 +1,22 @@
 {
   "advancements": [
     {
+      "conditions": [
+        {
+          "value": "sawmill",
+          "type": "woodworks:config"
+        }
+      ],
       "advancement": {
         "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "woodworks:dark_oak_fence_from_dark_oak_planks_sawing"
+          ]
+        },
         "criteria": {
           "has_dark_oak_planks": {
+            "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
@@ -13,14 +25,13 @@
                   ]
                 }
               ]
-            },
-            "trigger": "minecraft:inventory_changed"
+            }
           },
           "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
             "conditions": {
               "recipe": "woodworks:dark_oak_fence_from_dark_oak_planks_sawing"
-            },
-            "trigger": "minecraft:recipe_unlocked"
+            }
           }
         },
         "requirements": [
@@ -28,19 +39,8 @@
             "has_dark_oak_planks",
             "has_the_recipe"
           ]
-        ],
-        "rewards": {
-          "recipes": [
-            "woodworks:dark_oak_fence_from_dark_oak_planks_sawing"
-          ]
-        }
-      },
-      "conditions": [
-        {
-          "type": "woodworks:config",
-          "value": "sawmill"
-        }
-      ]
+        ]
+      }
     }
   ]
 }
