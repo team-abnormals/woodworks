@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "atmospheric:kousa_logs"
         },
-        "result": "woodworks:kousa_ladder"
+        "result": "atmospheric:kousa_ladder"
       }
     }
   ]

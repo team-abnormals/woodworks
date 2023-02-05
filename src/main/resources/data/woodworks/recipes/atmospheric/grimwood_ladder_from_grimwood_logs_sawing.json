@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "atmospheric:grimwood_logs"
         },
-        "result": "woodworks:grimwood_ladder"
+        "result": "atmospheric:grimwood_ladder"
       }
     }
   ]

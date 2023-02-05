@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "upgrade_aquatic:driftwood_planks"
         },
-        "result": "woodworks:driftwood_boards"
+        "result": "upgrade_aquatic:driftwood_boards"
       }
     }
   ]

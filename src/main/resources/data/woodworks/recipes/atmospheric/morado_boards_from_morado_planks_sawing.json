@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "atmospheric:morado_planks"
         },
-        "result": "woodworks:morado_boards"
+        "result": "atmospheric:morado_boards"
       }
     }
   ]

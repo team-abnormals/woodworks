@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "atmospheric:yucca_logs"
         },
-        "result": "woodworks:yucca_boards"
+        "result": "atmospheric:yucca_boards"
       }
     }
   ]

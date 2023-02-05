@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "autumnity:maple_logs"
         },
-        "result": "woodworks:maple_ladder"
+        "result": "autumnity:maple_ladder"
       }
     }
   ]

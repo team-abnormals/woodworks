@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "atmospheric:yucca_planks"
         },
-        "result": "woodworks:yucca_ladder"
+        "result": "atmospheric:yucca_ladder"
       }
     }
   ]

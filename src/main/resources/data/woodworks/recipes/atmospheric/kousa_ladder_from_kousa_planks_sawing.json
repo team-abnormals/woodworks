@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "atmospheric:kousa_planks"
         },
-        "result": "woodworks:kousa_ladder"
+        "result": "atmospheric:kousa_ladder"
       }
     }
   ]

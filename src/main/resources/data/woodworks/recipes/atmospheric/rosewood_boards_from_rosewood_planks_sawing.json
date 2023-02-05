@@ -27,7 +27,7 @@
         "ingredient": {
           "item": "atmospheric:rosewood_planks"
         },
-        "result": "woodworks:rosewood_boards"
+        "result": "atmospheric:rosewood_boards"
       }
     }
   ]

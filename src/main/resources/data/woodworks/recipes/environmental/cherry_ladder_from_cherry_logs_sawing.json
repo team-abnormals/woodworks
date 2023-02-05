@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "environmental:cherry_logs"
         },
-        "result": "woodworks:cherry_ladder"
+        "result": "environmental:cherry_ladder"
       }
     }
   ]

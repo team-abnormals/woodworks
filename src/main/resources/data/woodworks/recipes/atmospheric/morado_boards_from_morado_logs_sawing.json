@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "atmospheric:morado_logs"
         },
-        "result": "woodworks:morado_boards"
+        "result": "atmospheric:morado_boards"
       }
     }
   ]

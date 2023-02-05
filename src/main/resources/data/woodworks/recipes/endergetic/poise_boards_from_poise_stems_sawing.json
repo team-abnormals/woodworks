@@ -27,7 +27,7 @@
         "ingredient": {
           "tag": "endergetic:poise_stems"
         },
-        "result": "woodworks:poise_boards"
+        "result": "endergetic:poise_boards"
       }
     }
   ]
