@@ -76,7 +76,7 @@ public class Woodworks {
 		generator.addProvider(includeServer, new WoodworksRecipeProvider(generator));
 		generator.addProvider(includeServer, new WoodworksStructureRepaletterProvider(generator));
 
-		boolean includeClient = event.includeServer();
+		boolean includeClient = event.includeClient();
 		generator.addProvider(includeClient, new WoodworksBlockStateProvider(generator, fileHelper));
 		generator.addProvider(includeClient, new WoodworksLanguageProvider(generator));
 	}

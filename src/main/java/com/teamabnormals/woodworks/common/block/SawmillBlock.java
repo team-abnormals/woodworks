@@ -2,6 +2,7 @@ package com.teamabnormals.woodworks.common.block;
 
 import com.teamabnormals.blueprint.core.util.item.filling.TargetedItemCategoryFiller;
 import com.teamabnormals.woodworks.common.inventory.SawmillMenu;
+import com.teamabnormals.woodworks.core.Woodworks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -33,7 +34,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class SawmillBlock extends Block {
-	public static final Component CONTAINER_TITLE = Component.translatable("container.woodworks.sawmill");
+	public static final Component CONTAINER_TITLE = Component.translatable("container." + Woodworks.MOD_ID + ".sawmill");
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 	private static final TargetedItemCategoryFiller FILLER = new TargetedItemCategoryFiller(() -> Items.STONECUTTER);
 	public static final VoxelShape[] SHAPES = new VoxelShape[]{
@@ -54,11 +55,11 @@ public class SawmillBlock extends Block {
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
-		if (worldIn.isClientSide) {
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+		if (level.isClientSide) {
 			return InteractionResult.SUCCESS;
 		} else {
-			player.openMenu(state.getMenuProvider(worldIn, pos));
+			player.openMenu(state.getMenuProvider(level, pos));
 			player.awardStat(Stats.INTERACT_WITH_STONECUTTER);
 			return InteractionResult.CONSUME;
 		}
@@ -67,46 +68,46 @@ public class SawmillBlock extends Block {
 	@Nullable
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
-		return new SimpleMenuProvider((p_57074_, p_57075_, p_57076_) -> new SawmillMenu(p_57074_, p_57075_, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE);
+		return new SimpleMenuProvider((id, inventory, player) -> new SawmillMenu(id, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE);
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return SHAPES[state.getValue(FACING).get3DDataValue() - 2];
 	}
 
 	@Override
-	public boolean useShapeForLightOcclusion(BlockState p_57109_) {
+	public boolean useShapeForLightOcclusion(BlockState state) {
 		return true;
 	}
 
 	@Override
-	public RenderShape getRenderShape(BlockState p_57098_) {
+	public RenderShape getRenderShape(BlockState state) {
 		return RenderShape.MODEL;
 	}
 
 	@Override
-	public BlockState rotate(BlockState p_57093_, Rotation p_57094_) {
-		return p_57093_.setValue(FACING, p_57094_.rotate(p_57093_.getValue(FACING)));
+	public BlockState rotate(BlockState state, Rotation rotation) {
+		return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
 	}
 
 	@Override
-	public BlockState mirror(BlockState p_57090_, Mirror p_57091_) {
-		return p_57090_.rotate(p_57091_.getRotation(p_57090_.getValue(FACING)));
+	public BlockState mirror(BlockState state, Mirror mirror) {
+		return state.rotate(mirror.getRotation(state.getValue(FACING)));
 	}
 
 	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_57096_) {
-		p_57096_.add(FACING);
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(FACING);
 	}
 
 	@Override
-	public boolean isPathfindable(BlockState p_57078_, BlockGetter p_57079_, BlockPos p_57080_, PathComputationType p_57081_) {
+	public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
 		return false;
 	}
 
 	@Override
-	public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
-		FILLER.fillItem(this.asItem(), group, items);
+	public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> items) {
+		FILLER.fillItem(this.asItem(), tab, items);
 	}
 }

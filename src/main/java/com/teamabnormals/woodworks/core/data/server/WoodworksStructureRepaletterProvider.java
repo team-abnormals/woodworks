@@ -60,5 +60,4 @@ public final class WoodworksStructureRepaletterProvider extends StructureRepalet
 	private static ConditionedResourceSelector selector(ForgeConfigSpec.ConfigValue<?> value1, String key1, ForgeConfigSpec.ConfigValue<?> value2, String key2, ResourceLocation... structures) {
 		return new ConditionedResourceSelector(new NamesResourceSelector(structures), new AndCondition(WoodworksRecipeProvider.config(value1, key1), WoodworksRecipeProvider.config(value2, key2)));
 	}
-
 }

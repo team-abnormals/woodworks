@@ -27,39 +27,39 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 	private int startIndex;
 	private boolean displayRecipes;
 
-	public SawmillScreen(SawmillMenu p_99310_, Inventory p_99311_, Component p_99312_) {
-		super(p_99310_, p_99311_, p_99312_);
-		p_99310_.registerUpdateListener(this::containerChanged);
+	public SawmillScreen(SawmillMenu menu, Inventory inventory, Component component) {
+		super(menu, inventory, component);
+		menu.registerUpdateListener(this::containerChanged);
 		--this.titleLabelY;
 	}
 
 	@Override
-	public void render(PoseStack p_99337_, int p_99338_, int p_99339_, float p_99340_) {
-		super.render(p_99337_, p_99338_, p_99339_, p_99340_);
-		this.renderTooltip(p_99337_, p_99338_, p_99339_);
+	public void render(PoseStack poseStack, int p_99338_, int p_99339_, float p_99340_) {
+		super.render(poseStack, p_99338_, p_99339_, p_99340_);
+		this.renderTooltip(poseStack, p_99338_, p_99339_);
 	}
 
 	@Override
-	protected void renderBg(PoseStack p_99328_, float p_99329_, int p_99330_, int p_99331_) {
-		this.renderBackground(p_99328_);
+	protected void renderBg(PoseStack poseStack, float p_99329_, int p_99330_, int p_99331_) {
+		this.renderBackground(poseStack);
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, BG_LOCATION);
 		int i = this.leftPos;
 		int j = this.topPos;
-		this.blit(p_99328_, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		this.blit(poseStack, i, j, 0, 0, this.imageWidth, this.imageHeight);
 		int k = (int) (41.0F * this.scrollOffs);
-		this.blit(p_99328_, i + 119, j + 15 + k, 176 + (this.isScrollBarActive() ? 0 : 12), 0, 12, 15);
+		this.blit(poseStack, i + 119, j + 15 + k, 176 + (this.isScrollBarActive() ? 0 : 12), 0, 12, 15);
 		int l = this.leftPos + 52;
 		int i1 = this.topPos + 14;
 		int j1 = this.startIndex + 12;
-		this.renderButtons(p_99328_, p_99330_, p_99331_, l, i1, j1);
+		this.renderButtons(poseStack, p_99330_, p_99331_, l, i1, j1);
 		this.renderRecipes(l, i1, j1);
 	}
 
 	@Override
-	protected void renderTooltip(PoseStack p_99333_, int p_99334_, int p_99335_) {
-		super.renderTooltip(p_99333_, p_99334_, p_99335_);
+	protected void renderTooltip(PoseStack poseStack, int p_99334_, int p_99335_) {
+		super.renderTooltip(poseStack, p_99334_, p_99335_);
 		if (this.displayRecipes) {
 			int i = this.leftPos + 52;
 			int j = this.topPos + 14;
@@ -71,14 +71,14 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 				int j1 = i + i1 % 4 * 16;
 				int k1 = j + i1 / 4 * 18 + 2;
 				if (p_99334_ >= j1 && p_99334_ < j1 + 16 && p_99335_ >= k1 && p_99335_ < k1 + 18) {
-					this.renderTooltip(p_99333_, list.get(l).getResultItem(), p_99334_, p_99335_);
+					this.renderTooltip(poseStack, list.get(l).getResultItem(), p_99334_, p_99335_);
 				}
 			}
 		}
 
 	}
 
-	private void renderButtons(PoseStack p_99342_, int p_99343_, int p_99344_, int p_99345_, int p_99346_, int p_99347_) {
+	private void renderButtons(PoseStack poseStack, int p_99343_, int p_99344_, int p_99345_, int p_99346_, int p_99347_) {
 		for (int i = this.startIndex; i < p_99347_ && i < this.menu.getNumRecipes(); ++i) {
 			int j = i - this.startIndex;
 			int k = p_99345_ + j % 4 * 16;
@@ -91,14 +91,12 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 				j1 += 36;
 			}
 
-			this.blit(p_99342_, k, i1 - 1, 0, j1, 16, 18);
+			this.blit(poseStack, k, i1 - 1, 0, j1, 16, 18);
 		}
-
 	}
 
 	private void renderRecipes(int p_99349_, int p_99350_, int p_99351_) {
 		List<SawmillRecipe> list = this.menu.getRecipes();
-
 		for (int i = this.startIndex; i < p_99351_ && i < this.menu.getNumRecipes(); ++i) {
 			int j = i - this.startIndex;
 			int k = p_99349_ + j % 4 * 16;
@@ -106,7 +104,6 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 			int i1 = p_99350_ + l * 18 + 2;
 			this.minecraft.getItemRenderer().renderAndDecorateItem(list.get(i).getResultItem(), k, i1);
 		}
-
 	}
 
 	@Override

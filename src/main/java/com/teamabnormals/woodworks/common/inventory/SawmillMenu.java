@@ -30,6 +30,7 @@ public class SawmillMenu extends AbstractContainerMenu {
 	Runnable slotUpdateListener = () -> {
 	};
 	public final Container container = new SimpleContainer(1) {
+		@Override
 		public void setChanged() {
 			super.setChanged();
 			SawmillMenu.this.slotsChanged(this);
@@ -38,37 +39,40 @@ public class SawmillMenu extends AbstractContainerMenu {
 	};
 	final ResultContainer resultContainer = new ResultContainer();
 
-	public SawmillMenu(int p_40294_, Inventory p_40295_) {
-		this(p_40294_, p_40295_, ContainerLevelAccess.NULL);
+	public SawmillMenu(int id, Inventory inventory) {
+		this(id, inventory, ContainerLevelAccess.NULL);
 	}
 
-	public SawmillMenu(int p_40297_, Inventory p_40298_, final ContainerLevelAccess p_40299_) {
-		super(WoodworksMenuTypes.SAWMILL.get(), p_40297_);
-		this.access = p_40299_;
+	public SawmillMenu(int id, Inventory p_40298_, final ContainerLevelAccess access) {
+		super(WoodworksMenuTypes.SAWMILL.get(), id);
+		this.access = access;
 		this.level = p_40298_.player.level;
 		this.inputSlot = this.addSlot(new Slot(this.container, 0, 20, 33));
 		this.resultSlot = this.addSlot(new Slot(this.resultContainer, 1, 143, 33) {
-			public boolean mayPlace(ItemStack p_40362_) {
+
+			@Override
+			public boolean mayPlace(ItemStack stack) {
 				return false;
 			}
 
-			public void onTake(Player p_150672_, ItemStack p_150673_) {
-				p_150673_.onCraftedBy(p_150672_.level, p_150672_, p_150673_.getCount());
-				SawmillMenu.this.resultContainer.awardUsedRecipes(p_150672_);
-				ItemStack itemstack = SawmillMenu.this.inputSlot.remove(1);
-				if (!itemstack.isEmpty()) {
+			@Override
+			public void onTake(Player player, ItemStack stack) {
+				stack.onCraftedBy(player.level, player, stack.getCount());
+				SawmillMenu.this.resultContainer.awardUsedRecipes(player);
+				ItemStack input = SawmillMenu.this.inputSlot.remove(1);
+				if (!input.isEmpty()) {
 					SawmillMenu.this.setupResultSlot();
 				}
 
-				p_40299_.execute((p_40364_, p_40365_) -> {
-					long l = p_40364_.getGameTime();
-					if (SawmillMenu.this.lastSoundTime != l) {
-						p_40364_.playSound(null, p_40365_, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
-						SawmillMenu.this.lastSoundTime = l;
+				access.execute((level, pos) -> {
+					long time = level.getGameTime();
+					if (SawmillMenu.this.lastSoundTime != time) {
+						level.playSound(null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
+						SawmillMenu.this.lastSoundTime = time;
 					}
 
 				});
-				super.onTake(p_150672_, p_150673_);
+				super.onTake(player, stack);
 			}
 		});
 
@@ -101,13 +105,15 @@ public class SawmillMenu extends AbstractContainerMenu {
 		return this.inputSlot.hasItem() && !this.recipes.isEmpty();
 	}
 
-	public boolean stillValid(Player p_40307_) {
-		return stillValid(this.access, p_40307_, WoodworksBlocks.SAWMILL.get());
+	@Override
+	public boolean stillValid(Player player) {
+		return stillValid(this.access, player, WoodworksBlocks.SAWMILL.get());
 	}
 
-	public boolean clickMenuButton(Player p_40309_, int p_40310_) {
-		if (this.isValidRecipeIndex(p_40310_)) {
-			this.selectedRecipeIndex.set(p_40310_);
+	@Override
+	public boolean clickMenuButton(Player player, int index) {
+		if (this.isValidRecipeIndex(index)) {
+			this.selectedRecipeIndex.set(index);
 			this.setupResultSlot();
 		}
 
@@ -118,23 +124,22 @@ public class SawmillMenu extends AbstractContainerMenu {
 		return p_40335_ >= 0 && p_40335_ < this.recipes.size();
 	}
 
-	public void slotsChanged(Container p_40302_) {
+	@Override
+	public void slotsChanged(Container container) {
 		ItemStack itemstack = this.inputSlot.getItem();
 		if (!itemstack.is(this.input.getItem())) {
 			this.input = itemstack.copy();
-			this.setupRecipeList(p_40302_, itemstack);
+			this.setupRecipeList(container, itemstack);
 		}
-
 	}
 
-	private void setupRecipeList(Container p_40304_, ItemStack p_40305_) {
+	private void setupRecipeList(Container container, ItemStack stack) {
 		this.recipes.clear();
 		this.selectedRecipeIndex.set(-1);
 		this.resultSlot.set(ItemStack.EMPTY);
-		if (!p_40305_.isEmpty()) {
-			this.recipes = this.level.getRecipeManager().getRecipesFor(WoodworksRecipeTypes.SAWING.get(), p_40304_, this.level);
+		if (!stack.isEmpty()) {
+			this.recipes = this.level.getRecipeManager().getRecipesFor(WoodworksRecipeTypes.SAWING.get(), container, this.level);
 		}
-
 	}
 
 	void setupResultSlot() {
@@ -154,65 +159,68 @@ public class SawmillMenu extends AbstractContainerMenu {
 		return WoodworksMenuTypes.SAWMILL.get();
 	}
 
-	public void registerUpdateListener(Runnable p_40324_) {
-		this.slotUpdateListener = p_40324_;
+	public void registerUpdateListener(Runnable listener) {
+		this.slotUpdateListener = listener;
 	}
 
-	public boolean canTakeItemForPickAll(ItemStack p_40321_, Slot p_40322_) {
-		return p_40322_.container != this.resultContainer && super.canTakeItemForPickAll(p_40321_, p_40322_);
+	@Override
+	public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
+		return slot.container != this.resultContainer && super.canTakeItemForPickAll(stack, slot);
 	}
 
-	public ItemStack quickMoveStack(Player p_40328_, int p_40329_) {
-		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = this.slots.get(p_40329_);
+	@Override
+	public ItemStack quickMoveStack(Player player, int index) {
+		ItemStack stack = ItemStack.EMPTY;
+		Slot slot = this.slots.get(index);
 		if (slot != null && slot.hasItem()) {
-			ItemStack itemstack1 = slot.getItem();
-			Item item = itemstack1.getItem();
-			itemstack = itemstack1.copy();
-			if (p_40329_ == 1) {
-				item.onCraftedBy(itemstack1, p_40328_.level, p_40328_);
-				if (!this.moveItemStackTo(itemstack1, 2, 38, true)) {
+			ItemStack input = slot.getItem();
+			Item item = input.getItem();
+			stack = input.copy();
+			if (index == 1) {
+				item.onCraftedBy(input, player.level, player);
+				if (!this.moveItemStackTo(input, 2, 38, true)) {
 					return ItemStack.EMPTY;
 				}
 
-				slot.onQuickCraft(itemstack1, itemstack);
-			} else if (p_40329_ == 0) {
-				if (!this.moveItemStackTo(itemstack1, 2, 38, false)) {
+				slot.onQuickCraft(input, stack);
+			} else if (index == 0) {
+				if (!this.moveItemStackTo(input, 2, 38, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else if (this.level.getRecipeManager().getRecipeFor(WoodworksRecipeTypes.SAWING.get(), new SimpleContainer(itemstack1), this.level).isPresent()) {
-				if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
+			} else if (this.level.getRecipeManager().getRecipeFor(WoodworksRecipeTypes.SAWING.get(), new SimpleContainer(input), this.level).isPresent()) {
+				if (!this.moveItemStackTo(input, 0, 1, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else if (p_40329_ >= 2 && p_40329_ < 29) {
-				if (!this.moveItemStackTo(itemstack1, 29, 38, false)) {
+			} else if (index >= 2 && index < 29) {
+				if (!this.moveItemStackTo(input, 29, 38, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else if (p_40329_ >= 29 && p_40329_ < 38 && !this.moveItemStackTo(itemstack1, 2, 29, false)) {
+			} else if (index >= 29 && index < 38 && !this.moveItemStackTo(input, 2, 29, false)) {
 				return ItemStack.EMPTY;
 			}
 
-			if (itemstack1.isEmpty()) {
+			if (input.isEmpty()) {
 				slot.set(ItemStack.EMPTY);
 			}
 
 			slot.setChanged();
-			if (itemstack1.getCount() == itemstack.getCount()) {
+			if (input.getCount() == stack.getCount()) {
 				return ItemStack.EMPTY;
 			}
 
-			slot.onTake(p_40328_, itemstack1);
+			slot.onTake(player, input);
 			this.broadcastChanges();
 		}
 
-		return itemstack;
+		return stack;
 	}
 
-	public void removed(Player p_40326_) {
-		super.removed(p_40326_);
+	@Override
+	public void removed(Player player) {
+		super.removed(player);
 		this.resultContainer.removeItemNoUpdate(1);
 		this.access.execute((p_40313_, p_40314_) -> {
-			this.clearContainer(p_40326_, this.container);
+			this.clearContainer(player, this.container);
 		});
 	}
 }
