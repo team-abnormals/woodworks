@@ -49,6 +49,7 @@
   "block.woodworks.oak_ladder": "Dębowa drabina",
   "block.woodworks.oak_leaf_pile": "Sterta dębowych liści",
   "block.woodworks.oak_trapped_chest": "Dębowa skrzynia-pułapka",
+  "block.woodworks.sawmill": "Piła",
   "block.woodworks.spruce_beehive": "Świerkowy ul",
   "block.woodworks.spruce_boards": "Świerkowy parkiet",
   "block.woodworks.spruce_bookshelf": "Świerkowa biblioteczka",
@@ -61,5 +62,7 @@
   "block.woodworks.warped_bookshelf": "Spaczona biblioteczka",
   "block.woodworks.warped_chest": "Spaczona skrzynia",
   "block.woodworks.warped_ladder": "Spaczona drabina",
-  "block.woodworks.warped_trapped_chest": "Spaczona skrzynia-pułapka"
+  "block.woodworks.warped_trapped_chest": "Spaczona skrzynia-pułapka",
+  "container.woodworks.sawmill": "Piła",
+  "gui.woodworks.category.sawmill": "Piłowanie"
 }
