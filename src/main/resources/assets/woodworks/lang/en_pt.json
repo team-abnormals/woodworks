@@ -61,5 +61,7 @@
   "block.woodworks.warped_bookshelf": "Shelv o' eldritch knowledge",
   "block.woodworks.warped_chest": "Twisted coffer",
   "block.woodworks.warped_ladder": "Bizarre climbin' planks",
-  "block.woodworks.warped_trapped_chest": "Rigged twisted coffer"
+  "block.woodworks.warped_trapped_chest": "Rigged twisted coffer",
+  "container.woodworks.sawmill": "Timberin' device",
+  "gui.woodworks.category.sawmill": "Woodworkin'"
 }
