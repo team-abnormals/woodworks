@@ -41,4 +41,6 @@ license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
 [[dependencies.woodworks]]
     modId = "quark"
     mandatory = false
+    versionRange = "[0,)"
     ordering = "AFTER"
+    side = "BOTH"
