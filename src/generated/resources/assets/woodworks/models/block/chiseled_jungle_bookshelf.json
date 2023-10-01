@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/chiseled_bookshelf",
+  "textures": {
+    "side": "woodworks:block/chiseled_jungle_bookshelf_side",
+    "top": "woodworks:block/chiseled_jungle_bookshelf_top"
+  }
+}

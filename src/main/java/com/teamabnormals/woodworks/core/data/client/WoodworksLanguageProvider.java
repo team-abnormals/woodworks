@@ -6,20 +6,21 @@ import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
 import com.teamabnormals.woodworks.integration.jei.SawingRecipeCategory;
 import net.minecraft.Util;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
 import org.apache.commons.lang3.text.WordUtils;
 
 public class WoodworksLanguageProvider extends LanguageProvider {
 
-	public WoodworksLanguageProvider(DataGenerator generator) {
-		super(generator, Woodworks.MOD_ID, "en_us");
+	public WoodworksLanguageProvider(PackOutput output) {
+		super(output, Woodworks.MOD_ID, "en_us");
 	}
 
 	@Override
 	protected void addTranslations() {
 		this.add("oak_bookshelf");
+		this.add("chiseled_oak_bookshelf");
 		this.add("oak_ladder");
 		this.add("oak_beehive");
 

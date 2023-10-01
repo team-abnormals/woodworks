@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:jungle_leaves_from_leaf_piles"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

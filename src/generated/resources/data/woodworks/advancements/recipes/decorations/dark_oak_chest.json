@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:dark_oak_chest"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

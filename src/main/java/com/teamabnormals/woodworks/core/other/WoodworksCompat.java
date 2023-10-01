@@ -14,6 +14,7 @@ public class WoodworksCompat {
 
 	private static void changeLocalizationKeys() {
 		DataUtil.changeBlockLocalization(Blocks.BOOKSHELF, Woodworks.MOD_ID, "oak_bookshelf");
+		DataUtil.changeBlockLocalization(Blocks.CHISELED_BOOKSHELF, Woodworks.MOD_ID, "chiseled_oak_bookshelf");
 		DataUtil.changeBlockLocalization(Blocks.LADDER, Woodworks.MOD_ID, "oak_ladder");
 		DataUtil.changeBlockLocalization(Blocks.BEEHIVE, Woodworks.MOD_ID, "oak_beehive");
 	}
@@ -26,6 +27,7 @@ public class WoodworksCompat {
 		DataUtil.registerFlammable(WoodworksBlocks.ACACIA_BOARDS.get(), 5, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.DARK_OAK_BOARDS.get(), 5, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.MANGROVE_BOARDS.get(), 5, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.CHERRY_BOARDS.get(), 5, 20);
 
 		DataUtil.registerFlammable(WoodworksBlocks.OAK_LEAF_PILE.get(), 30, 60);
 		DataUtil.registerFlammable(WoodworksBlocks.SPRUCE_LEAF_PILE.get(), 30, 60);
@@ -34,6 +36,7 @@ public class WoodworksCompat {
 		DataUtil.registerFlammable(WoodworksBlocks.ACACIA_LEAF_PILE.get(), 30, 60);
 		DataUtil.registerFlammable(WoodworksBlocks.DARK_OAK_LEAF_PILE.get(), 30, 60);
 		DataUtil.registerFlammable(WoodworksBlocks.MANGROVE_LEAF_PILE.get(), 30, 60);
+		DataUtil.registerFlammable(WoodworksBlocks.CHERRY_LEAF_PILE.get(), 30, 60);
 		DataUtil.registerFlammable(WoodworksBlocks.AZALEA_LEAF_PILE.get(), 30, 60);
 		DataUtil.registerFlammable(WoodworksBlocks.FLOWERING_AZALEA_LEAF_PILE.get(), 30, 60);
 
@@ -43,6 +46,8 @@ public class WoodworksCompat {
 		DataUtil.registerFlammable(WoodworksBlocks.ACACIA_BOOKSHELF.get(), 30, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.DARK_OAK_BOOKSHELF.get(), 30, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.MANGROVE_BOOKSHELF.get(), 30, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.CHERRY_BOOKSHELF.get(), 30, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.BAMBOO_BOOKSHELF.get(), 30, 20);
 
 		DataUtil.registerFlammable(WoodworksBlocks.SPRUCE_BEEHIVE.get(), 5, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.BIRCH_BEEHIVE.get(), 5, 20);
@@ -50,5 +55,7 @@ public class WoodworksCompat {
 		DataUtil.registerFlammable(WoodworksBlocks.ACACIA_BEEHIVE.get(), 5, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.DARK_OAK_BEEHIVE.get(), 5, 20);
 		DataUtil.registerFlammable(WoodworksBlocks.MANGROVE_BEEHIVE.get(), 5, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.CHERRY_BEEHIVE.get(), 5, 20);
+		DataUtil.registerFlammable(WoodworksBlocks.BAMBOO_BEEHIVE.get(), 5, 20);
 	}
 }

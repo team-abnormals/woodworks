@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "woodworks:block/cherry_boards_horizontal",
+      "y": 270
+    },
+    "axis=y": {
+      "model": "woodworks:block/cherry_boards"
+    },
+    "axis=z": {
+      "model": "woodworks:block/cherry_boards_horizontal"
+    }
+  }
+}

@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:trapped_chest"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

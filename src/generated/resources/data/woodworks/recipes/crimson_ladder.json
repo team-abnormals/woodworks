@@ -10,6 +10,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "group": "wooden_ladder",
         "key": {
           "#": {
@@ -27,7 +28,8 @@
         "result": {
           "count": 4,
           "item": "woodworks:crimson_ladder"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

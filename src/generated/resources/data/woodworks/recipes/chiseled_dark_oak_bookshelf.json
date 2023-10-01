@@ -1,0 +1,34 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "woodworks:config",
+          "value": "wooden_bookshelves"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "building",
+        "key": {
+          "#": {
+            "item": "minecraft:dark_oak_planks"
+          },
+          "X": {
+            "item": "minecraft:dark_oak_slab"
+          }
+        },
+        "pattern": [
+          "###",
+          "XXX",
+          "###"
+        ],
+        "result": {
+          "item": "woodworks:chiseled_dark_oak_bookshelf"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:birch_planks_from_birch_logs_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

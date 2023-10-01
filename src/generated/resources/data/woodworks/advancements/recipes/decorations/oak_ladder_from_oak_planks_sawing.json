@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:oak_ladder_from_oak_planks_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

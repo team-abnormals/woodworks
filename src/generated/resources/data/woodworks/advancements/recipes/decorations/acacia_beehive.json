@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:acacia_beehive"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

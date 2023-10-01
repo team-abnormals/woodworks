@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:dark_oak_button_from_dark_oak_logs_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:crimson_ladder"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

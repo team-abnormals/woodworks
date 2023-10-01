@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:oak_beehive"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

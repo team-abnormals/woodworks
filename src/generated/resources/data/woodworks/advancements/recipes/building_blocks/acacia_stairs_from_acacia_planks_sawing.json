@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:acacia_stairs_from_acacia_planks_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

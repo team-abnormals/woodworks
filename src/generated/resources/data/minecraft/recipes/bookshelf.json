@@ -11,6 +11,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "building",
         "key": {
           "#": {
             "tag": "minecraft:planks"
@@ -26,7 +27,8 @@
         ],
         "result": {
           "item": "minecraft:bookshelf"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

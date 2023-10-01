@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:jungle_sign_from_jungle_logs_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

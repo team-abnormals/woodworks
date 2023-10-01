@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:crimson_beehive"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

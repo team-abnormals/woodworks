@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:crimson_stairs_from_crimson_stems_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

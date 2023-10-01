@@ -46,7 +46,7 @@ public class SawmillMenu extends AbstractContainerMenu {
 	public SawmillMenu(int id, Inventory p_40298_, final ContainerLevelAccess access) {
 		super(WoodworksMenuTypes.SAWMILL.get(), id);
 		this.access = access;
-		this.level = p_40298_.player.level;
+		this.level = p_40298_.player.level();
 		this.inputSlot = this.addSlot(new Slot(this.container, 0, 20, 33));
 		this.resultSlot = this.addSlot(new Slot(this.resultContainer, 1, 143, 33) {
 
@@ -57,8 +57,8 @@ public class SawmillMenu extends AbstractContainerMenu {
 
 			@Override
 			public void onTake(Player player, ItemStack stack) {
-				stack.onCraftedBy(player.level, player, stack.getCount());
-				SawmillMenu.this.resultContainer.awardUsedRecipes(player);
+				stack.onCraftedBy(player.level(), player, stack.getCount());
+				SawmillMenu.this.resultContainer.awardUsedRecipes(player, this.getRelevantItems());
 				ItemStack input = SawmillMenu.this.inputSlot.remove(1);
 				if (!input.isEmpty()) {
 					SawmillMenu.this.setupResultSlot();
@@ -73,6 +73,10 @@ public class SawmillMenu extends AbstractContainerMenu {
 
 				});
 				super.onTake(player, stack);
+			}
+
+			private List<ItemStack> getRelevantItems() {
+				return List.of(SawmillMenu.this.inputSlot.getItem());
 			}
 		});
 
@@ -145,8 +149,13 @@ public class SawmillMenu extends AbstractContainerMenu {
 	void setupResultSlot() {
 		if (!this.recipes.isEmpty() && this.isValidRecipeIndex(this.selectedRecipeIndex.get())) {
 			SawmillRecipe recipe = this.recipes.get(this.selectedRecipeIndex.get());
-			this.resultContainer.setRecipeUsed(recipe);
-			this.resultSlot.set(recipe.assemble(this.container));
+			ItemStack stack = recipe.assemble(this.container, this.level.registryAccess());
+			if (stack.isItemEnabled(this.level.enabledFeatures())) {
+				this.resultContainer.setRecipeUsed(recipe);
+				this.resultSlot.set(stack);
+			} else {
+				this.resultSlot.set(ItemStack.EMPTY);
+			}
 		} else {
 			this.resultSlot.set(ItemStack.EMPTY);
 		}
@@ -177,7 +186,7 @@ public class SawmillMenu extends AbstractContainerMenu {
 			Item item = input.getItem();
 			stack = input.copy();
 			if (index == 1) {
-				item.onCraftedBy(input, player.level, player);
+				item.onCraftedBy(input, player.level(), player);
 				if (!this.moveItemStackTo(input, 2, 38, true)) {
 					return ItemStack.EMPTY;
 				}

@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:spruce_boards"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:dark_oak_boards"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

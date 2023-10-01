@@ -11,6 +11,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shapeless",
+        "category": "redstone",
         "ingredients": [
           {
             "tag": "forge:chests/wooden"

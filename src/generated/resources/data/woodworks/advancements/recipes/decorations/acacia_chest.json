@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:acacia_chest"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

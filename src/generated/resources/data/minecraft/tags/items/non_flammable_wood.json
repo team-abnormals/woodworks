@@ -4,13 +4,15 @@
     "woodworks:warped_boards",
     "woodworks:crimson_bookshelf",
     "woodworks:warped_bookshelf",
+    "woodworks:chiseled_crimson_bookshelf",
+    "woodworks:chiseled_warped_bookshelf",
     "woodworks:crimson_ladder",
     "woodworks:warped_ladder",
     "woodworks:crimson_beehive",
     "woodworks:warped_beehive",
     "woodworks:crimson_chest",
     "woodworks:warped_chest",
-    "woodworks:crimson_trapped_chest",
-    "woodworks:warped_trapped_chest"
+    "woodworks:trapped_crimson_chest",
+    "woodworks:trapped_warped_chest"
   ]
 }

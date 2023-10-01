@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:sawmill"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

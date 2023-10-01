@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:mangrove_boards"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

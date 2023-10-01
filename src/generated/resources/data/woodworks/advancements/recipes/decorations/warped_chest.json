@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:warped_chest"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

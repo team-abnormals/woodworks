@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:jungle_ladder_from_jungle_planks_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

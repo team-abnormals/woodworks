@@ -20,21 +20,21 @@ license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
 [[dependencies.woodworks]]
     modId = "minecraft"
     mandatory = true
-    versionRange = "[1.19.2,1.19.3)"
+    versionRange = "[1.20.1,1.21)"
     ordering = "AFTER"
     side = "BOTH"
 
 [[dependencies.woodworks]]
     modId = "forge"
     mandatory = true
-    versionRange = "[43.2.0,)"
+    versionRange = "[47.1.0,)"
     ordering = "AFTER"
     side = "BOTH"
 
 [[dependencies.woodworks]]
     modId = "blueprint"
     mandatory = true
-    versionRange = "[6.1.0,)"
+    versionRange = "[7.0.0,)"
     ordering = "AFTER"
     side = "BOTH"
 

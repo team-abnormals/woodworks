@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:dark_oak_stairs_from_dark_oak_planks_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

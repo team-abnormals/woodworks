@@ -1,0 +1,6 @@
+{
+  "parent": "woodworks:block/chiseled_bamboo_bookshelf_slot_bottom_right",
+  "textures": {
+    "texture": "woodworks:block/chiseled_bamboo_bookshelf_empty"
+  }
+}

@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:jungle_chest"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

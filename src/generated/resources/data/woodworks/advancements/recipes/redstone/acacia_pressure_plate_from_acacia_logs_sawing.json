@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:acacia_pressure_plate_from_acacia_logs_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

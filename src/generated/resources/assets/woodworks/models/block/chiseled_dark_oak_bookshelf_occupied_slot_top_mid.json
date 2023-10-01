@@ -1,0 +1,6 @@
+{
+  "parent": "woodworks:block/chiseled_dark_oak_bookshelf_slot_top_mid",
+  "textures": {
+    "texture": "woodworks:block/chiseled_dark_oak_bookshelf_occupied"
+  }
+}

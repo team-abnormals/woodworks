@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:warped_trapdoor_from_warped_stems_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

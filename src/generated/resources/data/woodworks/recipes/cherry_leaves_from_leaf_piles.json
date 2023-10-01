@@ -1,0 +1,31 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "woodworks:config",
+          "value": "leaf_piles"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "group": "leaves",
+        "key": {
+          "#": {
+            "item": "woodworks:cherry_leaf_pile"
+          }
+        },
+        "pattern": [
+          "##",
+          "##"
+        ],
+        "result": {
+          "item": "minecraft:cherry_leaves"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

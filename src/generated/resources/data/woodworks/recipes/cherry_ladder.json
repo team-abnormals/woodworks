@@ -1,0 +1,36 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "woodworks:config",
+          "value": "wooden_ladders"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "group": "wooden_ladder",
+        "key": {
+          "#": {
+            "item": "minecraft:cherry_planks"
+          },
+          "S": {
+            "item": "minecraft:stick"
+          }
+        },
+        "pattern": [
+          "S S",
+          "S#S",
+          "S S"
+        ],
+        "result": {
+          "count": 4,
+          "item": "woodworks:cherry_ladder"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:warped_stairs_from_warped_planks_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

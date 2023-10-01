@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:acacia_bookshelf"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

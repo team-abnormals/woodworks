@@ -1,11 +1,9 @@
 package com.teamabnormals.woodworks.common.block;
 
-import com.teamabnormals.blueprint.core.util.item.filling.TargetedItemCategoryFiller;
 import com.teamabnormals.woodworks.common.inventory.SawmillMenu;
 import com.teamabnormals.woodworks.core.Woodworks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -14,9 +12,6 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -36,7 +31,6 @@ import javax.annotation.Nullable;
 public class SawmillBlock extends Block {
 	public static final Component CONTAINER_TITLE = Component.translatable("container." + Woodworks.MOD_ID + ".sawmill");
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-	private static final TargetedItemCategoryFiller FILLER = new TargetedItemCategoryFiller(() -> Items.STONECUTTER);
 	public static final VoxelShape[] SHAPES = new VoxelShape[]{
 			Shapes.or(box(0.0D, 0.0D, 9.0D, 16.0D, 16.0D, 16.0D), box(7.0D, 0.0D, 0.0D, 9.0D, 2.0D, 9.0D)),
 			Shapes.or(box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 7.0D), box(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 16.0D)),
@@ -104,10 +98,5 @@ public class SawmillBlock extends Block {
 	@Override
 	public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
 		return false;
-	}
-
-	@Override
-	public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> items) {
-		FILLER.fillItem(this.asItem(), tab, items);
 	}
 }

@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:mangrove_ladder_from_mangrove_logs_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

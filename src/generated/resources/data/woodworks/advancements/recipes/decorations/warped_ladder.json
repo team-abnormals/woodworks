@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:warped_ladder"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

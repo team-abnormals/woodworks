@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "redstone",
   "key": {
     "B": {
       "tag": "forge:bookshelves"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "minecraft:lectern"
-  }
+  },
+  "show_notification": true
 }

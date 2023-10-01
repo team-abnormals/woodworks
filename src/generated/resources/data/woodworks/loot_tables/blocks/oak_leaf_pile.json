@@ -113,5 +113,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "woodworks:blocks/oak_leaf_pile"
 }

@@ -33,7 +33,8 @@
           "recipes": [
             "minecraft:trapped_chest"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

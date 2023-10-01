@@ -31,7 +31,8 @@
           "recipes": [
             "woodworks:oak_button_from_oak_logs_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

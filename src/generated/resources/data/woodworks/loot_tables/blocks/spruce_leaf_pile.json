@@ -113,5 +113,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "woodworks:blocks/spruce_leaf_pile"
 }

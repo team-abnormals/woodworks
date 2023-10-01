@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:spruce_stairs_from_spruce_planks_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

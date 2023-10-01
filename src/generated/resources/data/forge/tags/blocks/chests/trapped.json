@@ -1,13 +1,14 @@
 {
   "values": [
-    "woodworks:oak_trapped_chest",
-    "woodworks:spruce_trapped_chest",
-    "woodworks:birch_trapped_chest",
-    "woodworks:jungle_trapped_chest",
-    "woodworks:acacia_trapped_chest",
-    "woodworks:dark_oak_trapped_chest",
-    "woodworks:mangrove_trapped_chest",
-    "woodworks:crimson_trapped_chest",
-    "woodworks:warped_trapped_chest"
+    "woodworks:trapped_oak_chest",
+    "woodworks:trapped_spruce_chest",
+    "woodworks:trapped_birch_chest",
+    "woodworks:trapped_jungle_chest",
+    "woodworks:trapped_acacia_chest",
+    "woodworks:trapped_dark_oak_chest",
+    "woodworks:trapped_mangrove_chest",
+    "woodworks:trapped_cherry_chest",
+    "woodworks:trapped_crimson_chest",
+    "woodworks:trapped_warped_chest"
   ]
 }

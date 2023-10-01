@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:birch_ladder_from_birch_planks_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

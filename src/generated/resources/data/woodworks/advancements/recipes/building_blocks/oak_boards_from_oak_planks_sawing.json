@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:oak_boards_from_oak_planks_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

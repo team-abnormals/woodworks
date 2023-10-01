@@ -30,6 +30,8 @@ public class WoodworksConfig {
 		@ConfigKey("wooden_chests_in_structures")
 		public final BooleanValue woodenChestsInStructures;
 
+		public final BooleanValue woodworksCreativeModeTab;
+
 		public Common(ForgeConfigSpec.Builder builder) {
 			builder.push("blocks");
 			this.sawmill = builder.define("Sawmill", true);
@@ -44,6 +46,9 @@ public class WoodworksConfig {
 			this.woodenBookshelvesInStructures = builder.comment("If variant bookshelves replace bookshelves in certain structures").define("Wooden bookshelves in structures", true);
 			this.woodenLaddersInStructures = builder.comment("If variant ladders replace ladders in certain structures").define("Wooden ladders in structures", true);
 			this.woodenChestsInStructures = builder.comment("If variant chests replace chests in certain structures").define("Wooden chests in structres", true);
+			builder.pop();
+			builder.push("misc");
+			this.woodworksCreativeModeTab = builder.define("Woodworks creative mode tab", true);
 			builder.pop();
 		}
 	}

@@ -11,6 +11,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "key": {
           "#": {
             "tag": "minecraft:planks"
@@ -23,7 +24,8 @@
         ],
         "result": {
           "item": "minecraft:chest"
-        }
+        },
+        "show_notification": true
       }
     }
   ]

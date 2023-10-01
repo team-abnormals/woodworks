@@ -33,7 +33,8 @@
           "recipes": [
             "woodworks:mangrove_stairs_from_mangrove_planks_sawing"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

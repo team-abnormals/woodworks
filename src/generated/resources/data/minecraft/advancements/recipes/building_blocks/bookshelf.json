@@ -33,7 +33,8 @@
           "recipes": [
             "minecraft:bookshelf"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {
