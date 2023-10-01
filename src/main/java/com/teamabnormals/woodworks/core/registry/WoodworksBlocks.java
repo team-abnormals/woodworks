@@ -8,6 +8,7 @@ import com.teamabnormals.blueprint.core.util.PropertyUtil.WoodSetProperties;
 import com.teamabnormals.blueprint.core.util.item.CreativeModeTabContentsPopulator;
 import com.teamabnormals.woodworks.common.block.*;
 import com.teamabnormals.woodworks.core.Woodworks;
+import com.teamabnormals.woodworks.core.WoodworksConfig;
 import com.teamabnormals.woodworks.core.registry.helper.WoodworksBlockSubRegistryHelper;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
@@ -125,14 +126,14 @@ public class WoodworksBlocks {
 		public static final WoodSetProperties MANGROVE_WOOD = WoodSetProperties.builder(MapColor.COLOR_RED).build();
 		public static final WoodSetProperties CHERRY_WOOD = WoodSetProperties.builder(MapColor.TERRACOTTA_WHITE).sound(SoundType.CHERRY_WOOD).logSound(SoundType.CHERRY_WOOD).leavesColor(MapColor.COLOR_PINK).leavesSound(SoundType.CHERRY_LEAVES).build();
 		public static final WoodSetProperties BAMBOO_WOOD = WoodSetProperties.builder(MapColor.COLOR_YELLOW).sound(SoundType.BAMBOO_WOOD).build();
-		public static final WoodSetProperties CRIMSON_STEM = WoodSetProperties.builder(MapColor.CRIMSON_STEM).build();
-		public static final WoodSetProperties WARPED_STEM = WoodSetProperties.builder(MapColor.WARPED_STEM).build();
+		public static final WoodSetProperties CRIMSON_STEM = WoodSetProperties.builder(MapColor.CRIMSON_STEM).basePropertiesConsumer(block -> BlockBehaviour.Properties.of()).sound(SoundType.NETHER_WOOD).build();
+		public static final WoodSetProperties WARPED_STEM = WoodSetProperties.builder(MapColor.WARPED_STEM).basePropertiesConsumer(block -> BlockBehaviour.Properties.of()).sound(SoundType.NETHER_WOOD).build();
 		public static final WoodSetProperties AZALEA_WOOD = WoodSetProperties.builder(MapColor.TERRACOTTA_PURPLE).leavesSound(SoundType.AZALEA_LEAVES).build();
 	}
 
 	public static void setupTabEditors() {
 		CreativeModeTabContentsPopulator.mod(Woodworks.MOD_ID)
-				.tab(BUILDING_BLOCKS)
+				.tab(BUILDING_BLOCKS).predicate(event -> WoodworksConfig.COMMON.woodenBoards.get())
 				.addItemsAfter(of(Items.OAK_PLANKS), OAK_BOARDS)
 				.addItemsAfter(of(Items.SPRUCE_PLANKS), SPRUCE_BOARDS)
 				.addItemsAfter(of(Items.BIRCH_PLANKS), BIRCH_BOARDS)
@@ -143,7 +144,7 @@ public class WoodworksBlocks {
 				.addItemsAfter(of(Items.CHERRY_PLANKS), CHERRY_BOARDS)
 				.addItemsAfter(of(Items.CRIMSON_PLANKS), CRIMSON_BOARDS)
 				.addItemsAfter(of(Items.WARPED_PLANKS), WARPED_BOARDS)
-				.tab(NATURAL_BLOCKS)
+				.tab(NATURAL_BLOCKS).predicate(event -> WoodworksConfig.COMMON.leafPiles.get())
 				.addItemsAfter(of(Items.OAK_LEAVES), OAK_LEAF_PILE)
 				.addItemsAfter(of(Items.SPRUCE_LEAVES), SPRUCE_LEAF_PILE)
 				.addItemsAfter(of(Items.BIRCH_LEAVES), BIRCH_LEAF_PILE)
@@ -155,10 +156,15 @@ public class WoodworksBlocks {
 				.addItemsAfter(of(Items.AZALEA_LEAVES), AZALEA_LEAF_PILE)
 				.addItemsAfter(of(Items.FLOWERING_AZALEA_LEAVES), FLOWERING_AZALEA_LEAF_PILE)
 				.tab(FUNCTIONAL_BLOCKS)
+				.predicate(event -> WoodworksConfig.COMMON.sawmill.get())
 				.addItemsAfter(of(Items.STONECUTTER), SAWMILL)
+				.predicate(event -> WoodworksConfig.COMMON.woodenLadders.get())
 				.addItemsAfter(of(Items.LADDER), SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, MANGROVE_LADDER, CHERRY_LADDER, BAMBOO_LADDER, CRIMSON_LADDER, WARPED_LADDER)
+				.predicate(event -> WoodworksConfig.COMMON.woodenBeehives.get())
 				.addItemsAfter(of(Items.BEEHIVE), SPRUCE_BEEHIVE, BIRCH_BEEHIVE, JUNGLE_BEEHIVE, ACACIA_BEEHIVE, DARK_OAK_BEEHIVE, MANGROVE_BEEHIVE, CHERRY_BEEHIVE, BAMBOO_BEEHIVE, CRIMSON_BEEHIVE, WARPED_BEEHIVE)
+				.predicate(event -> WoodworksConfig.COMMON.woodenBookshelves.get())
 				.addItemsAfter(of(Items.CHISELED_BOOKSHELF), SPRUCE_BOOKSHELF, CHISELED_SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, CHISELED_BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, CHISELED_JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, CHISELED_ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CHISELED_DARK_OAK_BOOKSHELF, MANGROVE_BOOKSHELF, CHISELED_MANGROVE_BOOKSHELF, CHERRY_BOOKSHELF, CHISELED_CHERRY_BOOKSHELF, BAMBOO_BOOKSHELF, CHISELED_BAMBOO_BOOKSHELF, CRIMSON_BOOKSHELF, CHISELED_CRIMSON_BOOKSHELF, WARPED_BOOKSHELF, CHISELED_WARPED_BOOKSHELF)
+				.predicate(event -> WoodworksConfig.COMMON.woodenChests.get())
 				.addItemsAfter(of(Items.CHEST), OAK_CHEST, SPRUCE_CHEST, BIRCH_CHEST, JUNGLE_CHEST, ACACIA_CHEST, DARK_OAK_CHEST, MANGROVE_CHEST, CHERRY_CHEST, CRIMSON_CHEST, WARPED_CHEST)
 				.tab(REDSTONE_BLOCKS)
 				.addItemsAfter(of(Items.TRAPPED_CHEST), TRAPPED_OAK_CHEST, TRAPPED_SPRUCE_CHEST, TRAPPED_BIRCH_CHEST, TRAPPED_JUNGLE_CHEST, TRAPPED_ACACIA_CHEST, TRAPPED_DARK_OAK_CHEST, TRAPPED_MANGROVE_CHEST, TRAPPED_CHERRY_CHEST, TRAPPED_CRIMSON_CHEST, TRAPPED_WARPED_CHEST);
