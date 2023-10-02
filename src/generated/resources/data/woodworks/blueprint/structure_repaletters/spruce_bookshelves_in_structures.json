@@ -1,0 +1,29 @@
+{
+  "repaletter": {
+    "type": "blueprint:simple",
+    "replaces_block": "minecraft:bookshelf",
+    "replaces_with": "woodworks:spruce_bookshelf"
+  },
+  "structures": {
+    "type": "blueprint:conditional",
+    "conditions": [
+      {
+        "type": "forge:and",
+        "values": [
+          {
+            "type": "woodworks:config",
+            "value": "wooden_bookshelves"
+          },
+          {
+            "type": "woodworks:config",
+            "value": "wooden_bookshelves_in_structures"
+          }
+        ]
+      }
+    ],
+    "value": [
+      "minecraft:village_taiga",
+      "minecraft:village_snowy"
+    ]
+  }
+}

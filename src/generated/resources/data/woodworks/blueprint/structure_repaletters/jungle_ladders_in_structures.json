@@ -1,0 +1,26 @@
+{
+  "repaletter": {
+    "type": "blueprint:simple",
+    "replaces_block": "minecraft:ladder",
+    "replaces_with": "woodworks:jungle_ladder"
+  },
+  "structures": {
+    "type": "blueprint:conditional",
+    "conditions": [
+      {
+        "type": "forge:and",
+        "values": [
+          {
+            "type": "woodworks:config",
+            "value": "wooden_ladders"
+          },
+          {
+            "type": "woodworks:config",
+            "value": "wooden_ladders_in_structures"
+          }
+        ]
+      }
+    ],
+    "value": "minecraft:village_desert"
+  }
+}

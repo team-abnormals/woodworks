@@ -1,0 +1,29 @@
+{
+  "repaletter": {
+    "type": "blueprint:simple",
+    "replaces_block": "minecraft:chest",
+    "replaces_with": "woodworks:dark_oak_chest"
+  },
+  "structures": {
+    "type": "blueprint:conditional",
+    "conditions": [
+      {
+        "type": "forge:and",
+        "values": [
+          {
+            "type": "woodworks:config",
+            "value": "wooden_chests"
+          },
+          {
+            "type": "woodworks:config",
+            "value": "wooden_chests_in_structures"
+          }
+        ]
+      }
+    ],
+    "value": [
+      "minecraft:pillager_outpost",
+      "minecraft:mansion"
+    ]
+  }
+}
