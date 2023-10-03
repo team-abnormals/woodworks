@@ -10,7 +10,7 @@ license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
     itemIcon = "woodworks:sawmill"
     configBackground = "woodworks:textures/block/spruce_boards.png"
     authors = "Team Abnormals"
-    credits = "bageldotjpg, five, hatsondogs, Rye"
+    credits = "bageldotjpg, five, hatsondogs"
     displayURL = "https://www.teamabnormals.com/mods/woodworks"
     displayName = "Woodworks"
     description = '''
@@ -34,7 +34,7 @@ license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
 [[dependencies.woodworks]]
     modId = "blueprint"
     mandatory = true
-    versionRange = "[7.0.0,)"
+    versionRange = "[7.0.1,)"
     ordering = "AFTER"
     side = "BOTH"
 

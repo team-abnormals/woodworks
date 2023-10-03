@@ -20,7 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 
 public class SawingRecipeCategory implements IRecipeCategory<SawmillRecipe> {
-	public static final ResourceLocation RECIPE_GUI_VANILLA = new ResourceLocation("jei", "textures/gui/gui_vanilla.png");
+	public static final ResourceLocation RECIPE_GUI_VANILLA = new ResourceLocation("jei", "textures/jei/gui/gui_vanilla.png");
 	public static final MutableComponent TRANSLATION = Component.translatable("gui." + Woodworks.MOD_ID + ".category.sawmill");
 
 	public static final int WIDTH = 82;
