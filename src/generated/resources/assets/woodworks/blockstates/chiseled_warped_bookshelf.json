@@ -31,7 +31,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_right",
         "uvlock": true
       },
       "when": {
@@ -41,7 +41,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_right",
         "uvlock": true
       },
       "when": {
@@ -51,7 +51,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_right",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_mid_left",
         "uvlock": true
       },
       "when": {
@@ -61,7 +61,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_right",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_mid_left",
         "uvlock": true
       },
       "when": {
@@ -71,7 +71,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_left",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_mid_right",
         "uvlock": true
       },
       "when": {
@@ -81,7 +81,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_left",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_mid_right",
         "uvlock": true
       },
       "when": {
@@ -91,7 +91,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_left",
         "uvlock": true
       },
       "when": {
@@ -101,7 +101,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_left",
         "uvlock": true
       },
       "when": {
@@ -163,7 +163,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_right",
         "uvlock": true,
         "y": 90
       },
@@ -174,7 +174,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_right",
         "uvlock": true,
         "y": 90
       },
@@ -185,7 +185,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_right",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_mid_left",
         "uvlock": true,
         "y": 90
       },
@@ -196,7 +196,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_right",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_mid_left",
         "uvlock": true,
         "y": 90
       },
@@ -207,7 +207,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_left",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_mid_right",
         "uvlock": true,
         "y": 90
       },
@@ -218,7 +218,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_left",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_mid_right",
         "uvlock": true,
         "y": 90
       },
@@ -229,7 +229,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_left",
         "uvlock": true,
         "y": 90
       },
@@ -240,7 +240,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_left",
         "uvlock": true,
         "y": 90
       },
@@ -305,7 +305,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_right",
         "uvlock": true,
         "y": 180
       },
@@ -316,7 +316,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_right",
         "uvlock": true,
         "y": 180
       },
@@ -327,7 +327,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_right",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_mid_left",
         "uvlock": true,
         "y": 180
       },
@@ -338,7 +338,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_right",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_mid_left",
         "uvlock": true,
         "y": 180
       },
@@ -349,7 +349,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_left",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_mid_right",
         "uvlock": true,
         "y": 180
       },
@@ -360,7 +360,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_left",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_mid_right",
         "uvlock": true,
         "y": 180
       },
@@ -371,7 +371,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_left",
         "uvlock": true,
         "y": 180
       },
@@ -382,7 +382,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_left",
         "uvlock": true,
         "y": 180
       },
@@ -447,7 +447,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_right",
         "uvlock": true,
         "y": 270
       },
@@ -458,7 +458,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_right",
         "uvlock": true,
         "y": 270
       },
@@ -469,7 +469,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_top_right",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_mid_left",
         "uvlock": true,
         "y": 270
       },
@@ -480,7 +480,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_top_right",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_mid_left",
         "uvlock": true,
         "y": 270
       },
@@ -491,7 +491,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_left",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_mid_right",
         "uvlock": true,
         "y": 270
       },
@@ -502,7 +502,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_left",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_mid_right",
         "uvlock": true,
         "y": 270
       },
@@ -513,7 +513,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_occupied_slot_bottom_left",
         "uvlock": true,
         "y": 270
       },
@@ -524,7 +524,7 @@
     },
     {
       "apply": {
-        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_mid",
+        "model": "woodworks:block/chiseled_warped_bookshelf_empty_slot_bottom_left",
         "uvlock": true,
         "y": 270
       },

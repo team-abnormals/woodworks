@@ -67,8 +67,8 @@ public class WoodworksBlocks {
 	public static final RegistryObject<Block> CHISELED_MANGROVE_BOOKSHELF = HELPER.createFuelBlock("chiseled_mangrove_bookshelf", () -> new ChiseledMangroveBookShelfBlock(WoodworksProperties.MANGROVE_WOOD.bookshelf()), 300);
 	public static final RegistryObject<Block> CHISELED_CHERRY_BOOKSHELF = HELPER.createFuelBlock("chiseled_cherry_bookshelf", () -> new ChiseledCherryBookShelfBlock(WoodworksProperties.CHERRY_WOOD.bookshelf()), 300);
 	public static final RegistryObject<Block> CHISELED_BAMBOO_BOOKSHELF = HELPER.createFuelBlock("chiseled_bamboo_bookshelf", () -> new ChiseledBambooBookShelfBlock(WoodworksProperties.BAMBOO_WOOD.bookshelf()), 300);
-	public static final RegistryObject<Block> CHISELED_CRIMSON_BOOKSHELF = HELPER.createBlock("chiseled_crimson_bookshelf", () -> new ChiseledBookShelfBlock(WoodworksProperties.CRIMSON_STEM.bookshelf()));
-	public static final RegistryObject<Block> CHISELED_WARPED_BOOKSHELF = HELPER.createBlock("chiseled_warped_bookshelf", () -> new ChiseledBookShelfBlock(WoodworksProperties.WARPED_STEM.bookshelf()));
+	public static final RegistryObject<Block> CHISELED_CRIMSON_BOOKSHELF = HELPER.createBlock("chiseled_crimson_bookshelf", () -> new ChiseledCrimsonBookShelfBlock(WoodworksProperties.CRIMSON_STEM.bookshelf()));
+	public static final RegistryObject<Block> CHISELED_WARPED_BOOKSHELF = HELPER.createBlock("chiseled_warped_bookshelf", () -> new ChiseledSpruceBookShelfBlock(WoodworksProperties.WARPED_STEM.bookshelf()));
 
 	public static final RegistryObject<Block> SPRUCE_LADDER = HELPER.createFuelBlock("spruce_ladder", () -> new LadderBlock(WoodworksProperties.SPRUCE_WOOD.ladder()), 300);
 	public static final RegistryObject<Block> BIRCH_LADDER = HELPER.createFuelBlock("birch_ladder", () -> new LadderBlock(WoodworksProperties.BIRCH_WOOD.ladder()), 300);

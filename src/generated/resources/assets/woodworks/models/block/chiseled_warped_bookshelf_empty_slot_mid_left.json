@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/template_chiseled_bookshelf_slot_top_mid",
+  "parent": "woodworks:block/chiseled_spruce_bookshelf_slot_mid_left",
   "textures": {
     "texture": "woodworks:block/chiseled_warped_bookshelf_empty"
   }

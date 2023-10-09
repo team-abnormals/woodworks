@@ -98,13 +98,13 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 		this.beehiveBlock(BAMBOO_BEEHIVE.get());
 
 		this.boardsBlock(CRIMSON_BOARDS.get());
-		this.bookshelfBlocks(Blocks.CRIMSON_PLANKS, CRIMSON_BOOKSHELF.get(), CHISELED_CRIMSON_BOOKSHELF.get());
+		this.bookshelfBlocks(Blocks.CRIMSON_PLANKS, CRIMSON_BOOKSHELF.get(), CHISELED_CRIMSON_BOOKSHELF.get(), DEFAULT_BOOKSHELF_POSITIONS, Woodworks.MOD_ID + ":block/chiseled_crimson");
 		this.ladderBlock(CRIMSON_LADDER.get());
 		this.beehiveBlock(CRIMSON_BEEHIVE.get());
 		this.chestBlocks(Blocks.CRIMSON_PLANKS, CRIMSON_CHEST.get(), TRAPPED_CRIMSON_CHEST.get());
 
 		this.boardsBlock(WARPED_BOARDS.get());
-		this.bookshelfBlocks(Blocks.WARPED_PLANKS, WARPED_BOOKSHELF.get(), CHISELED_WARPED_BOOKSHELF.get());
+		this.bookshelfBlocks(Blocks.WARPED_PLANKS, WARPED_BOOKSHELF.get(), CHISELED_WARPED_BOOKSHELF.get(), ALTERNATE_BOOKSHELF_POSITIONS, Woodworks.MOD_ID + ":block/chiseled_spruce");
 		this.ladderBlock(WARPED_LADDER.get());
 		this.beehiveBlock(WARPED_BEEHIVE.get());
 		this.chestBlocks(Blocks.WARPED_PLANKS, WARPED_CHEST.get(), TRAPPED_WARPED_CHEST.get());
