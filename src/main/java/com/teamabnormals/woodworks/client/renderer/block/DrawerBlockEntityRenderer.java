@@ -96,14 +96,8 @@ public class DrawerBlockEntityRenderer<T extends BlockEntity & LidBlockEntity> e
 			float f = facing.toYRot();
 			boolean right = state.hasProperty(ClosetBlock.HINGE) && state.getValue(ClosetBlock.HINGE) == DoorHingeSide.RIGHT;
 
-			BlockPos neighborPos = tileEntityIn.getBlockPos().relative(!right ? facing.getCounterClockWise() : facing.getClockWise());
-
-			if (flag && level.getBlockState(neighborPos).is(state.getBlock())) {
-				BlockState neighborState = level.getBlockState(neighborPos);
-				DoorHingeSide hinge = state.getValue(ClosetBlock.HINGE);
-				if (neighborState.getValue(ClosetBlock.TYPE) == chesttype && neighborState.getValue(ClosetBlock.FACING) == facing && neighborState.getValue(ClosetBlock.HINGE) != hinge) {
-					poseStack.translate(facing.getNormal().getZ() * 0.0625D * (right ? -1.0D : 1.0D), 0.0D, -facing.getNormal().getX() * 0.0625D * (right ? -1.0D : 1.0D));
-				}
+			if (flag && ClosetBlock.shouldTranslateCloset(state, level, tileEntityIn.getBlockPos())) {
+				poseStack.translate(facing.getNormal().getZ() * 0.0625D * (right ? -1.0D : 1.0D), 0.0D, -facing.getNormal().getX() * 0.0625D * (right ? -1.0D : 1.0D));
 			}
 
 			poseStack.translate(0.5D, 0.5D, 0.5D);

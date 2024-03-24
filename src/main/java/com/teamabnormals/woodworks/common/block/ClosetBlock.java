@@ -5,7 +5,6 @@ import com.teamabnormals.woodworks.common.block.entity.ClosetBlockEntity;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Direction.Axis;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.CompoundContainer;
 import net.minecraft.world.Container;
@@ -34,6 +33,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
@@ -43,6 +43,19 @@ import java.util.function.Supplier;
 
 public class ClosetBlock extends ChestBlock implements IChestBlock {
 	public static final EnumProperty<DoorHingeSide> HINGE = BlockStateProperties.DOOR_HINGE;
+
+	protected static final VoxelShape NORTH_AABB = Block.box(2.0D, 0.0D, 1.0D, 16.0D, 14.0D, 15.0D);
+	protected static final VoxelShape SOUTH_AABB = Block.box(0.0D, 0.0D, 1.0D, 14.0D, 14.0D, 15.0D);
+	protected static final VoxelShape NORTH_AABB_TALL = Block.box(2.0D, 0.0D, 1.0D, 16.0D, 16.0D, 15.0D);
+	protected static final VoxelShape SOUTH_AABB_TALL = Block.box(0.0D, 0.0D, 1.0D, 14.0D, 16.0D, 15.0D);
+
+	protected static final VoxelShape WEST_AABB = Block.box(1.0D, 0.0D, 2.0D, 15.0D, 14.0D, 16.0D);
+	protected static final VoxelShape EAST_AABB = Block.box(1.0D, 0.0D, 0.0D, 15.0D, 14.0D, 14.0D);
+	protected static final VoxelShape WEST_AABB_TALL = Block.box(1.0D, 0.0D, 2.0D, 15.0D, 16.0D, 16.0D);
+	protected static final VoxelShape EAST_AABB_TALL = Block.box(1.0D, 0.0D, 0.0D, 15.0D, 16.0D, 14.0D);
+
+	protected static final VoxelShape AABB = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 14.0D, 15.0D);
+	protected static final VoxelShape AABB_TALL = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
 	public final String type;
 
@@ -115,6 +128,50 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 		}
 
 		return DoubleBlockCombiner.combineWithNeigbour(this.blockEntityType.get(), ChestBlock::getBlockType, ClosetBlock::getConnectedDirection, FACING, state, level, pos, bipredicate);
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+		boolean tall = state.getValue(TYPE) == ChestType.RIGHT;
+		boolean left = state.getValue(HINGE) == DoorHingeSide.LEFT;
+		
+		if (shouldTranslateCloset(state, level, pos)) {
+			VoxelShape north = tall ? NORTH_AABB_TALL : NORTH_AABB;
+			VoxelShape south = tall ? SOUTH_AABB_TALL : SOUTH_AABB;
+			VoxelShape east = tall ? EAST_AABB_TALL : EAST_AABB;
+			VoxelShape west = tall ? WEST_AABB_TALL : WEST_AABB;
+
+			switch (state.getValue(FACING)) {
+				default:
+				case NORTH:
+					return !left ? north : south;
+				case SOUTH:
+					return !left ? south : north;
+				case WEST:
+					return left ? west : east;
+				case EAST:
+					return left ? east : west;
+			}
+		} else if (tall) {
+			return AABB_TALL;
+		}
+
+		return AABB;
+	}
+
+	public static boolean shouldTranslateCloset(BlockState state, BlockGetter level, BlockPos pos) {
+		boolean right = state.hasProperty(ClosetBlock.HINGE) && state.getValue(ClosetBlock.HINGE) == DoorHingeSide.RIGHT;
+		Direction facing = state.getValue(ChestBlock.FACING);
+		BlockPos neighborPos = pos.relative(!right ? facing.getCounterClockWise() : facing.getClockWise());
+		ChestType chesttype = state.hasProperty(ChestBlock.TYPE) ? state.getValue(ChestBlock.TYPE) : ChestType.SINGLE;
+
+		if (level.getBlockState(neighborPos).is(state.getBlock())) {
+			BlockState neighborState = level.getBlockState(neighborPos);
+			DoorHingeSide hinge = state.getValue(ClosetBlock.HINGE);
+			return neighborState.getValue(ClosetBlock.TYPE) == chesttype && neighborState.getValue(ClosetBlock.FACING) == facing && neighborState.getValue(ClosetBlock.HINGE) != hinge;
+		}
+
+		return false;
 	}
 
 	@Override
