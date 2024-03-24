@@ -10,20 +10,18 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "category": "building",
+        "category": "misc",
         "group": "wooden_boards",
         "key": {
           "#": {
-            "item": "minecraft:birch_planks"
+            "item": "minecraft:birch_slab"
           }
         },
         "pattern": [
           "#",
-          "#",
           "#"
         ],
         "result": {
-          "count": 3,
           "item": "woodworks:birch_boards"
         },
         "show_notification": true

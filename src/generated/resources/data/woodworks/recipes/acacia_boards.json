@@ -10,20 +10,18 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "category": "building",
+        "category": "misc",
         "group": "wooden_boards",
         "key": {
           "#": {
-            "item": "minecraft:acacia_planks"
+            "item": "minecraft:acacia_slab"
           }
         },
         "pattern": [
           "#",
-          "#",
           "#"
         ],
         "result": {
-          "count": 3,
           "item": "woodworks:acacia_boards"
         },
         "show_notification": true

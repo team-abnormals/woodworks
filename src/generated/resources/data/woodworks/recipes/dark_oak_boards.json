@@ -10,20 +10,18 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "category": "building",
+        "category": "misc",
         "group": "wooden_boards",
         "key": {
           "#": {
-            "item": "minecraft:dark_oak_planks"
+            "item": "minecraft:dark_oak_slab"
           }
         },
         "pattern": [
           "#",
-          "#",
           "#"
         ],
         "result": {
-          "count": 3,
           "item": "woodworks:dark_oak_boards"
         },
         "show_notification": true

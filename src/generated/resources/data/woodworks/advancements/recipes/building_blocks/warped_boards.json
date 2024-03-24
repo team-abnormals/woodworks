@@ -10,12 +10,12 @@
             },
             "trigger": "minecraft:recipe_unlocked"
           },
-          "has_warped_planks": {
+          "has_warped_slab": {
             "conditions": {
               "items": [
                 {
                   "items": [
-                    "minecraft:warped_planks"
+                    "minecraft:warped_slab"
                   ]
                 }
               ]
@@ -25,7 +25,7 @@
         },
         "requirements": [
           [
-            "has_warped_planks",
+            "has_warped_slab",
             "has_the_recipe"
           ]
         ],

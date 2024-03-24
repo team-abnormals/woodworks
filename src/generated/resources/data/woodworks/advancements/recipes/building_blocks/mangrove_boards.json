@@ -4,12 +4,12 @@
       "advancement": {
         "parent": "minecraft:recipes/root",
         "criteria": {
-          "has_mangrove_planks": {
+          "has_mangrove_slab": {
             "conditions": {
               "items": [
                 {
                   "items": [
-                    "minecraft:mangrove_planks"
+                    "minecraft:mangrove_slab"
                   ]
                 }
               ]
@@ -25,7 +25,7 @@
         },
         "requirements": [
           [
-            "has_mangrove_planks",
+            "has_mangrove_slab",
             "has_the_recipe"
           ]
         ],

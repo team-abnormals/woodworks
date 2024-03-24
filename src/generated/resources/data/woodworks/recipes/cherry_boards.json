@@ -10,20 +10,18 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
-        "category": "building",
+        "category": "misc",
         "group": "wooden_boards",
         "key": {
           "#": {
-            "item": "minecraft:cherry_planks"
+            "item": "minecraft:cherry_slab"
           }
         },
         "pattern": [
           "#",
-          "#",
           "#"
         ],
         "result": {
-          "count": 3,
           "item": "woodworks:cherry_boards"
         },
         "show_notification": true
