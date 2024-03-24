@@ -134,7 +134,7 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		boolean tall = state.getValue(TYPE) == ChestType.RIGHT;
 		boolean left = state.getValue(HINGE) == DoorHingeSide.LEFT;
-		
+
 		if (shouldTranslateCloset(state, level, pos)) {
 			VoxelShape north = tall ? NORTH_AABB_TALL : NORTH_AABB;
 			VoxelShape south = tall ? SOUTH_AABB_TALL : SOUTH_AABB;

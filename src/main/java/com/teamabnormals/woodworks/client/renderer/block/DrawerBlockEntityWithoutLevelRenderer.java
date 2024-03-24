@@ -1,7 +1,6 @@
 package com.teamabnormals.woodworks.client.renderer.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.teamabnormals.blueprint.client.renderer.block.BlueprintChestBlockEntityRenderer;
 import com.teamabnormals.blueprint.client.renderer.block.TypedBlockEntityWithoutLevelRenderer;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
