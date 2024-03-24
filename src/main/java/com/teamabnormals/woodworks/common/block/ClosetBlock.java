@@ -218,7 +218,7 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 				Vec3 vec3 = context.getClickLocation();
 				double d0 = vec3.x - (double) pos.getX();
 				double d1 = vec3.z - (double) pos.getZ();
-				return (j >= 0 || !(d1 < 0.5D)) && (j <= 0 || !(d1 > 0.5D)) && (k >= 0 || !(d0 > 0.5D)) && (k <= 0 || !(d0 < 0.5D)) ? DoorHingeSide.LEFT : DoorHingeSide.RIGHT;
+				return (j >= 0 || !(d1 < 0.5D)) && (j <= 0 || !(d1 > 0.5D)) && (k >= 0 || !(d0 > 0.5D)) && (k <= 0 || !(d0 < 0.5D)) ? DoorHingeSide.RIGHT : DoorHingeSide.LEFT;
 			} else {
 				return DoorHingeSide.LEFT;
 			}
