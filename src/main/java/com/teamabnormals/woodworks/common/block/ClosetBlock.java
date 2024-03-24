@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -36,6 +37,7 @@ import net.minecraft.world.phys.Vec3;
 import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.function.BiPredicate;
+import java.util.function.Supplier;
 
 public class ClosetBlock extends ChestBlock implements IChestBlock {
 	public static final EnumProperty<DoorHingeSide> HINGE = BlockStateProperties.DOOR_HINGE;
@@ -76,10 +78,14 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 		}
 	};
 
-	public ClosetBlock(String type, Properties props) {
-		super(props, WoodworksBlockEntityTypes.CLOSET::get);
+	public ClosetBlock(String type, Properties props, Supplier<BlockEntityType<? extends ChestBlockEntity>> blockEntityType) {
+		super(props, blockEntityType);
 		this.type = type;
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HINGE, DoorHingeSide.LEFT).setValue(TYPE, ChestType.SINGLE).setValue(WATERLOGGED, false));
+	}
+
+	public ClosetBlock(String type, Properties props) {
+		this(type, props, WoodworksBlockEntityTypes.CLOSET::get);
 	}
 
 	@Override
@@ -144,23 +150,44 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 		FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
 		boolean isSneaking = context.isSecondaryUseActive();
 		Direction direction1 = context.getClickedFace();
+		DoorHingeSide hinge = this.getHinge(context);
+
 		if (direction1.getAxis().isVertical() && isSneaking) {
 			Direction direction2 = this.candidatePartnerFacing(context, direction1.getOpposite());
 			if (direction2 != null && direction2.getAxis() != direction1.getAxis()) {
 				facingDirection = direction2;
 				chestType = direction2.getCounterClockWise() == direction1.getOpposite() ? ChestType.RIGHT : ChestType.LEFT;
+				DoorHingeSide hinge2 = this.candidatePartnerHinge(context, direction1.getOpposite());
+				if (hinge2 != null) {
+					hinge = hinge2;
+				}
+			}
+		}
+
+		if (direction1.getAxis().isHorizontal() && isSneaking) {
+			DoorHingeSide hinge2 = this.candidatePartnerHinge(context, direction1.getOpposite());
+			if (hinge2 != null) {
+				hinge = hinge2 == DoorHingeSide.LEFT ? DoorHingeSide.RIGHT : DoorHingeSide.LEFT;
 			}
 		}
 
 		if (chestType == ChestType.SINGLE && !isSneaking) {
 			if (facingDirection == this.candidatePartnerFacing(context, Direction.DOWN)) {
 				chestType = ChestType.LEFT;
+				DoorHingeSide hinge2 = this.candidatePartnerHinge(context, Direction.DOWN);
+				if (hinge2 != null) {
+					hinge = hinge2;
+				}
 			} else if (facingDirection == this.candidatePartnerFacing(context, Direction.UP)) {
 				chestType = ChestType.RIGHT;
+				DoorHingeSide hinge2 = this.candidatePartnerHinge(context, Direction.UP);
+				if (hinge2 != null) {
+					hinge = hinge2;
+				}
 			}
 		}
 
-		return this.defaultBlockState().setValue(FACING, facingDirection).setValue(HINGE, this.getHinge(context)).setValue(TYPE, chestType).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+		return this.defaultBlockState().setValue(FACING, facingDirection).setValue(HINGE, hinge).setValue(TYPE, chestType).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
 	}
 
 	private DoorHingeSide getHinge(BlockPlaceContext context) {
@@ -204,6 +231,12 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 	private Direction candidatePartnerFacing(BlockPlaceContext context, Direction direction) {
 		BlockState state = context.getLevel().getBlockState(context.getClickedPos().relative(direction));
 		return state.is(this) && state.getValue(TYPE) == ChestType.SINGLE ? state.getValue(FACING) : null;
+	}
+
+	@Nullable
+	private DoorHingeSide candidatePartnerHinge(BlockPlaceContext context, Direction direction) {
+		BlockState state = context.getLevel().getBlockState(context.getClickedPos().relative(direction));
+		return state.is(this) && state.getValue(TYPE) == ChestType.SINGLE ? state.getValue(HINGE) : null;
 	}
 
 	@Override

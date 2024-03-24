@@ -10,22 +10,14 @@ import net.minecraft.stats.Stat;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class TrappedClosetBlock extends ChestBlock implements IChestBlock {
-	public final String type;
+public class TrappedClosetBlock extends ClosetBlock implements IChestBlock {
 
 	public TrappedClosetBlock(String type, Properties props) {
-		super(props, WoodworksBlockEntityTypes.TRAPPED_CLOSET::get);
-		this.type = type;
-	}
-
-	@Override
-	public String getChestMaterialsName() {
-		return this.type;
+		super(type, props, WoodworksBlockEntityTypes.TRAPPED_CLOSET::get);
 	}
 
 	@Override
