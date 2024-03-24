@@ -5,6 +5,7 @@ import com.teamabnormals.woodworks.common.block.entity.ClosetBlockEntity;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.CompoundContainer;
 import net.minecraft.world.Container;
@@ -46,7 +47,7 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 
 	private static final DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> MENU_PROVIDER_COMBINER = new DoubleBlockCombiner.Combiner<>() {
 		public Optional<MenuProvider> acceptDouble(final ChestBlockEntity chest1, final ChestBlockEntity chest2) {
-			final Container container = new CompoundContainer(chest1, chest2);
+			final Container container = new CompoundContainer(chest2, chest1);
 			return Optional.of(new MenuProvider() {
 				@Nullable
 				public AbstractContainerMenu createMenu(int num, Inventory inventory, Player player) {
@@ -156,7 +157,7 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 			Direction direction2 = this.candidatePartnerFacing(context, direction1.getOpposite());
 			if (direction2 != null && direction2.getAxis() != direction1.getAxis()) {
 				facingDirection = direction2;
-				chestType = direction2.getCounterClockWise() == direction1.getOpposite() ? ChestType.RIGHT : ChestType.LEFT;
+				chestType = direction2.getCounterClockWise(Axis.X) == direction1 ? ChestType.RIGHT : ChestType.LEFT;
 				DoorHingeSide hinge2 = this.candidatePartnerHinge(context, direction1.getOpposite());
 				if (hinge2 != null) {
 					hinge = hinge2;
