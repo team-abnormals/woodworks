@@ -2,6 +2,7 @@ package com.teamabnormals.woodworks.core.data.client;
 
 import com.teamabnormals.blueprint.common.block.LeafPileBlock;
 import com.teamabnormals.woodworks.common.block.SawmillBlock;
+import com.teamabnormals.woodworks.common.block.entity.ClosetBlockEntity;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
 import com.teamabnormals.woodworks.integration.jei.SawingRecipeCategory;
@@ -30,6 +31,9 @@ public class WoodworksLanguageProvider extends LanguageProvider {
 
 		this.add(SawmillBlock.CONTAINER_TITLE.getString(), "Sawmill");
 		this.add(SawingRecipeCategory.TRANSLATION.getString(), "Sawing");
+
+		this.add(ClosetBlockEntity.CONTAINER_CLOSET, "Closet");
+		this.add(ClosetBlockEntity.CONTAINER_CLOSET_DOUBLE, "Large Closet");
 	}
 
 	private void add(String block) {

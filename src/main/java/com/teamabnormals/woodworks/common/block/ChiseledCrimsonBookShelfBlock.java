@@ -1,8 +1,9 @@
 package com.teamabnormals.woodworks.common.block;
 
+import com.teamabnormals.blueprint.common.block.BlueprintChiseledBookShelfBlock;
 import net.minecraft.world.phys.Vec2;
 
-public class ChiseledCrimsonBookShelfBlock extends WoodworksChiseledBookShelfBlock {
+public class ChiseledCrimsonBookShelfBlock extends BlueprintChiseledBookShelfBlock {
 
 	public ChiseledCrimsonBookShelfBlock(Properties properties) {
 		super(properties);
@@ -14,7 +15,7 @@ public class ChiseledCrimsonBookShelfBlock extends WoodworksChiseledBookShelfBlo
 		return j + i * 3;
 	}
 
-	private static int getSection(float x) {
+	public static int getSection(float x) {
 		return x < 0.375F ? 0 : x < 0.625F ? 1 : 2;
 	}
 }

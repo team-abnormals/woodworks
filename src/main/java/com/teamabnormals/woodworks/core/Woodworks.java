@@ -1,6 +1,7 @@
 package com.teamabnormals.woodworks.core;
 
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
+import com.teamabnormals.woodworks.client.renderer.block.DrawerBlockEntityRenderer;
 import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksLanguageProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksDatapackBuiltinEntriesProvider;
@@ -10,6 +11,8 @@ import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvi
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvider;
 import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
 import com.teamabnormals.woodworks.core.other.WoodworksCompat;
+import com.teamabnormals.woodworks.core.other.WoodworksModelLayers;
+import com.teamabnormals.woodworks.core.registry.WoodworksBlockEntityTypes;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
 import com.teamabnormals.woodworks.core.registry.WoodworksLootConditions;
 import com.teamabnormals.woodworks.core.registry.WoodworksMenuTypes;
@@ -20,6 +23,8 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -57,6 +62,8 @@ public class Woodworks {
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			WoodworksBlocks.setupTabEditors();
+			bus.addListener(this::registerLayerDefinitions);
+			bus.addListener(this::registerRenderers);
 		});
 
 		context.registerConfig(ModConfig.Type.COMMON, WoodworksConfig.COMMON_SPEC);
@@ -92,5 +99,19 @@ public class Woodworks {
 		boolean includeClient = event.includeClient();
 		generator.addProvider(includeClient, new WoodworksBlockStateProvider(packOutput, fileHelper));
 		generator.addProvider(includeClient, new WoodworksLanguageProvider(packOutput));
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	private void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+		event.registerLayerDefinition(WoodworksModelLayers.BAMBOO_CLOSET_LEFT, () -> DrawerBlockEntityRenderer.createBodyLayer(false, false));
+		event.registerLayerDefinition(WoodworksModelLayers.BAMBOO_CLOSET_RIGHT, () -> DrawerBlockEntityRenderer.createBodyLayer(false, true));
+		event.registerLayerDefinition(WoodworksModelLayers.BAMBOO_CLOSET_TALL_LEFT, () -> DrawerBlockEntityRenderer.createBodyLayer(true, false));
+		event.registerLayerDefinition(WoodworksModelLayers.BAMBOO_CLOSET_TALL_RIGHT, () -> DrawerBlockEntityRenderer.createBodyLayer(true, true));
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	private void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+		event.registerBlockEntityRenderer(WoodworksBlockEntityTypes.CLOSET.get(), DrawerBlockEntityRenderer::new);
+		event.registerBlockEntityRenderer(WoodworksBlockEntityTypes.TRAPPED_CLOSET.get(), DrawerBlockEntityRenderer::new);
 	}
 }

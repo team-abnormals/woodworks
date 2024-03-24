@@ -1,7 +1,5 @@
 package com.teamabnormals.woodworks.core.data.client;
 
-import com.teamabnormals.blueprint.common.block.chest.BlueprintChestBlock;
-import com.teamabnormals.blueprint.common.block.chest.BlueprintTrappedChestBlock;
 import com.teamabnormals.blueprint.core.Blueprint;
 import com.teamabnormals.woodworks.core.Woodworks;
 import net.minecraft.core.Direction;
@@ -9,10 +7,7 @@ import net.minecraft.core.Direction.Axis;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
@@ -25,7 +20,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import static com.teamabnormals.woodworks.core.registry.WoodworksBlocks.*;
-
 
 public class WoodworksBlockStateProvider extends BlockStateProvider {
 	public static final String[] DEFAULT_BOOKSHELF_POSITIONS = new String[]{"top_left", "top_mid", "top_right", "bottom_left", "bottom_mid", "bottom_right"};
@@ -96,6 +90,7 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 		this.bookshelfBlocks(Blocks.BAMBOO_PLANKS, BAMBOO_BOOKSHELF.get(), CHISELED_BAMBOO_BOOKSHELF.get(), DEFAULT_BOOKSHELF_POSITIONS, Woodworks.MOD_ID + ":block/chiseled_bamboo");
 		this.ladderBlock(BAMBOO_LADDER.get());
 		this.beehiveBlock(BAMBOO_BEEHIVE.get());
+		this.chestBlocks(Blocks.BAMBOO_PLANKS, BAMBOO_CLOSET.get(), TRAPPED_BAMBOO_CLOSET.get());
 
 		this.boardsBlock(CRIMSON_BOARDS.get());
 		this.bookshelfBlocks(Blocks.CRIMSON_PLANKS, CRIMSON_BOOKSHELF.get(), CHISELED_CRIMSON_BOOKSHELF.get(), DEFAULT_BOOKSHELF_POSITIONS, Woodworks.MOD_ID + ":block/chiseled_crimson");
@@ -213,7 +208,7 @@ public class WoodworksBlockStateProvider extends BlockStateProvider {
 		this.simpleBlockItem(block);
 	}
 
-	public void chestBlocks(Block planks, BlueprintChestBlock chest, BlueprintTrappedChestBlock trappedChest) {
+	public void chestBlocks(Block planks, ChestBlock chest, ChestBlock trappedChest) {
 		this.simpleBlock(chest, particle(chest, blockTexture(planks)));
 		this.simpleBlock(trappedChest, particle(chest, blockTexture(planks)));
 		this.simpleBlockItem(chest, new UncheckedModelFile(new ResourceLocation(Blueprint.MOD_ID, "item/template_chest")));

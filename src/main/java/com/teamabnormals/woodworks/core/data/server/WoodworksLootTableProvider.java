@@ -122,6 +122,8 @@ public class WoodworksLootTableProvider extends LootTableProvider {
 			this.dropWhenSilkTouch(CHISELED_BAMBOO_BOOKSHELF.get());
 			this.dropSelf(BAMBOO_LADDER.get());
 			this.add(BAMBOO_BEEHIVE.get(), WoodworksBlockLoot::createBeeHiveDrop);
+			this.add(BAMBOO_CLOSET.get(), this::createNameableBlockEntityTable);
+			this.add(TRAPPED_BAMBOO_CLOSET.get(), this::createNameableBlockEntityTable);
 
 			this.dropSelf(CRIMSON_BOARDS.get());
 			this.add(CRIMSON_BOOKSHELF.get(), this::createBookshelfDrops);

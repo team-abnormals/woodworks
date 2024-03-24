@@ -33,6 +33,7 @@ import static com.teamabnormals.woodworks.core.WoodworksConfig.COMMON;
 import static net.minecraft.world.level.levelgen.structure.BuiltinStructures.*;
 
 public final class WoodworksDatapackBuiltinEntriesProvider extends DatapackBuiltinEntriesProvider {
+
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(BlueprintDataPackRegistries.STRUCTURE_REPALETTERS, WoodworksDatapackBuiltinEntriesProvider::bootstrapStructureRepaletters);
 
 	public WoodworksDatapackBuiltinEntriesProvider(PackOutput output, CompletableFuture<Provider> lookupProvider) {

@@ -100,6 +100,7 @@ public class WoodworksBlocks {
 	public static final RegistryObject<BlueprintChestBlock> DARK_OAK_CHEST = HELPER.createChestBlock("dark_oak", WoodworksProperties.DARK_OAK_WOOD.chest());
 	public static final RegistryObject<BlueprintChestBlock> MANGROVE_CHEST = HELPER.createChestBlock("mangrove", WoodworksProperties.MANGROVE_WOOD.chest());
 	public static final RegistryObject<BlueprintChestBlock> CHERRY_CHEST = HELPER.createChestBlock("cherry", WoodworksProperties.CHERRY_WOOD.chest());
+	public static final RegistryObject<ClosetBlock> BAMBOO_CLOSET = HELPER.createClosetBlock("bamboo", WoodworksProperties.BAMBOO_WOOD.chest());
 	public static final RegistryObject<BlueprintChestBlock> CRIMSON_CHEST = HELPER.createNonFuelChestBlock("crimson", WoodworksProperties.CRIMSON_STEM.chest());
 	public static final RegistryObject<BlueprintChestBlock> WARPED_CHEST = HELPER.createNonFuelChestBlock("warped", WoodworksProperties.WARPED_STEM.chest());
 
@@ -111,6 +112,7 @@ public class WoodworksBlocks {
 	public static final RegistryObject<BlueprintTrappedChestBlock> TRAPPED_DARK_OAK_CHEST = HELPER.createTrappedChestBlock("dark_oak", WoodworksProperties.DARK_OAK_WOOD.chest());
 	public static final RegistryObject<BlueprintTrappedChestBlock> TRAPPED_MANGROVE_CHEST = HELPER.createTrappedChestBlock("mangrove", WoodworksProperties.MANGROVE_WOOD.chest());
 	public static final RegistryObject<BlueprintTrappedChestBlock> TRAPPED_CHERRY_CHEST = HELPER.createTrappedChestBlock("cherry", WoodworksProperties.CHERRY_WOOD.chest());
+	public static final RegistryObject<TrappedClosetBlock> TRAPPED_BAMBOO_CLOSET = HELPER.createTrappedClosetBlock("bamboo", WoodworksProperties.BAMBOO_WOOD.chest());
 	public static final RegistryObject<BlueprintTrappedChestBlock> TRAPPED_CRIMSON_CHEST = HELPER.createNonFuelTrappedChestBlock("crimson", WoodworksProperties.CRIMSON_STEM.chest());
 	public static final RegistryObject<BlueprintTrappedChestBlock> TRAPPED_WARPED_CHEST = HELPER.createNonFuelTrappedChestBlock("warped", WoodworksProperties.WARPED_STEM.chest());
 
@@ -164,8 +166,8 @@ public class WoodworksBlocks {
 				.predicate(event -> event.getTabKey() == FUNCTIONAL_BLOCKS && WoodworksConfig.COMMON.woodenBookshelves.get())
 				.addItemsAfter(of(Items.CHISELED_BOOKSHELF), SPRUCE_BOOKSHELF, CHISELED_SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, CHISELED_BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, CHISELED_JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, CHISELED_ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CHISELED_DARK_OAK_BOOKSHELF, MANGROVE_BOOKSHELF, CHISELED_MANGROVE_BOOKSHELF, CHERRY_BOOKSHELF, CHISELED_CHERRY_BOOKSHELF, BAMBOO_BOOKSHELF, CHISELED_BAMBOO_BOOKSHELF, CRIMSON_BOOKSHELF, CHISELED_CRIMSON_BOOKSHELF, WARPED_BOOKSHELF, CHISELED_WARPED_BOOKSHELF)
 				.predicate(event -> event.getTabKey() == FUNCTIONAL_BLOCKS && WoodworksConfig.COMMON.woodenChests.get())
-				.addItemsAfter(of(Items.CHEST), OAK_CHEST, SPRUCE_CHEST, BIRCH_CHEST, JUNGLE_CHEST, ACACIA_CHEST, DARK_OAK_CHEST, MANGROVE_CHEST, CHERRY_CHEST, CRIMSON_CHEST, WARPED_CHEST)
+				.addItemsAfter(of(Items.CHEST), OAK_CHEST, SPRUCE_CHEST, BIRCH_CHEST, JUNGLE_CHEST, ACACIA_CHEST, DARK_OAK_CHEST, MANGROVE_CHEST, CHERRY_CHEST, BAMBOO_CLOSET, CRIMSON_CHEST, WARPED_CHEST)
 				.predicate(event -> event.getTabKey() == REDSTONE_BLOCKS && WoodworksConfig.COMMON.woodenChests.get())
-				.addItemsAfter(of(Items.TRAPPED_CHEST), TRAPPED_OAK_CHEST, TRAPPED_SPRUCE_CHEST, TRAPPED_BIRCH_CHEST, TRAPPED_JUNGLE_CHEST, TRAPPED_ACACIA_CHEST, TRAPPED_DARK_OAK_CHEST, TRAPPED_MANGROVE_CHEST, TRAPPED_CHERRY_CHEST, TRAPPED_CRIMSON_CHEST, TRAPPED_WARPED_CHEST);
+				.addItemsAfter(of(Items.TRAPPED_CHEST), TRAPPED_OAK_CHEST, TRAPPED_SPRUCE_CHEST, TRAPPED_BIRCH_CHEST, TRAPPED_JUNGLE_CHEST, TRAPPED_ACACIA_CHEST, TRAPPED_DARK_OAK_CHEST, TRAPPED_MANGROVE_CHEST, TRAPPED_CHERRY_CHEST, TRAPPED_BAMBOO_CLOSET, TRAPPED_CRIMSON_CHEST, TRAPPED_WARPED_CHEST);
 	}
 }

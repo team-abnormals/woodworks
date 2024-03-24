@@ -1,7 +1,5 @@
 package com.teamabnormals.woodworks.core.data.server.tags;
 
-import com.teamabnormals.blueprint.core.other.tags.BlueprintBlockTags;
-import com.teamabnormals.blueprint.core.other.tags.BlueprintItemTags;
 import com.teamabnormals.woodworks.core.Woodworks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
@@ -32,9 +30,5 @@ public class WoodworksItemTagsProvider extends ItemTagsProvider {
 		this.copy(Tags.Blocks.CHESTS_WOODEN, Tags.Items.CHESTS_WOODEN);
 		this.copy(Tags.Blocks.CHESTS_TRAPPED, Tags.Items.CHESTS_TRAPPED);
 		this.copy(Tags.Blocks.BOOKSHELVES, Tags.Items.BOOKSHELVES);
-
-		this.tag(BlueprintItemTags.BOATABLE_CHESTS).add(OAK_CHEST.get().asItem(), SPRUCE_CHEST.get().asItem(), BIRCH_CHEST.get().asItem(), JUNGLE_CHEST.get().asItem(), ACACIA_CHEST.get().asItem(), DARK_OAK_CHEST.get().asItem(), MANGROVE_CHEST.get().asItem(), CHERRY_CHEST.get().asItem(), CRIMSON_CHEST.get().asItem(), WARPED_CHEST.get().asItem());
-		this.tag(BlueprintItemTags.REVERTABLE_CHESTS).add(OAK_CHEST.get().asItem(), SPRUCE_CHEST.get().asItem(), BIRCH_CHEST.get().asItem(), JUNGLE_CHEST.get().asItem(), ACACIA_CHEST.get().asItem(), DARK_OAK_CHEST.get().asItem(), MANGROVE_CHEST.get().asItem(), CHERRY_CHEST.get().asItem(), CRIMSON_CHEST.get().asItem(), WARPED_CHEST.get().asItem());
-		this.copy(BlueprintBlockTags.LADDERS, BlueprintItemTags.LADDERS);
 	}
 }

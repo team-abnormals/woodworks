@@ -1,0 +1,219 @@
+package com.teamabnormals.woodworks.common.block;
+
+import com.teamabnormals.blueprint.core.api.IChestBlock;
+import com.teamabnormals.woodworks.common.block.entity.ClosetBlockEntity;
+import com.teamabnormals.woodworks.core.registry.WoodworksBlockEntityTypes;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.CompoundContainer;
+import net.minecraft.world.Container;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ChestBlock;
+import net.minecraft.world.level.block.DoubleBlockCombiner;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.ChestType;
+import net.minecraft.world.level.block.state.properties.DoorHingeSide;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.Vec3;
+
+import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+
+public class ClosetBlock extends ChestBlock implements IChestBlock {
+	public static final EnumProperty<DoorHingeSide> HINGE = BlockStateProperties.DOOR_HINGE;
+
+	public final String type;
+
+	private static final DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> MENU_PROVIDER_COMBINER = new DoubleBlockCombiner.Combiner<>() {
+		public Optional<MenuProvider> acceptDouble(final ChestBlockEntity chest1, final ChestBlockEntity chest2) {
+			final Container container = new CompoundContainer(chest1, chest2);
+			return Optional.of(new MenuProvider() {
+				@Nullable
+				public AbstractContainerMenu createMenu(int num, Inventory inventory, Player player) {
+					if (chest1.canOpen(player) && chest2.canOpen(player)) {
+						chest1.unpackLootTable(inventory.player);
+						chest2.unpackLootTable(inventory.player);
+						return ChestMenu.sixRows(num, inventory, container);
+					} else {
+						return null;
+					}
+				}
+
+				public Component getDisplayName() {
+					if (chest1.hasCustomName()) {
+						return chest1.getDisplayName();
+					} else {
+						return chest2.hasCustomName() ? chest2.getDisplayName() : Component.translatable(ClosetBlockEntity.CONTAINER_CLOSET_DOUBLE);
+					}
+				}
+			});
+		}
+
+		public Optional<MenuProvider> acceptSingle(ChestBlockEntity p_51602_) {
+			return Optional.of(p_51602_);
+		}
+
+		public Optional<MenuProvider> acceptNone() {
+			return Optional.empty();
+		}
+	};
+
+	public ClosetBlock(String type, Properties props) {
+		super(props, WoodworksBlockEntityTypes.CLOSET::get);
+		this.type = type;
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HINGE, DoorHingeSide.LEFT).setValue(TYPE, ChestType.SINGLE).setValue(WATERLOGGED, false));
+	}
+
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new ClosetBlockEntity(pos, state);
+	}
+
+	@Override
+	public String getChestMaterialsName() {
+		return type;
+	}
+
+	@Nullable
+	public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+		return this.combine(state, level, pos, false).apply(MENU_PROVIDER_COMBINER).orElse(null);
+	}
+
+	@Override
+	public DoubleBlockCombiner.NeighborCombineResult<? extends ChestBlockEntity> combine(BlockState state, Level level, BlockPos pos, boolean p_51547_) {
+		BiPredicate<LevelAccessor, BlockPos> bipredicate;
+		if (p_51547_) {
+			bipredicate = (p_51578_, p_51579_) -> false;
+		} else {
+			bipredicate = ClosetBlock::isChestBlockedAt;
+		}
+
+		return DoubleBlockCombiner.combineWithNeigbour(this.blockEntityType.get(), ChestBlock::getBlockType, ClosetBlock::getConnectedDirection, FACING, state, level, pos, bipredicate);
+	}
+
+	@Override
+	public BlockState updateShape(BlockState state, Direction direction, BlockState otherState, LevelAccessor level, BlockPos pos, BlockPos otherPos) {
+		if (state.getValue(WATERLOGGED)) {
+			level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+		}
+
+		if (otherState.is(this) && direction.getAxis().isVertical()) {
+			ChestType chesttype = otherState.getValue(TYPE);
+			if (state.getValue(TYPE) == ChestType.SINGLE && chesttype != ChestType.SINGLE && state.getValue(FACING) == otherState.getValue(FACING) && getConnectedDirection(otherState) == direction.getOpposite()) {
+				return state.setValue(TYPE, chesttype.getOpposite());
+			}
+		} else if (getConnectedDirection(state) == direction) {
+			return state.setValue(TYPE, ChestType.SINGLE);
+		}
+
+		return state;
+	}
+
+	public static boolean isChestBlockedAt(LevelAccessor level, BlockPos pos) {
+		Direction facing = level.getBlockState(pos).getValue(FACING);
+		BlockPos offsetPos = pos.relative(facing);
+		return level.getBlockState(offsetPos).isRedstoneConductor(level, offsetPos);
+	}
+
+	public static Direction getConnectedDirection(BlockState state) {
+		return state.getValue(TYPE) == ChestType.LEFT ? Direction.DOWN : Direction.UP;
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		ChestType chestType = ChestType.SINGLE;
+		Direction facingDirection = context.getHorizontalDirection().getOpposite();
+		FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+		boolean isSneaking = context.isSecondaryUseActive();
+		Direction direction1 = context.getClickedFace();
+		if (direction1.getAxis().isVertical() && isSneaking) {
+			Direction direction2 = this.candidatePartnerFacing(context, direction1.getOpposite());
+			if (direction2 != null && direction2.getAxis() != direction1.getAxis()) {
+				facingDirection = direction2;
+				chestType = direction2.getCounterClockWise() == direction1.getOpposite() ? ChestType.RIGHT : ChestType.LEFT;
+			}
+		}
+
+		if (chestType == ChestType.SINGLE && !isSneaking) {
+			if (facingDirection == this.candidatePartnerFacing(context, Direction.DOWN)) {
+				chestType = ChestType.LEFT;
+			} else if (facingDirection == this.candidatePartnerFacing(context, Direction.UP)) {
+				chestType = ChestType.RIGHT;
+			}
+		}
+
+		return this.defaultBlockState().setValue(FACING, facingDirection).setValue(HINGE, this.getHinge(context)).setValue(TYPE, chestType).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+	}
+
+	private DoorHingeSide getHinge(BlockPlaceContext context) {
+		BlockGetter level = context.getLevel();
+		BlockPos pos = context.getClickedPos();
+		BlockPos abovePos = pos.above();
+		Direction dir = context.getHorizontalDirection();
+
+		Direction dirCCW = dir.getCounterClockWise();
+		BlockPos posCCW = pos.relative(dirCCW);
+		BlockState stateCCW = level.getBlockState(posCCW);
+		BlockPos abovePosCCW = abovePos.relative(dirCCW);
+		BlockState aboveStateCCW = level.getBlockState(abovePosCCW);
+
+		Direction dirCW = dir.getClockWise();
+		BlockPos posCW = pos.relative(dirCW);
+		BlockState stateCW = level.getBlockState(posCW);
+		BlockPos abovePosCW = abovePos.relative(dirCW);
+		BlockState aboveStateCW = level.getBlockState(abovePosCW);
+
+		int i = (stateCCW.isCollisionShapeFullBlock(level, posCCW) ? -1 : 0) + (aboveStateCCW.isCollisionShapeFullBlock(level, abovePosCCW) ? -1 : 0) + (stateCW.isCollisionShapeFullBlock(level, posCW) ? 1 : 0) + (aboveStateCW.isCollisionShapeFullBlock(level, abovePosCW) ? 1 : 0);
+		boolean flag = stateCCW.is(this);
+		boolean flag1 = stateCW.is(this);
+		if ((!flag || flag1) && i <= 0) {
+			if ((!flag1 || flag) && i >= 0) {
+				int j = dir.getStepX();
+				int k = dir.getStepZ();
+				Vec3 vec3 = context.getClickLocation();
+				double d0 = vec3.x - (double) pos.getX();
+				double d1 = vec3.z - (double) pos.getZ();
+				return (j >= 0 || !(d1 < 0.5D)) && (j <= 0 || !(d1 > 0.5D)) && (k >= 0 || !(d0 > 0.5D)) && (k <= 0 || !(d0 < 0.5D)) ? DoorHingeSide.LEFT : DoorHingeSide.RIGHT;
+			} else {
+				return DoorHingeSide.LEFT;
+			}
+		} else {
+			return DoorHingeSide.RIGHT;
+		}
+	}
+
+	@Nullable
+	private Direction candidatePartnerFacing(BlockPlaceContext context, Direction direction) {
+		BlockState state = context.getLevel().getBlockState(context.getClickedPos().relative(direction));
+		return state.is(this) && state.getValue(TYPE) == ChestType.SINGLE ? state.getValue(FACING) : null;
+	}
+
+	@Override
+	public BlockState mirror(BlockState state, Mirror mirror) {
+		return super.mirror(state, mirror).cycle(HINGE);
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		super.createBlockStateDefinition(builder);
+		builder.add(HINGE);
+	}
+}

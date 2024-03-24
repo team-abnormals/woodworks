@@ -1,8 +1,9 @@
 package com.teamabnormals.woodworks.common.block;
 
+import com.teamabnormals.blueprint.common.block.BlueprintChiseledBookShelfBlock;
 import net.minecraft.world.phys.Vec2;
 
-public class ChiseledBambooBookShelfBlock extends WoodworksChiseledBookShelfBlock {
+public class ChiseledBambooBookShelfBlock extends BlueprintChiseledBookShelfBlock {
 
 	public ChiseledBambooBookShelfBlock(Properties properties) {
 		super(properties);

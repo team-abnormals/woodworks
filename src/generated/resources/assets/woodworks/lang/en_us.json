@@ -8,6 +8,7 @@
   "block.woodworks.azalea_leaf_pile": "Pile of Azalea Leaves",
   "block.woodworks.bamboo_beehive": "Bamboo Beehive",
   "block.woodworks.bamboo_bookshelf": "Bamboo Bookshelf",
+  "block.woodworks.bamboo_closet": "Bamboo Closet",
   "block.woodworks.bamboo_ladder": "Bamboo Ladder",
   "block.woodworks.birch_beehive": "Birch Beehive",
   "block.woodworks.birch_boards": "Birch Boards",
@@ -70,6 +71,7 @@
   "block.woodworks.spruce_ladder": "Spruce Ladder",
   "block.woodworks.spruce_leaf_pile": "Pile of Spruce Leaves",
   "block.woodworks.trapped_acacia_chest": "Trapped Acacia Chest",
+  "block.woodworks.trapped_bamboo_closet": "Trapped Bamboo Closet",
   "block.woodworks.trapped_birch_chest": "Trapped Birch Chest",
   "block.woodworks.trapped_cherry_chest": "Trapped Cherry Chest",
   "block.woodworks.trapped_crimson_chest": "Trapped Crimson Chest",
@@ -84,6 +86,8 @@
   "block.woodworks.warped_bookshelf": "Warped Bookshelf",
   "block.woodworks.warped_chest": "Warped Chest",
   "block.woodworks.warped_ladder": "Warped Ladder",
+  "container.woodworks.closet": "Closet",
+  "container.woodworks.closetDouble": "Large Closet",
   "container.woodworks.sawmill": "Sawmill",
   "gui.woodworks.category.sawmill": "Sawing"
 }
