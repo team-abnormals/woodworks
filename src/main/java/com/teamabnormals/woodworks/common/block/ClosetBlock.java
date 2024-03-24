@@ -34,6 +34,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -155,9 +156,8 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 
 		if (direction1.getAxis().isVertical() && isSneaking) {
 			Direction direction2 = this.candidatePartnerFacing(context, direction1.getOpposite());
-			if (direction2 != null && direction2.getAxis() != direction1.getAxis()) {
-				facingDirection = direction2;
-				chestType = direction2.getCounterClockWise(Axis.X) == direction1 ? ChestType.RIGHT : ChestType.LEFT;
+			if (direction2 != null && direction2 == facingDirection && direction2.getAxis() != direction1.getAxis()) {
+				chestType = direction1 == Direction.DOWN ? ChestType.RIGHT : ChestType.LEFT;
 				DoorHingeSide hinge2 = this.candidatePartnerHinge(context, direction1.getOpposite());
 				if (hinge2 != null) {
 					hinge = hinge2;
