@@ -8,6 +8,7 @@
   "block.woodworks.azalea_leaf_pile": "Купа азалієвого листя",
   "block.woodworks.bamboo_beehive": "Бамбуковий вулик",
   "block.woodworks.bamboo_bookshelf": "Бамбукова книжкова полиця",
+  "block.woodworks.bamboo_closet": "Бамбукова комірка",
   "block.woodworks.bamboo_ladder": "Бамбукова драбина",
   "block.woodworks.birch_beehive": "Березовий вулик",
   "block.woodworks.birch_boards": "Березові планки",
@@ -70,6 +71,7 @@
   "block.woodworks.spruce_ladder": "Смерекова драбина",
   "block.woodworks.spruce_leaf_pile": "Купа смерекового листя",
   "block.woodworks.trapped_acacia_chest": "Акацієва скриня-пастка",
+  "block.woodworks.trapped_bamboo_closet": "Бамбукова комірка-пастка",
   "block.woodworks.trapped_birch_chest": "Березова скриня-пастка",
   "block.woodworks.trapped_cherry_chest": "Вишнева скриня-пастка",
   "block.woodworks.trapped_crimson_chest": "Багряна скриня-пастка",
@@ -84,6 +86,8 @@
   "block.woodworks.warped_bookshelf": "Химерна книжкова полиця",
   "block.woodworks.warped_chest": "Химерна скриня",
   "block.woodworks.warped_ladder": "Химерна драбина",
+  "container.woodworks.closet": "Комірка",
+  "container.woodworks.closetDouble": "Велика комірка",
   "container.woodworks.sawmill": "Пилорама",
   "gui.woodworks.category.sawmill": "Пиляння"
 }
