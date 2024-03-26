@@ -1,9 +1,12 @@
 package com.teamabnormals.woodworks.core;
 
+import com.teamabnormals.blueprint.client.screen.splash.SplashSerializers;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.teamabnormals.woodworks.client.renderer.block.DrawerBlockEntityRenderer;
+import com.teamabnormals.woodworks.client.splashes.ClayworksSplash;
 import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksLanguageProvider;
+import com.teamabnormals.woodworks.core.data.client.WoodworksSplashProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksDatapackBuiltinEntriesProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksLootTableProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksRecipeProvider;
@@ -22,6 +25,7 @@ import com.teamabnormals.woodworks.core.registry.helper.WoodworksBlockSubRegistr
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -64,6 +68,7 @@ public class Woodworks {
 			WoodworksBlocks.setupTabEditors();
 			bus.addListener(this::registerLayerDefinitions);
 			bus.addListener(this::registerRenderers);
+			SplashSerializers.register(new ResourceLocation(MOD_ID, "clayworks"), ClayworksSplash.CODEC);
 		});
 
 		context.registerConfig(ModConfig.Type.COMMON, WoodworksConfig.COMMON_SPEC);
@@ -84,21 +89,22 @@ public class Woodworks {
 
 	private void dataSetup(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
-		PackOutput packOutput = generator.getPackOutput();
-		CompletableFuture<Provider> lookupProvider = event.getLookupProvider();
-		ExistingFileHelper fileHelper = event.getExistingFileHelper();
+		PackOutput output = generator.getPackOutput();
+		CompletableFuture<Provider> provider = event.getLookupProvider();
+		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		boolean includeServer = event.includeServer();
-		WoodworksBlockTagsProvider blockTags = new WoodworksBlockTagsProvider(packOutput, lookupProvider, fileHelper);
+		WoodworksBlockTagsProvider blockTags = new WoodworksBlockTagsProvider(output, provider, helper);
 		generator.addProvider(includeServer, blockTags);
-		generator.addProvider(includeServer, new WoodworksItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), fileHelper));
-		generator.addProvider(includeServer, new WoodworksLootTableProvider(packOutput));
-		generator.addProvider(includeServer, new WoodworksRecipeProvider(packOutput));
-		generator.addProvider(includeServer, new WoodworksDatapackBuiltinEntriesProvider(packOutput, lookupProvider));
+		generator.addProvider(includeServer, new WoodworksItemTagsProvider(output, provider, blockTags.contentsGetter(), helper));
+		generator.addProvider(includeServer, new WoodworksLootTableProvider(output));
+		generator.addProvider(includeServer, new WoodworksRecipeProvider(output));
+		generator.addProvider(includeServer, new WoodworksDatapackBuiltinEntriesProvider(output, provider));
 
 		boolean includeClient = event.includeClient();
-		generator.addProvider(includeClient, new WoodworksBlockStateProvider(packOutput, fileHelper));
-		generator.addProvider(includeClient, new WoodworksLanguageProvider(packOutput));
+		generator.addProvider(includeClient, new WoodworksSplashProvider(output));
+		generator.addProvider(includeClient, new WoodworksBlockStateProvider(output, helper));
+		generator.addProvider(includeClient, new WoodworksLanguageProvider(output));
 	}
 
 	@OnlyIn(Dist.CLIENT)

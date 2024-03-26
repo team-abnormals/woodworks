@@ -1,0 +1,9 @@
+[
+  {
+    "type": "blueprint:literal",
+    "text": "The wood works!"
+  },
+  {
+    "type": "woodworks:clayworks"
+  }
+]
