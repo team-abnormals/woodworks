@@ -89,5 +89,8 @@
     "container.woodworks.closet": "Armario",
     "container.woodworks.closetDouble": "Armario grande",
     "container.woodworks.sawmill": "Aserradero",
-    "gui.woodworks.category.sawmill": "Aserradura"
+    "gui.woodworks.category.sawmill": "Aserradura",
+    "subtitles.woodworks.block.closet.close": "Armario cerrándose",
+    "subtitles.woodworks.block.closet.locked": "Armario bloqueado",
+    "subtitles.woodworks.block.closet.open": "Closet abriéndose"
 }
