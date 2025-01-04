@@ -94,6 +94,7 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		sawmillRecipes(consumer, BlockFamilies.MANGROVE_PLANKS, ItemTags.MANGROVE_LOGS, MANGROVE_BOARDS.get(), MANGROVE_LADDER.get());
 		sawmillRecipes(consumer, BlockFamilies.CHERRY_PLANKS, ItemTags.CHERRY_LOGS, CHERRY_BOARDS.get(), CHERRY_LADDER.get());
 		sawmillRecipes(consumer, BlockFamilies.BAMBOO_PLANKS, null, Blocks.BAMBOO_MOSAIC, BAMBOO_LADDER.get());
+		sawmillRecipes(consumer, BlockFamilies.BAMBOO_MOSAIC, null, null, null);
 		sawmillRecipes(consumer, BlockFamilies.CRIMSON_PLANKS, ItemTags.CRIMSON_STEMS, CRIMSON_BOARDS.get(), CRIMSON_LADDER.get());
 		sawmillRecipes(consumer, BlockFamilies.WARPED_PLANKS, ItemTags.WARPED_STEMS, WARPED_BOARDS.get(), WARPED_LADDER.get());
 	}
@@ -169,10 +170,12 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 			sawmillRecipe(consumer, boardsCondition, RecipeCategory.BUILDING_BLOCKS, logs, boards, 4, "", modid);
 		}
 
-		ICondition ladderCondition = compat ? new BlueprintAndCondition(WOODWORKS_LOADED, SAWMILL_ENABLED, WOODEN_LADDERS) : new BlueprintAndCondition(SAWMILL_ENABLED, WOODEN_LADDERS);
-		String prefix = planks == Blocks.OAK_PLANKS ? "oak_" : "";
-		sawmillRecipe(consumer, ladderCondition, RecipeCategory.DECORATIONS, planks, ladder, 1, prefix, modid);
-		sawmillRecipe(consumer, ladderCondition, RecipeCategory.DECORATIONS, logs, ladder, 4, prefix, modid);
+		if (ladder != null) {
+			ICondition ladderCondition = compat ? new BlueprintAndCondition(WOODWORKS_LOADED, SAWMILL_ENABLED, WOODEN_LADDERS) : new BlueprintAndCondition(SAWMILL_ENABLED, WOODEN_LADDERS);
+			String prefix = planks == Blocks.OAK_PLANKS ? "oak_" : "";
+			sawmillRecipe(consumer, ladderCondition, RecipeCategory.DECORATIONS, planks, ladder, 1, prefix, modid);
+			sawmillRecipe(consumer, ladderCondition, RecipeCategory.DECORATIONS, logs, ladder, 4, prefix, modid);
+		}
 	}
 
 	public static void conditionalRecipe(Consumer<FinishedRecipe> consumer, ICondition condition, RecipeCategory recipeCategory, RecipeBuilder recipe) {
