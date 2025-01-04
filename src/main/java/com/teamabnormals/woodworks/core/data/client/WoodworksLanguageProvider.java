@@ -6,13 +6,10 @@ import com.teamabnormals.woodworks.common.block.SawmillBlock;
 import com.teamabnormals.woodworks.common.block.entity.ClosetBlockEntity;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
-import com.teamabnormals.woodworks.core.registry.WoodworksSounds;
 import com.teamabnormals.woodworks.integration.jei.SawingRecipeCategory;
 import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.LanguageProvider;
-import org.apache.commons.lang3.text.WordUtils;
 
 public class WoodworksLanguageProvider extends BlueprintLanguageProvider {
 
@@ -32,7 +29,7 @@ public class WoodworksLanguageProvider extends BlueprintLanguageProvider {
 		});
 
 		this.add(SawmillBlock.CONTAINER_TITLE.getString(), "Sawmill");
-		this.add(SawingRecipeCategory.TRANSLATION.getString(), "Sawing");
+		this.add(SawingRecipeCategory.TRANSLATION, "Sawing");
 
 		this.add(ClosetBlockEntity.CONTAINER_CLOSET, "Closet");
 		this.add(ClosetBlockEntity.CONTAINER_CLOSET_DOUBLE, "Large Closet");
