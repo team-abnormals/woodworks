@@ -11,6 +11,7 @@
       "recipe": {
         "type": "minecraft:crafting_shaped",
         "category": "building",
+        "group": "chiseled_wooden_bookshelf",
         "key": {
           "#": {
             "item": "minecraft:warped_planks"
