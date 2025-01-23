@@ -25,9 +25,4 @@ public class SawmillRecipe extends SingleItemRecipe {
 	public ItemStack getToastSymbol() {
 		return new ItemStack(WoodworksBlocks.SAWMILL.get());
 	}
-
-	@Override
-	public boolean isSpecial() {
-		return true;
-	}
 }
