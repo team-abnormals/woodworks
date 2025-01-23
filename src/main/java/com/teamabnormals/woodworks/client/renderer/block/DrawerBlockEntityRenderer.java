@@ -3,7 +3,10 @@ package com.teamabnormals.woodworks.client.renderer.block;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import com.teamabnormals.blueprint.client.BlueprintChestMaterials;
+import com.teamabnormals.blueprint.client.BlueprintChestMaterials.ChestMaterials;
 import com.teamabnormals.blueprint.client.renderer.block.BlueprintChestBlockEntityRenderer;
+import com.teamabnormals.blueprint.core.api.IChestBlock;
 import com.teamabnormals.woodworks.common.block.ClosetBlock;
 import com.teamabnormals.woodworks.core.other.WoodworksModelLayers;
 import net.minecraft.client.model.geom.ModelPart;
@@ -14,8 +17,10 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BrightnessCombiner;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -25,8 +30,6 @@ import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
-
-import java.util.Calendar;
 
 public class DrawerBlockEntityRenderer<T extends BlockEntity & LidBlockEntity> extends BlueprintChestBlockEntityRenderer<T> {
 	public static Block itemBlock = null;
@@ -41,14 +44,8 @@ public class DrawerBlockEntityRenderer<T extends BlockEntity & LidBlockEntity> e
 	private final ModelPart tallRightDoor;
 	private final ModelPart tallRightBack;
 
-	public boolean isChristmas;
-
 	public DrawerBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
 		super(context);
-		Calendar calendar = Calendar.getInstance();
-		if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.DATE) >= 24 && calendar.get(Calendar.DATE) <= 26) {
-			this.isChristmas = true;
-		}
 
 		ModelPart left = context.bakeLayer(WoodworksModelLayers.BAMBOO_CLOSET_LEFT);
 		this.leftBack = left.getChild("back");
@@ -128,6 +125,18 @@ public class DrawerBlockEntityRenderer<T extends BlockEntity & LidBlockEntity> e
 
 			poseStack.popPose();
 		}
+	}
+
+	@Override
+	public Material getChestMaterial(T t, ChestType type) {
+		Block inventoryBlock = itemBlock;
+		if (inventoryBlock == null) inventoryBlock = t.getBlockState().getBlock();
+		ChestMaterials chestMaterials = BlueprintChestMaterials.getMaterials(((IChestBlock) inventoryBlock).getChestMaterialsName());
+		return switch (type) {
+			case SINGLE -> chestMaterials != null ? chestMaterials.singleMaterial() : Sheets.CHEST_LOCATION;
+			case LEFT -> chestMaterials != null ? chestMaterials.leftMaterial() : Sheets.CHEST_LOCATION_LEFT;
+			case RIGHT -> chestMaterials != null ? chestMaterials.rightMaterial() : Sheets.CHEST_LOCATION_RIGHT;
+		};
 	}
 
 	public void render(PoseStack matrixStack, VertexConsumer builder, ModelPart closetDoor, ModelPart closetBack, float lidAngle, int combinedLightIn, int combinedOverlayIn) {
