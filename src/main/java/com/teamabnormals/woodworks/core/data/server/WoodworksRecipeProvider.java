@@ -3,6 +3,7 @@ package com.teamabnormals.woodworks.core.data.server;
 import com.google.common.collect.Maps;
 import com.teamabnormals.blueprint.core.api.conditions.BlueprintAndCondition;
 import com.teamabnormals.blueprint.core.api.conditions.ConfigValueCondition;
+import com.teamabnormals.blueprint.core.data.server.BlueprintRecipeProvider;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksRecipes.WoodworksRecipeSerializers;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
@@ -35,7 +36,7 @@ import java.util.function.Consumer;
 import static com.teamabnormals.woodworks.core.WoodworksConfig.COMMON;
 import static com.teamabnormals.woodworks.core.registry.WoodworksBlocks.*;
 
-public class WoodworksRecipeProvider extends RecipeProvider implements IConditionBuilder {
+public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements IConditionBuilder {
 	public static final ModLoadedCondition WOODWORKS_LOADED = new ModLoadedCondition(Woodworks.MOD_ID);
 
 	public static final ConfigValueCondition SAWMILL_ENABLED = config(COMMON.sawmill, "sawmill");
@@ -47,7 +48,7 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 	public static final ConfigValueCondition LEAF_PILES = config(COMMON.leafPiles, "leaf_piles");
 
 	public WoodworksRecipeProvider(PackOutput output) {
-		super(output);
+		super(Woodworks.MOD_ID, output);
 	}
 
 	@Override
@@ -73,6 +74,8 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		baseRecipes(consumer, Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_SLAB, null, BAMBOO_BOOKSHELF.get(), CHISELED_BAMBOO_BOOKSHELF.get(), BAMBOO_LADDER.get(), BAMBOO_BEEHIVE.get(), BAMBOO_CLOSET.get(), TRAPPED_BAMBOO_CLOSET.get());
 		baseRecipes(consumer, Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_SLAB, CRIMSON_BOARDS.get(), CRIMSON_BOOKSHELF.get(), CHISELED_CRIMSON_BOOKSHELF.get(), CRIMSON_LADDER.get(), CRIMSON_BEEHIVE.get(), CRIMSON_CHEST.get(), TRAPPED_CRIMSON_CHEST.get());
 		baseRecipes(consumer, Blocks.WARPED_PLANKS, Blocks.WARPED_SLAB, WARPED_BOARDS.get(), WARPED_BOOKSHELF.get(), CHISELED_WARPED_BOOKSHELF.get(), WARPED_LADDER.get(), WARPED_BEEHIVE.get(), WARPED_CHEST.get(), TRAPPED_WARPED_CHEST.get());
+
+		alternateStickRecipes(consumer, Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_FENCE, Blocks.BAMBOO_FENCE_GATE, BAMBOO_LADDER.get(), Items.BAMBOO);
 
 		leafPileRecipes(consumer, Blocks.OAK_LEAVES, OAK_LEAF_PILE.get());
 		leafPileRecipes(consumer, Blocks.SPRUCE_LEAVES, SPRUCE_LEAF_PILE.get());
@@ -126,6 +129,16 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		if (trappedChest != null) {
 			conditionalRecipe(consumer, chestCondition, RecipeCategory.REDSTONE, ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, trappedChest).requires(chest).requires(Blocks.TRIPWIRE_HOOK).group("wooden_trapped_chest").unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)));
 		}
+	}
+
+	public static void alternateStickRecipes(Consumer<FinishedRecipe> consumer, Block planks, Block fence, Block fenceGate, Block ladder, Item stick) {
+		alternateStickRecipes(consumer, planks, fence, fenceGate, ladder, stick, Woodworks.MOD_ID);
+	}
+
+	public static void alternateStickRecipes(Consumer<FinishedRecipe> consumer, Block planks, Block fence, Block fenceGate, Block ladder, Item stick, String modid) {
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, fence, 3).define('W', planks).define('#', stick).pattern("W#W").pattern("W#W").group("wooden_custom_fence").unlockedBy("has_planks", has(planks)).save(consumer, getModConversionRecipeName(modid, fence, stick));
+		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, fenceGate).define('#', stick).define('W', planks).pattern("#W#").pattern("#W#").group("wooden_custom_fence_gate").unlockedBy("has_planks", has(planks)).save(consumer, getModConversionRecipeName(modid, fenceGate, stick));
+		conditionalRecipe(consumer, WOODEN_LADDERS, RecipeCategory.DECORATIONS, ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', stick).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_bamboo", has(Items.BAMBOO)), getModConversionRecipeName(modid, ladder, stick));
 	}
 
 	public static void sawmillRecipes(Consumer<FinishedRecipe> consumer, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder) {
@@ -256,5 +269,9 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 
 	protected static String getConversionRecipeName(ItemLike output, TagKey<Item> input) {
 		return getItemName(output) + "_from_" + input.location().getPath();
+	}
+
+	public static ResourceLocation getModConversionRecipeName(String modid, ItemLike output, ItemLike input) {
+		return new ResourceLocation(modid, getConversionRecipeName(output, input));
 	}
 }
