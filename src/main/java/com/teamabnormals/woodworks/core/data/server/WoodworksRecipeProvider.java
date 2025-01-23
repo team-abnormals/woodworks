@@ -93,7 +93,7 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		sawmillRecipes(consumer, BlockFamilies.DARK_OAK_PLANKS, ItemTags.DARK_OAK_LOGS, DARK_OAK_BOARDS.get(), DARK_OAK_LADDER.get());
 		sawmillRecipes(consumer, BlockFamilies.MANGROVE_PLANKS, ItemTags.MANGROVE_LOGS, MANGROVE_BOARDS.get(), MANGROVE_LADDER.get());
 		sawmillRecipes(consumer, BlockFamilies.CHERRY_PLANKS, ItemTags.CHERRY_LOGS, CHERRY_BOARDS.get(), CHERRY_LADDER.get());
-		sawmillRecipes(consumer, BlockFamilies.BAMBOO_PLANKS, null, Blocks.BAMBOO_MOSAIC, BAMBOO_LADDER.get());
+		sawmillRecipes(consumer, BlockFamilies.BAMBOO_PLANKS, ItemTags.BAMBOO_BLOCKS, Blocks.BAMBOO_MOSAIC, BAMBOO_LADDER.get(), true);
 		sawmillRecipes(consumer, BlockFamilies.BAMBOO_MOSAIC, null, null, null);
 		sawmillRecipes(consumer, BlockFamilies.CRIMSON_PLANKS, ItemTags.CRIMSON_STEMS, CRIMSON_BOARDS.get(), CRIMSON_LADDER.get());
 		sawmillRecipes(consumer, BlockFamilies.WARPED_PLANKS, ItemTags.WARPED_STEMS, WARPED_BOARDS.get(), WARPED_LADDER.get());
@@ -129,11 +129,16 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 	}
 
 	public static void sawmillRecipes(Consumer<FinishedRecipe> consumer, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder) {
-		sawmillRecipes(consumer, family, logs, boards, ladder, Woodworks.MOD_ID);
+		sawmillRecipes(consumer, family, logs, boards, ladder, false);
 	}
 
-	public static void sawmillRecipes(Consumer<FinishedRecipe> consumer, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, String modid) {
+	public static void sawmillRecipes(Consumer<FinishedRecipe> consumer, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, boolean half) {
+		sawmillRecipes(consumer, family, logs, boards, ladder, Woodworks.MOD_ID, half);
+	}
+
+	public static void sawmillRecipes(Consumer<FinishedRecipe> consumer, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, String modid, boolean half) {
 		boolean compat = !modid.equals(Woodworks.MOD_ID);
+		boolean full = !half;
 
 		Block planks = family.getBaseBlock();
 		Block button = family.get(BlockFamily.Variant.BUTTON);
@@ -149,32 +154,32 @@ public class WoodworksRecipeProvider extends RecipeProvider implements IConditio
 		Block trapdoor = family.get(BlockFamily.Variant.TRAPDOOR);
 
 		ICondition sawmillCondition = compat ? new BlueprintAndCondition(WOODWORKS_LOADED, SAWMILL_ENABLED) : SAWMILL_ENABLED;
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.BUILDING_BLOCKS, logs, planks, 4, "", modid);
+		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.BUILDING_BLOCKS, logs, planks, full ? 4 : 2, "", modid);
 		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, planks, button, 1, "", modid);
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, button, 4, "", modid);
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, door, 2, "", modid);
+		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, button, full ? 4 : 2, "", modid);
+		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, door, full ? 2 : 1, "", modid);
 		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.DECORATIONS, planks, fence, 1, "", modid);
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.DECORATIONS, logs, fence, 4, "", modid);
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, fenceGate, 1, "", modid);
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, pressurePlate, 2, "", modid);
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.DECORATIONS, logs, sign, 2, "", modid);
+		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.DECORATIONS, logs, fence, full ? 4 : 2, "", modid);
+		if (full) sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, fenceGate, 1, "", modid);
+		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, pressurePlate, full ? 2 : 1, "", modid);
+		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.DECORATIONS, logs, sign, full ? 2 : 1, "", modid);
 		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.BUILDING_BLOCKS, planks, slab, 2, "", modid);
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.BUILDING_BLOCKS, logs, slab, 8, "", modid);
+		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.BUILDING_BLOCKS, logs, slab, full ? 8 : 4, "", modid);
 		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.BUILDING_BLOCKS, planks, stairs, 1, "", modid);
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.BUILDING_BLOCKS, logs, stairs, 4, "", modid);
-		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, trapdoor, 2, "", modid);
+		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.BUILDING_BLOCKS, logs, stairs, full ? 4 : 2, "", modid);
+		sawmillRecipe(consumer, sawmillCondition, RecipeCategory.REDSTONE, logs, trapdoor, full ? 2 : 1, "", modid);
 
 		if (boards != null) {
 			ICondition boardsCondition = compat ? new BlueprintAndCondition(WOODWORKS_LOADED, SAWMILL_ENABLED, WOODEN_BOARDS) : new BlueprintAndCondition(SAWMILL_ENABLED, WOODEN_BOARDS);
 			sawmillRecipe(consumer, boardsCondition, RecipeCategory.BUILDING_BLOCKS, planks, boards, 1, "", modid);
-			sawmillRecipe(consumer, boardsCondition, RecipeCategory.BUILDING_BLOCKS, logs, boards, 4, "", modid);
+			sawmillRecipe(consumer, boardsCondition, RecipeCategory.BUILDING_BLOCKS, logs, boards, full ? 4 : 2, "", modid);
 		}
 
 		if (ladder != null) {
 			ICondition ladderCondition = compat ? new BlueprintAndCondition(WOODWORKS_LOADED, SAWMILL_ENABLED, WOODEN_LADDERS) : new BlueprintAndCondition(SAWMILL_ENABLED, WOODEN_LADDERS);
 			String prefix = planks == Blocks.OAK_PLANKS ? "oak_" : "";
 			sawmillRecipe(consumer, ladderCondition, RecipeCategory.DECORATIONS, planks, ladder, 1, prefix, modid);
-			sawmillRecipe(consumer, ladderCondition, RecipeCategory.DECORATIONS, logs, ladder, 4, prefix, modid);
+			sawmillRecipe(consumer, ladderCondition, RecipeCategory.DECORATIONS, logs, ladder, full ? 4 : 2, prefix, modid);
 		}
 	}
 
