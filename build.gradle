@@ -87,7 +87,7 @@ dependencies {
 }
 
 repositories {
-    maven { url "https://maven.jaackson.me" }
+    maven { url "https://maven.teamabnormals.com/" }
     maven { url "https://dvs1.progwml6.com/files/maven/" }
     maven { url "https://modmaven.k-4u.nl" }
 }
@@ -114,14 +114,10 @@ publishing {
         }
     }
     repositories {
-        if (project.hasProperty("jacksonMavenUser") && project.hasProperty("jacksonMavenPass")) {
-            maven {
-                url "https://maven.jaackson.me"
-                credentials {
-                    username = project.properties.jacksonMavenUser
-                    password = project.properties.jacksonMavenPass
-                }
-            }
+        maven {
+            name = "abnormals"
+            url = "https://maven.teamabnormals.com"
+            credentials(PasswordCredentials)
         }
     }
 }
