@@ -149,6 +149,10 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 		sawmillRecipes(consumer, family, logs, boards, ladder, Woodworks.MOD_ID, half);
 	}
 
+	public static void sawmillRecipes(Consumer<FinishedRecipe> consumer, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, String modid) {
+		sawmillRecipes(consumer, family, logs, boards, ladder, modid, false);
+	}
+
 	public static void sawmillRecipes(Consumer<FinishedRecipe> consumer, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, String modid, boolean half) {
 		boolean compat = !modid.equals(Woodworks.MOD_ID);
 		boolean full = !half;
