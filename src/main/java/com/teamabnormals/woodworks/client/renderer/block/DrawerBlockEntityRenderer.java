@@ -21,6 +21,7 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BrightnessCombiner;
 import net.minecraft.client.resources.model.Material;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -30,6 +31,7 @@ import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
+import net.minecraft.world.phys.AABB;
 
 public class DrawerBlockEntityRenderer<T extends BlockEntity & LidBlockEntity> extends BlueprintChestBlockEntityRenderer<T> {
 	public static Block itemBlock = null;
@@ -143,5 +145,14 @@ public class DrawerBlockEntityRenderer<T extends BlockEntity & LidBlockEntity> e
 		closetDoor.yRot = -(lidAngle * ((float) Math.PI * 13F / 24F));
 		closetDoor.render(matrixStack, builder, combinedLightIn, combinedOverlayIn);
 		closetBack.render(matrixStack, builder, combinedLightIn, combinedOverlayIn);
+	}
+
+	@Override
+	public AABB getRenderBoundingBox(T blockEntity) {
+		BlockPos worldPos = blockEntity.getBlockPos();
+		int x = worldPos.getX();
+		int y = worldPos.getY();
+		int z = worldPos.getZ();
+		return new AABB(x - 1, y, z - 1, x + 2, y + 2, z + 2);
 	}
 }

@@ -1,0 +1,49 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+issueTrackerURL = "https://github.com/team-abnormals/woodworks/issues"
+license = "https://github.com/team-abnormals/woodworks/blob/main/LICENSE.txt"
+
+[[mods]]
+    modId = "woodworks"
+    version = "${mod_version}"
+    logoFile = "logo.png"
+    itemIcon = "woodworks:sawmill"
+    configBackground = "woodworks:textures/block/spruce_boards.png"
+    authors = "Team Abnormals"
+    credits = "bageldotjpg, five, hatsondogs"
+    displayURL = "https://www.teamabnormals.com/mods/woodworks"
+    displayName = "Woodworks"
+    description = '''
+    Adds very varying wood variant blocks to improve your building capabilities!
+    '''
+
+[[mixins]]
+    config="woodworks.mixins.json"
+
+[[dependencies.woodworks]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[${mc_version}]"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.woodworks]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[${neoforge},)"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.woodworks]]
+    modId = "blueprint"
+    type = "required"
+    versionRange = "[${blueprint},)"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.woodworks]]
+    modId = "quark"
+    type = "optional"
+    versionRange = "[0,)"
+    ordering = "AFTER"
+    side = "BOTH"

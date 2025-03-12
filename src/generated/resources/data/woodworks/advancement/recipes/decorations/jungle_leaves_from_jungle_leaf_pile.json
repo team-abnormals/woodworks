@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_jungle_leaf_pile": {
+      "conditions": {
+        "items": [
+          {
+            "items": "woodworks:jungle_leaf_pile"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodworks:jungle_leaves_from_jungle_leaf_pile"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_jungle_leaf_pile"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodworks:jungle_leaves_from_jungle_leaf_pile"
+    ]
+  }
+}

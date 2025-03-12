@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "leaf_pile",
+  "ingredients": [
+    {
+      "item": "minecraft:jungle_leaves"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "woodworks:jungle_leaf_pile"
+  }
+}

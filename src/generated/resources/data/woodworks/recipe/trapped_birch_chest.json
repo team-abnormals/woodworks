@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "woodworks:config",
+      "value": "wooden_chests"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_trapped_chest",
+  "ingredients": [
+    {
+      "item": "woodworks:birch_chest"
+    },
+    {
+      "item": "minecraft:tripwire_hook"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "woodworks:trapped_birch_chest"
+  }
+}

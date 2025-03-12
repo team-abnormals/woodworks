@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "woodworks:config",
+      "value": "sawmill"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_acacia_logs": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:acacia_logs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodworks:acacia_planks_from_acacia_logs_sawing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_acacia_logs"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodworks:acacia_planks_from_acacia_logs_sawing"
+    ]
+  }
+}

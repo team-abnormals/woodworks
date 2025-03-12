@@ -9,7 +9,6 @@ public class ChiseledMangroveBookShelfBlock extends BlueprintChiseledBookShelfBl
 		super(properties);
 	}
 
-	@Override
 	public int getHitSlot(Vec2 vec2) {
 		int i = vec2.x <= 0.5F ? 0 : 1;
 		int j = getSection(vec2.y);

@@ -14,14 +14,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
-	private static final ResourceLocation BG_LOCATION = new ResourceLocation(Woodworks.MOD_ID, "textures/gui/container/sawmill.png");
+	private static final ResourceLocation BG_LOCATION = ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, "textures/gui/container/sawmill.png");
 	private float scrollOffs;
 	private boolean scrolling;
 	private int startIndex;
@@ -30,18 +31,17 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 	public SawmillScreen(SawmillMenu menu, Inventory inventory, Component component) {
 		super(menu, inventory, component);
 		menu.registerUpdateListener(this::containerChanged);
-		--this.titleLabelY;
+		this.titleLabelY--;
 	}
 
 	@Override
-	public void render(GuiGraphics guiGraphics, int p_99338_, int p_99339_, float p_99340_) {
-		super.render(guiGraphics, p_99338_, p_99339_, p_99340_);
-		this.renderTooltip(guiGraphics, p_99338_, p_99339_);
+	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+		super.render(guiGraphics, mouseX, mouseY, partialTick);
+		this.renderTooltip(guiGraphics, mouseX, mouseY);
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics guiGraphics, float p_99329_, int p_99330_, int p_99331_) {
-		this.renderBackground(guiGraphics);
+	protected void renderBg(GuiGraphics guiGraphics,  float p_99329_, int p_99330_, int p_99331_) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, BG_LOCATION);
@@ -64,14 +64,14 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 			int i = this.leftPos + 52;
 			int j = this.topPos + 14;
 			int k = this.startIndex + 12;
-			List<SawmillRecipe> list = this.menu.getRecipes();
+			List<RecipeHolder<SawmillRecipe>> list = this.menu.getRecipes();
 
 			for (int l = this.startIndex; l < k && l < this.menu.getNumRecipes(); ++l) {
 				int i1 = l - this.startIndex;
 				int j1 = i + i1 % 4 * 16;
 				int k1 = j + i1 / 4 * 18 + 2;
 				if (p_99334_ >= j1 && p_99334_ < j1 + 16 && p_99335_ >= k1 && p_99335_ < k1 + 18) {
-					guiGraphics.renderTooltip(this.font, list.get(l).getResultItem(this.minecraft.level.registryAccess()), p_99334_, p_99335_);
+					guiGraphics.renderTooltip(this.font, list.get(l).value().getResultItem(this.minecraft.level.registryAccess()), p_99334_, p_99335_);
 				}
 			}
 		}
@@ -96,13 +96,13 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 	}
 
 	private void renderRecipes(GuiGraphics guiGraphics, int p_99349_, int p_99350_, int p_99351_) {
-		List<SawmillRecipe> list = this.menu.getRecipes();
+		List<RecipeHolder<SawmillRecipe>> list = this.menu.getRecipes();
 		for (int i = this.startIndex; i < p_99351_ && i < this.menu.getNumRecipes(); ++i) {
 			int j = i - this.startIndex;
 			int k = p_99349_ + j % 4 * 16;
 			int l = j / 4;
 			int i1 = p_99350_ + l * 18 + 2;
-			guiGraphics.renderItem(list.get(i).getResultItem(this.minecraft.level.registryAccess()), k, i1);
+			guiGraphics.renderItem(list.get(i).value().getResultItem(this.minecraft.level.registryAccess()), k, i1);
 		}
 	}
 
@@ -150,10 +150,10 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 	}
 
 	@Override
-	public boolean mouseScrolled(double p_99314_, double p_99315_, double p_99316_) {
+	public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
 		if (this.isScrollBarActive()) {
 			int i = this.getOffscreenRows();
-			float f = (float) p_99316_ / (float) i;
+			float f = (float) scrollY / (float) i;
 			this.scrollOffs = Mth.clamp(this.scrollOffs - f, 0.0F, 1.0F);
 			this.startIndex = (int) ((double) (this.scrollOffs * (float) i) + 0.5D) * 4;
 		}

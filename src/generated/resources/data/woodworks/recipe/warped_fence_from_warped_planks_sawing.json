@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "woodworks:config",
+      "value": "sawmill"
+    }
+  ],
+  "type": "woodworks:sawmill",
+  "ingredient": {
+    "item": "minecraft:warped_planks"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:warped_fence"
+  }
+}

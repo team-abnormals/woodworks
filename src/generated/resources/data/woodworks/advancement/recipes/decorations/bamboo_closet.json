@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "woodworks:config",
+      "value": "wooden_chests"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lots_of_items": {
+      "conditions": {
+        "slots": {
+          "occupied": {
+            "min": 10
+          }
+        }
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodworks:bamboo_closet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_lots_of_items"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodworks:bamboo_closet"
+    ]
+  }
+}

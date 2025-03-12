@@ -1,26 +1,23 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:and",
+      "values": [
+        {
+          "type": "woodworks:config",
+          "value": "wooden_chests"
+        },
+        {
+          "type": "woodworks:config",
+          "value": "wooden_chests_in_villages"
+        }
+      ]
+    }
+  ],
   "repaletter": {
     "type": "blueprint:simple",
     "replaces_block": "minecraft:chest",
     "replaces_with": "woodworks:acacia_chest"
   },
-  "structures": {
-    "type": "blueprint:conditional",
-    "conditions": [
-      {
-        "type": "forge:and",
-        "values": [
-          {
-            "type": "woodworks:config",
-            "value": "wooden_chests"
-          },
-          {
-            "type": "woodworks:config",
-            "value": "wooden_chests_in_villages"
-          }
-        ]
-      }
-    ],
-    "value": "minecraft:village_savanna"
-  }
+  "structures": "minecraft:village_savanna"
 }

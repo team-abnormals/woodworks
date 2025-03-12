@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_oak_leaf_pile": {
+      "conditions": {
+        "items": [
+          {
+            "items": "woodworks:oak_leaf_pile"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodworks:oak_leaves_from_oak_leaf_pile"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_oak_leaf_pile"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodworks:oak_leaves_from_oak_leaf_pile"
+    ]
+  }
+}

@@ -14,6 +14,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -22,7 +24,7 @@ public class SawmillMenu extends AbstractContainerMenu {
 	private final ContainerLevelAccess access;
 	private final DataSlot selectedRecipeIndex = DataSlot.standalone();
 	private final Level level;
-	private List<SawmillRecipe> recipes = Lists.newArrayList();
+	private List<RecipeHolder<SawmillRecipe>> recipes = Lists.newArrayList();
 	private ItemStack input = ItemStack.EMPTY;
 	long lastSoundTime;
 	final Slot inputSlot;
@@ -97,7 +99,7 @@ public class SawmillMenu extends AbstractContainerMenu {
 		return this.selectedRecipeIndex.get();
 	}
 
-	public List<SawmillRecipe> getRecipes() {
+	public List<RecipeHolder<SawmillRecipe>> getRecipes() {
 		return this.recipes;
 	}
 
@@ -137,19 +139,23 @@ public class SawmillMenu extends AbstractContainerMenu {
 		}
 	}
 
+	private static SingleRecipeInput createRecipeInput(Container container) {
+		return new SingleRecipeInput(container.getItem(0));
+	}
+
 	private void setupRecipeList(Container container, ItemStack stack) {
 		this.recipes.clear();
 		this.selectedRecipeIndex.set(-1);
 		this.resultSlot.set(ItemStack.EMPTY);
 		if (!stack.isEmpty()) {
-			this.recipes = this.level.getRecipeManager().getRecipesFor(WoodworksRecipeTypes.SAWING.get(), container, this.level);
+			this.recipes = this.level.getRecipeManager().getRecipesFor(WoodworksRecipeTypes.SAWING.get(), createRecipeInput(container), this.level);
 		}
 	}
 
 	void setupResultSlot() {
 		if (!this.recipes.isEmpty() && this.isValidRecipeIndex(this.selectedRecipeIndex.get())) {
-			SawmillRecipe recipe = this.recipes.get(this.selectedRecipeIndex.get());
-			ItemStack stack = recipe.assemble(this.container, this.level.registryAccess());
+			RecipeHolder<SawmillRecipe> recipe = this.recipes.get(this.selectedRecipeIndex.get());
+			ItemStack stack = recipe.value().assemble(createRecipeInput(this.container), this.level.registryAccess());
 			if (stack.isItemEnabled(this.level.enabledFeatures())) {
 				this.resultContainer.setRecipeUsed(recipe);
 				this.resultSlot.set(stack);
@@ -196,7 +202,7 @@ public class SawmillMenu extends AbstractContainerMenu {
 				if (!this.moveItemStackTo(input, 2, 38, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else if (this.level.getRecipeManager().getRecipeFor(WoodworksRecipeTypes.SAWING.get(), new SimpleContainer(input), this.level).isPresent()) {
+			} else if (this.level.getRecipeManager().getRecipeFor(WoodworksRecipeTypes.SAWING.get(), new SingleRecipeInput(input), this.level).isPresent()) {
 				if (!this.moveItemStackTo(input, 0, 1, false)) {
 					return ItemStack.EMPTY;
 				}

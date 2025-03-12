@@ -6,9 +6,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.client.model.generators.ModelFile.UncheckedModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 import static com.teamabnormals.woodworks.core.registry.WoodworksBlocks.*;
 
@@ -71,8 +71,8 @@ public class WoodworksBlockStateProvider extends BlueprintBlockStateProvider {
 		this.leafPileBlock(Blocks.FLOWERING_AZALEA_LEAVES, FLOWERING_AZALEA_LEAF_PILE, false);
 	}
 
-	public void sawmillBlock(RegistryObject<Block> sawmill) {
-		this.horizontalBlock(sawmill.get(), new UncheckedModelFile(new ResourceLocation(Woodworks.MOD_ID, "block/sawmill")));
+	public void sawmillBlock(DeferredBlock<Block> sawmill) {
+		this.horizontalBlock(sawmill.get(), new ModelFile.UncheckedModelFile(ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, "block/sawmill")));
 		this.blockItem(sawmill);
 	}
 }

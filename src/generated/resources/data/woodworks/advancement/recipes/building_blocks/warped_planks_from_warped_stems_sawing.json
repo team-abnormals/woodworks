@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "woodworks:config",
+      "value": "sawmill"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodworks:warped_planks_from_warped_stems_sawing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warped_stems": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:warped_stems"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_warped_stems"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodworks:warped_planks_from_warped_stems_sawing"
+    ]
+  }
+}

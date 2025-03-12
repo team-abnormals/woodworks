@@ -1,17 +1,17 @@
 package com.teamabnormals.woodworks.client.splashes;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.teamabnormals.blueprint.client.screen.splash.Splash;
 import net.minecraft.client.User;
 import net.minecraft.util.RandomSource;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 import javax.annotation.Nullable;
 
 public enum ClayworksSplash implements Splash {
 	INSTANCE;
 
-	public static final Codec<ClayworksSplash> CODEC = Codec.unit(INSTANCE);
+	public static final MapCodec<ClayworksSplash> CODEC = MapCodec.unit(INSTANCE);
 
 	@Nullable
 	@Override
@@ -25,7 +25,7 @@ public enum ClayworksSplash implements Splash {
 	}
 
 	@Override
-	public Codec<? extends Splash> codec() {
+	public MapCodec<? extends Splash> codec() {
 		return CODEC;
 	}
 }

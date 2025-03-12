@@ -13,6 +13,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 @JeiPlugin
 public class WoodworksPlugin implements IModPlugin {
@@ -20,7 +21,7 @@ public class WoodworksPlugin implements IModPlugin {
 
 	@Override
 	public ResourceLocation getPluginUid() {
-		return new ResourceLocation(Woodworks.MOD_ID, Woodworks.MOD_ID);
+		return ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, Woodworks.MOD_ID);
 	}
 
 	@Override
@@ -30,7 +31,7 @@ public class WoodworksPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
-		registration.addRecipes(SAWING, Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(WoodworksRecipeTypes.SAWING.get()));
+		registration.addRecipes(SAWING, Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(WoodworksRecipeTypes.SAWING.get()).stream().map(RecipeHolder::value).toList());
 	}
 
 	@Override

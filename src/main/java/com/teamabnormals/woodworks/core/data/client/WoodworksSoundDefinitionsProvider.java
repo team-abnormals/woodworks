@@ -3,9 +3,9 @@ package com.teamabnormals.woodworks.core.data.client;
 import com.teamabnormals.woodworks.core.Woodworks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.SoundDefinition;
-import net.minecraftforge.common.data.SoundDefinitionsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.SoundDefinition;
+import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -84,7 +84,7 @@ public class WoodworksSoundDefinitionsProvider extends SoundDefinitionsProvider 
 		}
 
 		for (int i = 1; i <= count; i++) {
-			definition.with(sound(new ResourceLocation(modid, path + i)).volume(volume));
+			definition.with(sound(ResourceLocation.fromNamespaceAndPath(modid, path + i)).volume(volume));
 		}
 
 		return definition;
@@ -101,7 +101,7 @@ public class WoodworksSoundDefinitionsProvider extends SoundDefinitionsProvider 
 		}
 
 		for (String path : strings) {
-			definition.with(sound(new ResourceLocation(modid, path)).volume(volume));
+			definition.with(sound(ResourceLocation.fromNamespaceAndPath(modid, path)).volume(volume));
 		}
 
 		return definition;

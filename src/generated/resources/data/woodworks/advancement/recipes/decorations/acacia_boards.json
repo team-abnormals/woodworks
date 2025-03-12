@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "woodworks:config",
+      "value": "wooden_boards"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_acacia_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:acacia_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "woodworks:acacia_boards"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_acacia_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "woodworks:acacia_boards"
+    ]
+  }
+}
