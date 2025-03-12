@@ -55,14 +55,15 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 
 	@Override
 	public void buildRecipes(RecipeOutput output) {
-		conditionalRecipe(output, SAWMILL_ENABLED, ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, SAWMILL.get()).define('I', Tags.Items.INGOTS_IRON).define('#', ItemTags.PLANKS).define('S', ItemTags.WOODEN_SLABS).pattern("#I").pattern("# ").pattern("#S").unlockedBy("has_planks", has(ItemTags.PLANKS)));
-		conditionalRecipe(output, config(COMMON.woodenBookshelves, "wooden_bookshelves", true), ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BOOKSHELF).define('#', ItemTags.PLANKS).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(Items.BOOK)));
-		conditionalRecipe(output, config(COMMON.woodenBookshelves, "wooden_bookshelves", true), ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_BOOKSHELF).define('#', ItemTags.PLANKS).define('X', ItemTags.WOODEN_SLABS).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(Items.BOOK)));
-		conditionalRecipe(output, config(COMMON.woodenLadders, "wooden_ladders", true), ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.LADDER, 3).define('#', Items.STICK).pattern("# #").pattern("###").pattern("# #").unlockedBy("has_stick", has(Items.STICK)));
-		conditionalRecipe(output, config(COMMON.woodenBeehives, "wooden_beehives", true), ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.BEEHIVE).define('P', ItemTags.PLANKS).define('H', Items.HONEYCOMB).pattern("PPP").pattern("HHH").pattern("PPP").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)));
-		conditionalRecipe(output, config(COMMON.woodenChests, "wooden_chests", true), ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.CHEST).define('#', ItemTags.PLANKS).pattern("###").pattern("# #").pattern("###").unlockedBy("has_lots_of_items", CriteriaTriggers.INVENTORY_CHANGED.createCriterion(new InventoryChangeTrigger.TriggerInstance(Optional.empty(), new InventoryChangeTrigger.TriggerInstance.Slots(MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY), List.of()))));
-		conditionalRecipe(output, config(COMMON.woodenChests, "wooden_chests", true), ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, Blocks.TRAPPED_CHEST).requires(Tags.Items.CHESTS_WOODEN).requires(Blocks.TRIPWIRE_HOOK).unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)));
-		conditionalRecipe(output, WOODEN_CHESTS, ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, Blocks.TRAPPED_CHEST).requires(Blocks.CHEST).requires(Blocks.TRIPWIRE_HOOK).unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)), ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, "trapped_chest"));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, SAWMILL.get()).define('I', Tags.Items.INGOTS_IRON).define('#', ItemTags.PLANKS).define('S', ItemTags.WOODEN_SLABS).pattern("#I").pattern("# ").pattern("#S").unlockedBy("has_planks", has(ItemTags.PLANKS)).save(output.withConditions(SAWMILL_ENABLED));
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BOOKSHELF).define('#', ItemTags.PLANKS).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(config(COMMON.woodenBookshelves, "wooden_bookshelves", true)));
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_BOOKSHELF).define('#', ItemTags.PLANKS).define('X', ItemTags.WOODEN_SLABS).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(config(COMMON.woodenBookshelves, "wooden_bookshelves", true)));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.LADDER, 3).define('#', Items.STICK).pattern("# #").pattern("###").pattern("# #").unlockedBy("has_stick", has(Items.STICK)).save(output.withConditions(config(COMMON.woodenLadders, "wooden_ladders", true)));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.BEEHIVE).define('P', ItemTags.PLANKS).define('H', Items.HONEYCOMB).pattern("PPP").pattern("HHH").pattern("PPP").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)).save(output.withConditions(config(COMMON.woodenBeehives, "wooden_beehives", true)));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.CHEST).define('#', ItemTags.PLANKS).pattern("###").pattern("# #").pattern("###").unlockedBy("has_lots_of_items", CriteriaTriggers.INVENTORY_CHANGED.createCriterion(new InventoryChangeTrigger.TriggerInstance(Optional.empty(), new InventoryChangeTrigger.TriggerInstance.Slots(MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY), List.of()))).save(output.withConditions(config(COMMON.woodenChests, "wooden_chests", true)));
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, Blocks.TRAPPED_CHEST).requires(Tags.Items.CHESTS_WOODEN).requires(Blocks.TRIPWIRE_HOOK).unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)).save(output.withConditions(config(COMMON.woodenChests, "wooden_chests", true)));
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, Blocks.TRAPPED_CHEST).requires(Blocks.CHEST).requires(Blocks.TRIPWIRE_HOOK).unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)).save(output.withConditions(WOODEN_CHESTS), ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, "trapped_chest"));
 		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, Blocks.LECTERN).define('S', ItemTags.WOODEN_SLABS).define('B', Tags.Items.BOOKSHELVES).pattern("SSS").pattern(" B ").pattern(" S ").unlockedBy("has_book", has(Items.BOOK)).save(output);
 
 		baseRecipes(output, Blocks.OAK_PLANKS, Blocks.OAK_SLAB, OAK_BOARDS.get(), Blocks.BOOKSHELF, Blocks.CHISELED_BOOKSHELF, Blocks.LADDER, Blocks.BEEHIVE, OAK_CHEST.get(), TRAPPED_OAK_CHEST.get());
@@ -79,16 +80,16 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 
 		alternateStickRecipes(output, Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_FENCE, Blocks.BAMBOO_FENCE_GATE, BAMBOO_LADDER.get(), Items.BAMBOO);
 
-		leafPileRecipes(output, Blocks.OAK_LEAVES, OAK_LEAF_PILE.get());
-		leafPileRecipes(output, Blocks.SPRUCE_LEAVES, SPRUCE_LEAF_PILE.get());
-		leafPileRecipes(output, Blocks.BIRCH_LEAVES, BIRCH_LEAF_PILE.get());
-		leafPileRecipes(output, Blocks.JUNGLE_LEAVES, JUNGLE_LEAF_PILE.get());
-		leafPileRecipes(output, Blocks.ACACIA_LEAVES, ACACIA_LEAF_PILE.get());
-		leafPileRecipes(output, Blocks.DARK_OAK_LEAVES, DARK_OAK_LEAF_PILE.get());
-		leafPileRecipes(output, Blocks.MANGROVE_LEAVES, MANGROVE_LEAF_PILE.get());
-		leafPileRecipes(output, Blocks.CHERRY_LEAVES, CHERRY_LEAF_PILE.get());
-		leafPileRecipes(output, Blocks.AZALEA_LEAVES, AZALEA_LEAF_PILE.get());
-		leafPileRecipes(output, Blocks.FLOWERING_AZALEA_LEAVES, FLOWERING_AZALEA_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.OAK_LEAVES, OAK_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.SPRUCE_LEAVES, SPRUCE_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.BIRCH_LEAVES, BIRCH_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.JUNGLE_LEAVES, JUNGLE_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.ACACIA_LEAVES, ACACIA_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.DARK_OAK_LEAVES, DARK_OAK_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.MANGROVE_LEAVES, MANGROVE_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.CHERRY_LEAVES, CHERRY_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.AZALEA_LEAVES, AZALEA_LEAF_PILE.get());
+		conditionalLeafPileRecipes(output, Blocks.FLOWERING_AZALEA_LEAVES, FLOWERING_AZALEA_LEAF_PILE.get());
 
 		sawmillRecipes(output, BlockFamilies.OAK_PLANKS, ItemTags.OAK_LOGS, OAK_BOARDS.get(), Blocks.LADDER);
 		sawmillRecipes(output, BlockFamilies.SPRUCE_PLANKS, ItemTags.SPRUCE_LOGS, SPRUCE_BOARDS.get(), SPRUCE_LADDER.get());
@@ -103,15 +104,6 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 		sawmillRecipes(output, BlockFamilies.CRIMSON_PLANKS, ItemTags.CRIMSON_STEMS, CRIMSON_BOARDS.get(), CRIMSON_LADDER.get());
 		sawmillRecipes(output, BlockFamilies.WARPED_PLANKS, ItemTags.WARPED_STEMS, WARPED_BOARDS.get(), WARPED_LADDER.get());
 	}
-
-	public static void conditionalRecipe(RecipeOutput output, ICondition condition,RecipeBuilder recipe) {
-		recipe.save(output.withConditions(condition));
-	}
-
-	public static void conditionalRecipe(RecipeOutput output, ICondition condition, RecipeBuilder recipe, ResourceLocation id) {
-		recipe.save(output.withConditions(condition), id);
-	}
-
 
 	public static void baseRecipes(RecipeOutput output, Block planks, Block slab, Block boards, Block bookshelf, Block chiseledBookshelf, Block ladder, Block beehive, Block chest, Block trappedChest) {
 		baseRecipes(output, planks, slab, boards, bookshelf, chiseledBookshelf, ladder, beehive, chest, trappedChest, Woodworks.MOD_ID);
@@ -128,35 +120,35 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 
 		String prefix = planks == Blocks.OAK_PLANKS ? "oak_" : "";
 		if (boards != null) {
-			conditionalRecipe(output, boardsCondition, ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, boards).define('#', slab).pattern("#").pattern("#").group("wooden_boards").unlockedBy(getHasName(slab), has(slab)));
+			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, boards).define('#', slab).pattern("#").pattern("#").group("wooden_boards").unlockedBy(getHasName(slab), has(slab)).save(output.withConditions(boardsCondition));
 		}
-		conditionalRecipe(output, bookshelfCondition, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, bookshelf).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").group("wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(bookshelf).getPath()));
-		conditionalRecipe(output, bookshelfCondition, ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chiseledBookshelf).define('#', planks).define('X', slab).pattern("###").pattern("XXX").pattern("###").group("chiseled_wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(chiseledBookshelf).getPath()));
-		conditionalRecipe(output, ladderCondition, ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', Items.STICK).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_stick", has(Items.STICK)), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(ladder).getPath()));
-		conditionalRecipe(output, beehiveCondition, ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, beehive).define('#', planks).define('H', Items.HONEYCOMB).pattern("###").pattern("HHH").pattern("###").group("wooden_beehive").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(beehive).getPath()));
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, bookshelf).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").group("wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(bookshelfCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(bookshelf).getPath()));
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chiseledBookshelf).define('#', planks).define('X', slab).pattern("###").pattern("XXX").pattern("###").group("chiseled_wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(bookshelfCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(chiseledBookshelf).getPath()));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', Items.STICK).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_stick", has(Items.STICK)).save(output.withConditions(ladderCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(ladder).getPath()));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, beehive).define('#', planks).define('H', Items.HONEYCOMB).pattern("###").pattern("HHH").pattern("###").group("wooden_beehive").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)).save(output.withConditions(beehiveCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(beehive).getPath()));
 		if (chest != null) {
-			conditionalRecipe(output, chestCondition, ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, chest).define('#', planks).pattern("###").pattern("# #").pattern("###").group("wooden_chest").unlockedBy("has_lots_of_items", CriteriaTriggers.INVENTORY_CHANGED.createCriterion(new InventoryChangeTrigger.TriggerInstance(Optional.empty(), new InventoryChangeTrigger.TriggerInstance.Slots(MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY), List.of()))));
+			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, chest).define('#', planks).pattern("###").pattern("# #").pattern("###").group("wooden_chest").unlockedBy("has_lots_of_items", CriteriaTriggers.INVENTORY_CHANGED.createCriterion(new InventoryChangeTrigger.TriggerInstance(Optional.empty(), new InventoryChangeTrigger.TriggerInstance.Slots(MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY), List.of()))).save(output.withConditions(chestCondition));
 		}
 		if (trappedChest != null) {
-			conditionalRecipe(output, chestCondition, ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, trappedChest).requires(chest).requires(Blocks.TRIPWIRE_HOOK).group("wooden_trapped_chest").unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)));
+			ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, trappedChest).requires(chest).requires(Blocks.TRIPWIRE_HOOK).group("wooden_trapped_chest").unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)).save(output.withConditions(chestCondition));
 		}
 	}
 
-	public static void alternateStickRecipes(RecipeOutput output, Block planks, Block fence, Block fenceGate, Block ladder, Item stick) {
+	private static void alternateStickRecipes(RecipeOutput output, Block planks, Block fence, Block fenceGate, Block ladder, Item stick) {
 		alternateStickRecipes(output, planks, fence, fenceGate, ladder, stick, Woodworks.MOD_ID);
 	}
 
 	public static void alternateStickRecipes(RecipeOutput output, Block planks, Block fence, Block fenceGate, Block ladder, Item stick, String modid) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, fence, 3).define('W', planks).define('#', stick).pattern("W#W").pattern("W#W").group("wooden_custom_fence").unlockedBy("has_planks", has(planks)).save(output, getModConversionRecipeName(modid, fence, stick));
 		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, fenceGate).define('#', stick).define('W', planks).pattern("#W#").pattern("#W#").group("wooden_custom_fence_gate").unlockedBy("has_planks", has(planks)).save(output, getModConversionRecipeName(modid, fenceGate, stick));
-		conditionalRecipe(output, WOODEN_LADDERS, ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', stick).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_bamboo", has(Items.BAMBOO)), getModConversionRecipeName(modid, ladder, stick));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', stick).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_bamboo", has(Items.BAMBOO)).save(output.withConditions(WOODEN_LADDERS), getModConversionRecipeName(modid, ladder, stick));
 	}
 
 	public static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder) {
 		sawmillRecipes(output, family, logs, boards, ladder, false);
 	}
 
-	public static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, boolean half) {
+	private static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, boolean half) {
 		sawmillRecipes(output, family, logs, boards, ladder, Woodworks.MOD_ID, half);
 	}
 
@@ -211,6 +203,15 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 		}
 	}
 
+	private static void conditionalLeafPileRecipes(RecipeOutput output, ItemLike leaves, ItemLike leafPile) {
+		conditionalLeafPileRecipes(output, leaves, leafPile, Woodworks.MOD_ID);
+	}
+
+	public static void conditionalLeafPileRecipes(RecipeOutput output, ItemLike leaves, ItemLike leafPile, String modid) {
+		ICondition condition = modid.equals(Woodworks.MOD_ID) ? LEAF_PILES : new BlueprintAndCondition(WOODWORKS_LOADED, LEAF_PILES);
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, leafPile, 4).requires(leaves).group("leaf_pile").unlockedBy(getHasName(leaves), has(leaves)).save(output.withConditions(condition));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, leaves).define('#', leafPile).pattern("##").pattern("##").group("leaves").unlockedBy(getHasName(leafPile), has(leafPile)).save(output.withConditions(condition), ResourceLocation.fromNamespaceAndPath(modid, getConversionRecipeName(leaves, leafPile)));
+	}
 
 	public static void sawmillRecipe(RecipeOutput output, ICondition condition, RecipeCategory recipeCategory, ItemLike input, ItemLike result, int count) {
 		sawmillRecipe(output, condition, recipeCategory, input, result, count, "");
@@ -222,9 +223,7 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 
 	public static void sawmillRecipe(RecipeOutput output, ICondition condition, RecipeCategory recipeCategory, ItemLike input, ItemLike result, int count, String prefix, String modid) {
 		if (input != null && result != null) {
-			ResourceLocation id = ResourceLocation.fromNamespaceAndPath(modid, prefix + getConversionRecipeName(result, input) + "_sawing");
-			RecipeBuilder recipe = sawmillResultFromBase(recipeCategory, result, input, count);
-			conditionalRecipe(output, condition, recipe, id);
+			sawmillResultFromBase(recipeCategory, result, input, count).save(output.withConditions(condition), ResourceLocation.fromNamespaceAndPath(modid, prefix + getConversionRecipeName(result, input) + "_sawing"));
 		}
 	}
 
@@ -232,15 +231,13 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 		sawmillRecipe(output, condition, recipeCategory, input, result, count, "");
 	}
 
-	public static void sawmillRecipe(RecipeOutput output, ICondition condition, RecipeCategory recipeCategory, TagKey<Item> input, ItemLike result, int count, String prefix) {
+	private static void sawmillRecipe(RecipeOutput output, ICondition condition, RecipeCategory recipeCategory, TagKey<Item> input, ItemLike result, int count, String prefix) {
 		sawmillRecipe(output, condition, recipeCategory, input, result, count, prefix, Woodworks.MOD_ID);
 	}
 
 	public static void sawmillRecipe(RecipeOutput output, ICondition condition, RecipeCategory recipeCategory, TagKey<Item> input, ItemLike result, int count, String prefix, String modid) {
-		if (input != null && output != null) {
-			ResourceLocation id = ResourceLocation.fromNamespaceAndPath(modid, prefix + getConversionRecipeName(result, input) + "_sawing");
-			RecipeBuilder recipe = sawmillResultFromBase(recipeCategory, result, input, count);
-			conditionalRecipe(output, condition, recipe, id);
+		if (input != null && result != null) {
+			sawmillResultFromBase(recipeCategory, result, input, count).save(output.withConditions(condition), ResourceLocation.fromNamespaceAndPath(modid, prefix + getConversionRecipeName(result, input) + "_sawing"));
 		}
 	}
 

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "woodworks:config",
+      "value": "leaf_piles"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_spruce_leaves": {
