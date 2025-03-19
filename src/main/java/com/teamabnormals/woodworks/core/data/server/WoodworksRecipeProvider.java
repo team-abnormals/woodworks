@@ -139,9 +139,9 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 	}
 
 	public static void alternateStickRecipes(RecipeOutput output, Block planks, Block fence, Block fenceGate, Block ladder, Item stick, String modid) {
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, fence, 3).define('W', planks).define('#', stick).pattern("W#W").pattern("W#W").group("wooden_custom_fence").unlockedBy("has_planks", has(planks)).save(output, getModConversionRecipeName(modid, fence, stick));
-		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, fenceGate).define('#', stick).define('W', planks).pattern("#W#").pattern("#W#").group("wooden_custom_fence_gate").unlockedBy("has_planks", has(planks)).save(output, getModConversionRecipeName(modid, fenceGate, stick));
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', stick).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_bamboo", has(Items.BAMBOO)).save(output.withConditions(WOODEN_LADDERS), getModConversionRecipeName(modid, ladder, stick));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, fence, 3).define('W', planks).define('#', stick).pattern("W#W").pattern("W#W").group("wooden_custom_fence").unlockedBy("has_planks", has(planks)).save(output, getConversionRecipeName(modid, fence, stick));
+		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, fenceGate).define('#', stick).define('W', planks).pattern("#W#").pattern("#W#").group("wooden_custom_fence_gate").unlockedBy("has_planks", has(planks)).save(output, getConversionRecipeName(modid, fenceGate, stick));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', stick).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_bamboo", has(Items.BAMBOO)).save(output.withConditions(WOODEN_LADDERS), getConversionRecipeName(modid, ladder, stick));
 	}
 
 	public static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder) {
@@ -210,7 +210,7 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 	public static void conditionalLeafPileRecipes(RecipeOutput output, ItemLike leaves, ItemLike leafPile, String modid) {
 		ICondition condition = modid.equals(Woodworks.MOD_ID) ? LEAF_PILES : new BlueprintAndCondition(WOODWORKS_LOADED, LEAF_PILES);
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, leafPile, 4).requires(leaves).group("leaf_pile").unlockedBy(getHasName(leaves), has(leaves)).save(output.withConditions(condition));
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, leaves).define('#', leafPile).pattern("##").pattern("##").group("leaves").unlockedBy(getHasName(leafPile), has(leafPile)).save(output.withConditions(condition), ResourceLocation.fromNamespaceAndPath(modid, getConversionRecipeName(leaves, leafPile)));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, leaves).define('#', leafPile).pattern("##").pattern("##").group("leaves").unlockedBy(getHasName(leafPile), has(leafPile)).save(output.withConditions(condition), getConversionRecipeName(modid, leaves, leafPile));
 	}
 
 	public static void sawmillRecipe(RecipeOutput output, ICondition condition, RecipeCategory recipeCategory, ItemLike input, ItemLike result, int count) {
@@ -223,7 +223,7 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 
 	public static void sawmillRecipe(RecipeOutput output, ICondition condition, RecipeCategory recipeCategory, ItemLike input, ItemLike result, int count, String prefix, String modid) {
 		if (input != null && result != null) {
-			sawmillResultFromBase(recipeCategory, result, input, count).save(output.withConditions(condition), ResourceLocation.fromNamespaceAndPath(modid, prefix + getConversionRecipeName(result, input) + "_sawing"));
+			sawmillResultFromBase(recipeCategory, result, input, count).save(output.withConditions(condition), getConversionRecipeName(modid, result, input).withPrefix(prefix).withSuffix("_sawing"));
 		}
 	}
 
@@ -237,7 +237,7 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 
 	public static void sawmillRecipe(RecipeOutput output, ICondition condition, RecipeCategory recipeCategory, TagKey<Item> input, ItemLike result, int count, String prefix, String modid) {
 		if (input != null && result != null) {
-			sawmillResultFromBase(recipeCategory, result, input, count).save(output.withConditions(condition), ResourceLocation.fromNamespaceAndPath(modid, prefix + getConversionRecipeName(result, input) + "_sawing"));
+			sawmillResultFromBase(recipeCategory, result, input, count).save(output.withConditions(condition), getConversionRecipeName(modid, result, input).withPrefix(prefix).withSuffix("_sawing"));
 		}
 	}
 
@@ -265,7 +265,11 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 		return getItemName(result) + "_from_" + input.location().getPath();
 	}
 
-	public static ResourceLocation getModConversionRecipeName(String modid, ItemLike result, ItemLike input) {
+	public static ResourceLocation getConversionRecipeName(String modid, ItemLike result, ItemLike input) {
+		return ResourceLocation.fromNamespaceAndPath(modid, getConversionRecipeName(result, input));
+	}
+
+	public static ResourceLocation getConversionRecipeName(String modid, ItemLike result, TagKey<Item> input) {
 		return ResourceLocation.fromNamespaceAndPath(modid, getConversionRecipeName(result, input));
 	}
 }

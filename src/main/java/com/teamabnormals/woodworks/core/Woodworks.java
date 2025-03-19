@@ -68,7 +68,7 @@ public class Woodworks {
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::dataSetup);
 
-		if (FMLEnvironment.dist == Dist.CLIENT){
+		if (FMLEnvironment.dist == Dist.CLIENT) {
 			WoodworksBlocks.setupTabEditors();
 			bus.addListener(this::registerLayerDefinitions);
 			bus.addListener(this::registerRenderers);
@@ -132,7 +132,7 @@ public class Woodworks {
 		BlockColors colors = Minecraft.getInstance().getBlockColors();
 		event.register(
 				(stack, color) -> {
-					BlockState blockstate = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
+					BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
 					return colors.getColor(blockstate, null, null, color);
 				},
 				WoodworksBlocks.OAK_LEAF_PILE,
@@ -154,5 +154,9 @@ public class Woodworks {
 		);
 		event.register((x, blockAndTintGetter, pos, u) -> FoliageColor.getEvergreenColor(), WoodworksBlocks.SPRUCE_LEAF_PILE.get());
 		event.register((x, blockAndTintGetter, pos, u) -> FoliageColor.getBirchColor(), WoodworksBlocks.BIRCH_LEAF_PILE.get());
+	}
+
+	public static ResourceLocation location(String path) {
+		return ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, path);
 	}
 }

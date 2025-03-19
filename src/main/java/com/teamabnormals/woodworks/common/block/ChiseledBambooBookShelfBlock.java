@@ -3,16 +3,19 @@ package com.teamabnormals.woodworks.common.block;
 import com.teamabnormals.blueprint.common.block.BlueprintChiseledBookShelfBlock;
 import net.minecraft.world.phys.Vec2;
 
+import java.util.OptionalInt;
+
 public class ChiseledBambooBookShelfBlock extends BlueprintChiseledBookShelfBlock {
 
 	public ChiseledBambooBookShelfBlock(Properties properties) {
 		super(properties);
 	}
 
-	public int getHitSlot(Vec2 vec2) {
+	@Override
+	public OptionalInt getHitSlot(Vec2 vec2) {
 		int i = vec2.y >= (vec2.x < 0.625F ? 0.5625F : 0.375F) ? 0 : 1;
 		int j = getSection(i, vec2.x);
-		return j + i * 3;
+		return OptionalInt.of(j + i * 3);
 	}
 
 	private static int getSection(int i, float x) {

@@ -17,11 +17,11 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 
 @JeiPlugin
 public class WoodworksPlugin implements IModPlugin {
-	public static final RecipeType<SawmillRecipe> SAWING = RecipeType.create(Woodworks.MOD_ID, "sawing", SawmillRecipe.class);
+	public static final RecipeType<RecipeHolder<SawmillRecipe>> SAWING = RecipeType.createRecipeHolderType(Woodworks.location("sawing"));
 
 	@Override
 	public ResourceLocation getPluginUid() {
-		return ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, Woodworks.MOD_ID);
+		return Woodworks.location(Woodworks.MOD_ID);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class WoodworksPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
-		registration.addRecipes(SAWING, Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(WoodworksRecipeTypes.SAWING.get()).stream().map(RecipeHolder::value).toList());
+		registration.addRecipes(SAWING, Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(WoodworksRecipeTypes.SAWING.get()).stream().toList());
 	}
 
 	@Override

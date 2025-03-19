@@ -12,6 +12,6 @@ public class WoodworksDataProcessors {
 	public static final TrackedData<ResourceLocation> CHEST_VARIANT = TrackedData.Builder.create(ResourceLocation.STREAM_CODEC, () -> BuiltInRegistries.BLOCK.getKey(Blocks.CHEST)).enableSaving(ResourceLocation.CODEC.fieldOf("value")).build();
 
 	public static void registerTrackedData() {
-		TrackedDataManager.INSTANCE.registerData(ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, "chest_variant"), CHEST_VARIANT);
+		TrackedDataManager.INSTANCE.registerData(Woodworks.location("chest_variant"), CHEST_VARIANT);
 	}
 }
