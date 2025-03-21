@@ -2,7 +2,7 @@ package com.teamabnormals.woodworks.core.data.server;
 
 import com.teamabnormals.blueprint.core.registry.BlueprintDataPackRegistries;
 import com.teamabnormals.woodworks.core.Woodworks;
-import com.teamabnormals.woodworks.core.other.WoodworksStructureRepaletters;
+import com.teamabnormals.woodworks.core.registry.datapack.WoodworksStructureRepaletters;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.PackOutput;
@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 import static com.teamabnormals.woodworks.core.WoodworksConfig.COMMON;
-import static com.teamabnormals.woodworks.core.other.WoodworksStructureRepaletters.*;
+import static com.teamabnormals.woodworks.core.registry.datapack.WoodworksStructureRepaletters.*;
 
 public final class WoodworksDatapackBuiltinEntriesProvider extends net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider {
 

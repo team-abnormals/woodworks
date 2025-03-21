@@ -1,4 +1,4 @@
-package com.teamabnormals.woodworks.core.other;
+package com.teamabnormals.woodworks.core.registry.datapack;
 
 import com.teamabnormals.blueprint.common.world.modification.structure.SimpleStructureRepaletter;
 import com.teamabnormals.blueprint.common.world.modification.structure.StructureRepaletterEntry;

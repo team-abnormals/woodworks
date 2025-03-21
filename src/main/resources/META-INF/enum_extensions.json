@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "WOODWORKS_SAWMILL",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/teamabnormals/woodworks/core/other/WoodworksEnums",
+        "field": "SAWMILL"
+      }
+    }
+  ]
+}
