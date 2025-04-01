@@ -14,6 +14,7 @@ import com.teamabnormals.woodworks.core.data.server.WoodworksLootTableProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksRecipeProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvider;
+import com.teamabnormals.woodworks.core.other.WoodworksClientCompat;
 import com.teamabnormals.woodworks.core.other.WoodworksCompat;
 import com.teamabnormals.woodworks.core.other.WoodworksDataProcessors;
 import com.teamabnormals.woodworks.core.other.WoodworksModelLayers;
@@ -70,6 +71,10 @@ public class Woodworks {
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::dataSetup);
 
+		if (FMLEnvironment.dist == Dist.CLIENT) {
+			SplashSerializers.register(location("clayworks"), ClayworksSplash.CODEC);
+		}
+
 		container.registerConfig(ModConfig.Type.COMMON, WoodworksConfig.COMMON_SPEC);
 	}
 
@@ -80,8 +85,9 @@ public class Woodworks {
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {
-		WoodworksBlocks.setupTabEditors();
-		SplashSerializers.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "clayworks"), ClayworksSplash.CODEC);
+		event.enqueueWork(() -> {
+			WoodworksClientCompat.register();
+		});
 	}
 
 	private void dataSetup(GatherDataEvent event) {

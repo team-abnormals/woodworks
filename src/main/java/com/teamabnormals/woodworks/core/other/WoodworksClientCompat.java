@@ -15,15 +15,20 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
 @EventBusSubscriber(modid = Woodworks.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class WoodworksClientCompat {
 
+	public static void register() {
+		WoodworksBlocks.setupTabEditors();
+	}
+
 	@SubscribeEvent
-	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+	public static void registerLayerDefinitions(RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(WoodworksModelLayers.BAMBOO_CLOSET_LEFT, () -> DrawerBlockEntityRenderer.createBodyLayer(false, false));
 		event.registerLayerDefinition(WoodworksModelLayers.BAMBOO_CLOSET_RIGHT, () -> DrawerBlockEntityRenderer.createBodyLayer(false, true));
 		event.registerLayerDefinition(WoodworksModelLayers.BAMBOO_CLOSET_TALL_LEFT, () -> DrawerBlockEntityRenderer.createBodyLayer(true, false));
@@ -31,7 +36,7 @@ public class WoodworksClientCompat {
 	}
 
 	@SubscribeEvent
-	public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+	public static void registerRenderers(RegisterRenderers event) {
 		event.registerBlockEntityRenderer(WoodworksBlockEntityTypes.CLOSET.get(), DrawerBlockEntityRenderer::new);
 		event.registerBlockEntityRenderer(WoodworksBlockEntityTypes.TRAPPED_CLOSET.get(), DrawerBlockEntityRenderer::new);
 	}
