@@ -9,6 +9,7 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.conditions.AndCondition;
 import net.neoforged.neoforge.common.conditions.ICondition;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 
 import java.util.List;
 import java.util.Set;
@@ -17,24 +18,24 @@ import java.util.concurrent.CompletableFuture;
 import static com.teamabnormals.woodworks.core.WoodworksConfig.COMMON;
 import static com.teamabnormals.woodworks.core.registry.datapack.WoodworksStructureRepaletters.*;
 
-public final class WoodworksDatapackBuiltinEntriesProvider extends net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider {
+public final class WoodworksDatapackProvider extends DatapackBuiltinEntriesProvider {
 
 	private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
 			.add(BlueprintDataPackRegistries.STRUCTURE_REPALETTERS, WoodworksStructureRepaletters::bootstrap);
 
-	public WoodworksDatapackBuiltinEntriesProvider(PackOutput output, CompletableFuture<Provider> lookupProvider) {
-		super(output, lookupProvider, BUILDER, conditionconsumer -> {
-			conditionconsumer.accept(OAK_CHESTS_IN_VILLAGES, chestConfig());
-			conditionconsumer.accept(SPRUCE_CHESTS_IN_VILLAGES, chestConfig());
-			conditionconsumer.accept(JUNGLE_CHESTS_IN_VILLAGES, chestConfig());
-			conditionconsumer.accept(ACACIA_CHESTS_IN_VILLAGES, chestConfig());
-			conditionconsumer.accept(SPRUCE_BOOKSHELVES_IN_VILLAGES, bookshelfConfig());
-			conditionconsumer.accept(JUNGLE_BOOKSHELVES_IN_VILLAGES, bookshelfConfig());
-			conditionconsumer.accept(ACACIA_BOOKSHELVES_IN_VILLAGES, bookshelfConfig());
-			conditionconsumer.accept(SPRUCE_LADDERS_IN_VILLAGES, ladderConfig());
-			conditionconsumer.accept(JUNGLE_LADDERS_IN_VILLAGES, ladderConfig());
-			conditionconsumer.accept(ACACIA_LADDERS_IN_VILLAGES, ladderConfig());
-				}, Set.of(Woodworks.MOD_ID));
+	public WoodworksDatapackProvider(PackOutput output, CompletableFuture<Provider> provider) {
+		super(output, provider, BUILDER, consumer -> {
+			consumer.accept(OAK_CHESTS_IN_VILLAGES, chestConfig());
+			consumer.accept(SPRUCE_CHESTS_IN_VILLAGES, chestConfig());
+			consumer.accept(JUNGLE_CHESTS_IN_VILLAGES, chestConfig());
+			consumer.accept(ACACIA_CHESTS_IN_VILLAGES, chestConfig());
+			consumer.accept(SPRUCE_BOOKSHELVES_IN_VILLAGES, bookshelfConfig());
+			consumer.accept(JUNGLE_BOOKSHELVES_IN_VILLAGES, bookshelfConfig());
+			consumer.accept(ACACIA_BOOKSHELVES_IN_VILLAGES, bookshelfConfig());
+			consumer.accept(SPRUCE_LADDERS_IN_VILLAGES, ladderConfig());
+			consumer.accept(JUNGLE_LADDERS_IN_VILLAGES, ladderConfig());
+			consumer.accept(ACACIA_LADDERS_IN_VILLAGES, ladderConfig());
+		}, Set.of(Woodworks.MOD_ID));
 	}
 
 	private static ICondition bookshelfConfig() {

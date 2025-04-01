@@ -70,7 +70,6 @@ public final class AbstractChestedHorseMixin extends AbstractHorse {
 		}
 	}
 
-
 	@Inject(at = @At("HEAD"), method = "equipChest")
 	private void equipChest(Player player, ItemStack stack, CallbackInfo ci) {
 		((IDataManager) (AbstractHorse) this).setValue(WoodworksDataProcessors.CHEST_VARIANT, BuiltInRegistries.ITEM.getKey(stack.getItem()));

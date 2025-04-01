@@ -3,7 +3,7 @@ package com.teamabnormals.woodworks.common.block.entity;
 import com.teamabnormals.woodworks.common.block.ClosetBlock;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlockEntityTypes;
-import com.teamabnormals.woodworks.core.registry.WoodworksSounds;
+import com.teamabnormals.woodworks.core.registry.WoodworksSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -28,11 +28,11 @@ public class ClosetBlockEntity extends ChestBlockEntity {
 
 	private final ContainerOpenersCounter newOpenersCounter = new ContainerOpenersCounter() {
 		protected void onOpen(Level level, BlockPos pos, BlockState state) {
-			playSound(level, pos, state, WoodworksSounds.BAMBOO_WOOD_CLOSET_OPEN.get());
+			playSound(level, pos, state, WoodworksSoundEvents.BAMBOO_WOOD_CLOSET_OPEN.get());
 		}
 
 		protected void onClose(Level level, BlockPos pos, BlockState state) {
-			playSound(level, pos, state, WoodworksSounds.BAMBOO_WOOD_CLOSET_CLOSE.get());
+			playSound(level, pos, state, WoodworksSoundEvents.BAMBOO_WOOD_CLOSET_CLOSE.get());
 		}
 
 		@Override
@@ -89,7 +89,7 @@ public class ClosetBlockEntity extends ChestBlockEntity {
 	public static boolean canUnlock(Player player, LockCode code, Component component) {
 		if (!player.isSpectator() && !code.unlocksWith(player.getMainHandItem())) {
 			player.displayClientMessage(Component.translatable("container.isLocked", component), true);
-			player.playNotifySound(WoodworksSounds.BAMBOO_WOOD_CLOSET_LOCKED.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+			player.playNotifySound(WoodworksSoundEvents.BAMBOO_WOOD_CLOSET_LOCKED.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 			return false;
 		} else {
 			return true;

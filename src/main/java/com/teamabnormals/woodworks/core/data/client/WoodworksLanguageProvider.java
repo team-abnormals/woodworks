@@ -24,7 +24,7 @@ public class WoodworksLanguageProvider extends BlueprintLanguageProvider {
 		this.add("oak_ladder");
 		this.add("oak_beehive");
 
-		WoodworksBlocks.HELPER.getDeferredRegister().getEntries().forEach(block -> {
+		WoodworksBlocks.BLOCKS.getDeferredRegister().getEntries().forEach(block -> {
 			add(block.get(), block.get() instanceof LeafPileBlock ? "Pile of " + format(block.getId()).replace("Leaf Pile", "Leaves") : format(block.getId()));
 		});
 

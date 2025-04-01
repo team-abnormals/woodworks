@@ -3,7 +3,7 @@ package com.teamabnormals.woodworks.core.data.server;
 import com.google.common.collect.ImmutableList;
 import com.teamabnormals.woodworks.core.Woodworks;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -33,19 +33,19 @@ import static com.teamabnormals.woodworks.core.registry.WoodworksBlocks.*;
 
 public class WoodworksLootTableProvider extends LootTableProvider {
 
-	public WoodworksLootTableProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
+	public WoodworksLootTableProvider(PackOutput output, CompletableFuture<Provider> provider) {
 		super(output, BuiltInLootTables.all(), ImmutableList.of(new LootTableProvider.SubProviderEntry(WoodworksBlockLoot::new, LootContextParamSets.BLOCK)), provider);
 	}
 
 	@Override
-	protected void validate(WritableRegistry<LootTable> writableregistry, ValidationContext validationcontext, ProblemReporter.Collector problemreporter$collector) {
+	protected void validate(WritableRegistry<LootTable> registry, ValidationContext context, ProblemReporter.Collector collector) {
 	}
 
 	private static class WoodworksBlockLoot extends BlockLootSubProvider {
 		private static final Set<Item> EXPLOSION_RESISTANT = Stream.of(Blocks.DRAGON_EGG, Blocks.BEACON, Blocks.CONDUIT, Blocks.SKELETON_SKULL, Blocks.WITHER_SKELETON_SKULL, Blocks.PLAYER_HEAD, Blocks.ZOMBIE_HEAD, Blocks.CREEPER_HEAD, Blocks.DRAGON_HEAD, Blocks.PIGLIN_HEAD, Blocks.SHULKER_BOX, Blocks.BLACK_SHULKER_BOX, Blocks.BLUE_SHULKER_BOX, Blocks.BROWN_SHULKER_BOX, Blocks.CYAN_SHULKER_BOX, Blocks.GRAY_SHULKER_BOX, Blocks.GREEN_SHULKER_BOX, Blocks.LIGHT_BLUE_SHULKER_BOX, Blocks.LIGHT_GRAY_SHULKER_BOX, Blocks.LIME_SHULKER_BOX, Blocks.MAGENTA_SHULKER_BOX, Blocks.ORANGE_SHULKER_BOX, Blocks.PINK_SHULKER_BOX, Blocks.PURPLE_SHULKER_BOX, Blocks.RED_SHULKER_BOX, Blocks.WHITE_SHULKER_BOX, Blocks.YELLOW_SHULKER_BOX).map(ItemLike::asItem).collect(Collectors.toSet());
 
-		protected WoodworksBlockLoot(HolderLookup.Provider registries) {
-			super(EXPLOSION_RESISTANT, FeatureFlags.REGISTRY.allFlags(), registries);
+		protected WoodworksBlockLoot(Provider provider) {
+			super(EXPLOSION_RESISTANT, FeatureFlags.REGISTRY.allFlags(), provider);
 		}
 
 		@Override

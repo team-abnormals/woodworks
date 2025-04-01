@@ -9,7 +9,7 @@ import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksLanguageProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksSoundDefinitionsProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksSplashProvider;
-import com.teamabnormals.woodworks.core.data.server.WoodworksDatapackBuiltinEntriesProvider;
+import com.teamabnormals.woodworks.core.data.server.WoodworksDatapackProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksLootTableProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksRecipeProvider;
 import com.teamabnormals.woodworks.core.data.server.tags.WoodworksBlockTagsProvider;
@@ -17,10 +17,7 @@ import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvid
 import com.teamabnormals.woodworks.core.other.WoodworksCompat;
 import com.teamabnormals.woodworks.core.other.WoodworksDataProcessors;
 import com.teamabnormals.woodworks.core.other.WoodworksModelLayers;
-import com.teamabnormals.woodworks.core.registry.WoodworksBlockEntityTypes;
-import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
-import com.teamabnormals.woodworks.core.registry.WoodworksConditions;
-import com.teamabnormals.woodworks.core.registry.WoodworksMenuTypes;
+import com.teamabnormals.woodworks.core.registry.*;
 import com.teamabnormals.woodworks.core.registry.WoodworksRecipes.WoodworksRecipeSerializers;
 import com.teamabnormals.woodworks.core.registry.WoodworksRecipes.WoodworksRecipeTypes;
 import com.teamabnormals.woodworks.core.registry.helper.WoodworksBlockSubRegistryHelper;
@@ -59,7 +56,9 @@ public class Woodworks {
 	public Woodworks(IEventBus bus, ModContainer container) {
 		WoodworksDataProcessors.registerTrackedData();
 
-		REGISTRY_HELPER.register(bus);
+		WoodworksBlocks.BLOCKS.register(bus);
+		WoodworksBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
+		WoodworksSoundEvents.SOUND_EVENTS.register(bus);
 		WoodworksConditions.CONDITION_SERIALIZERS.register(bus);
 		WoodworksMenuTypes.MENU_TYPES.register(bus);
 		WoodworksRecipeSerializers.RECIPE_SERIALIZERS.register(bus);
@@ -99,7 +98,7 @@ public class Woodworks {
 		generator.addProvider(includeServer, new WoodworksItemTagsProvider(output, provider, blockTags.contentsGetter(), helper));
 		generator.addProvider(includeServer, new WoodworksLootTableProvider(output, provider));
 		generator.addProvider(includeServer, new WoodworksRecipeProvider(output, provider));
-		generator.addProvider(includeServer, new WoodworksDatapackBuiltinEntriesProvider(output, provider));
+		generator.addProvider(includeServer, new WoodworksDatapackProvider(output, provider));
 
 		boolean includeClient = event.includeClient();
 		generator.addProvider(includeClient, new WoodworksSplashProvider(output));
@@ -130,33 +129,20 @@ public class Woodworks {
 	@OnlyIn(Dist.CLIENT)
 	private void registerItemColors(RegisterColorHandlersEvent.Item event) {
 		BlockColors colors = Minecraft.getInstance().getBlockColors();
-		event.register(
-				(stack, color) -> {
-					BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
-					return colors.getColor(blockstate, null, null, color);
-				},
-				WoodworksBlocks.OAK_LEAF_PILE,
-				WoodworksBlocks.SPRUCE_LEAF_PILE, WoodworksBlocks.BIRCH_LEAF_PILE, WoodworksBlocks.JUNGLE_LEAF_PILE, WoodworksBlocks.ACACIA_LEAF_PILE, WoodworksBlocks.DARK_OAK_LEAF_PILE, WoodworksBlocks.MANGROVE_LEAF_PILE
-		);
+		event.register((stack, color) -> {
+			BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
+			return colors.getColor(blockstate, null, null, color);
+		}, WoodworksBlocks.OAK_LEAF_PILE, WoodworksBlocks.SPRUCE_LEAF_PILE, WoodworksBlocks.BIRCH_LEAF_PILE, WoodworksBlocks.JUNGLE_LEAF_PILE, WoodworksBlocks.ACACIA_LEAF_PILE, WoodworksBlocks.DARK_OAK_LEAF_PILE, WoodworksBlocks.MANGROVE_LEAF_PILE);
 	}
 
 	@OnlyIn(Dist.CLIENT)
 	private void registerBlockColors(RegisterColorHandlersEvent.Block event) {
-		event.register(
-				(x, world, pos, u) -> world != null && pos != null
-						? BiomeColors.getAverageFoliageColor(world, pos)
-						: FoliageColor.getDefaultColor(),
-				WoodworksBlocks.OAK_LEAF_PILE.get(),
-				WoodworksBlocks.JUNGLE_LEAF_PILE.get(),
-				WoodworksBlocks.ACACIA_LEAF_PILE.get(),
-				WoodworksBlocks.DARK_OAK_LEAF_PILE.get(),
-				WoodworksBlocks.MANGROVE_LEAF_PILE.get()
-		);
+		event.register((x, world, pos, u) -> world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.getDefaultColor(), WoodworksBlocks.OAK_LEAF_PILE.get(), WoodworksBlocks.JUNGLE_LEAF_PILE.get(), WoodworksBlocks.ACACIA_LEAF_PILE.get(), WoodworksBlocks.DARK_OAK_LEAF_PILE.get(), WoodworksBlocks.MANGROVE_LEAF_PILE.get());
 		event.register((x, blockAndTintGetter, pos, u) -> FoliageColor.getEvergreenColor(), WoodworksBlocks.SPRUCE_LEAF_PILE.get());
 		event.register((x, blockAndTintGetter, pos, u) -> FoliageColor.getBirchColor(), WoodworksBlocks.BIRCH_LEAF_PILE.get());
 	}
 
 	public static ResourceLocation location(String path) {
-		return ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, path);
+		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
 	}
 }

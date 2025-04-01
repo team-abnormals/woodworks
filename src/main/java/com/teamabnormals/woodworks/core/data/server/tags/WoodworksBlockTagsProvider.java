@@ -19,7 +19,6 @@ public class WoodworksBlockTagsProvider extends BlockTagsProvider {
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	protected void addTags(Provider provider) {
 		this.tag(WOODEN_BOARDS).add(OAK_BOARDS.get(), SPRUCE_BOARDS.get(), BIRCH_BOARDS.get(), JUNGLE_BOARDS.get(), ACACIA_BOARDS.get(), DARK_OAK_BOARDS.get(), MANGROVE_BOARDS.get(), CHERRY_BOARDS.get(), CRIMSON_BOARDS.get(), WARPED_BOARDS.get());
 		this.tag(WOODEN_CHESTS).add(OAK_CHEST.get(), SPRUCE_CHEST.get(), BIRCH_CHEST.get(), JUNGLE_CHEST.get(), ACACIA_CHEST.get(), DARK_OAK_CHEST.get(), MANGROVE_CHEST.get(), CHERRY_CHEST.get(), BAMBOO_CLOSET.get(), CRIMSON_CHEST.get(), WARPED_CHEST.get());

@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class WoodworksBlockEntityTypes {
-	public static final BlockEntitySubRegistryHelper HELPER = Woodworks.REGISTRY_HELPER.getBlockEntitySubHelper();
+	public static final BlockEntitySubRegistryHelper BLOCK_ENTITY_TYPES = Woodworks.REGISTRY_HELPER.getBlockEntitySubHelper();
 
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET = HELPER.createBlockEntity("closet", ClosetBlockEntity::new, ClosetBlock.class);
-	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TrappedClosetBlockEntity>> TRAPPED_CLOSET = HELPER.createBlockEntity("trapped_closet", TrappedClosetBlockEntity::new, TrappedClosetBlock.class);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClosetBlockEntity>> CLOSET = BLOCK_ENTITY_TYPES.createBlockEntity("closet", ClosetBlockEntity::new, ClosetBlock.class);
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TrappedClosetBlockEntity>> TRAPPED_CLOSET = BLOCK_ENTITY_TYPES.createBlockEntity("trapped_closet", TrappedClosetBlockEntity::new, TrappedClosetBlock.class);
 }

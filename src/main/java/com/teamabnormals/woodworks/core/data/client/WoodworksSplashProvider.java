@@ -7,8 +7,8 @@ import net.minecraft.data.PackOutput;
 
 public final class WoodworksSplashProvider extends SplashProvider {
 
-	public WoodworksSplashProvider(PackOutput packOutput) {
-		super(Woodworks.MOD_ID, packOutput);
+	public WoodworksSplashProvider(PackOutput output) {
+		super(Woodworks.MOD_ID, output);
 	}
 
 	@Override

@@ -41,7 +41,7 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics guiGraphics,  float p_99329_, int p_99330_, int p_99331_) {
+	protected void renderBg(GuiGraphics guiGraphics, float p_99329_, int p_99330_, int p_99331_) {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, BG_LOCATION);

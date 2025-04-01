@@ -10,7 +10,7 @@ import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static com.teamabnormals.woodworks.core.registry.WoodworksSounds.*;
+import static com.teamabnormals.woodworks.core.registry.WoodworksSoundEvents.*;
 
 public class WoodworksSoundDefinitionsProvider extends SoundDefinitionsProvider {
 
