@@ -38,6 +38,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -57,6 +58,7 @@ public class Woodworks {
 		WoodworksDataProcessors.registerTrackedData();
 
 		WoodworksBlocks.BLOCKS.register(bus);
+		WoodworksBlocks.ITEMS.register(bus);
 		WoodworksBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
 		WoodworksSoundEvents.SOUND_EVENTS.register(bus);
 		WoodworksConditions.CONDITION_SERIALIZERS.register(bus);
@@ -65,6 +67,7 @@ public class Woodworks {
 		WoodworksRecipeTypes.RECIPE_TYPES.register(bus);
 
 		bus.addListener(this::commonSetup);
+		bus.addListener(this::clientSetup);
 		bus.addListener(this::dataSetup);
 
 		if (FMLEnvironment.dist == Dist.CLIENT) {
@@ -86,25 +89,28 @@ public class Woodworks {
 		});
 	}
 
+	private void clientSetup(FMLClientSetupEvent event) {
+	}
+
 	private void dataSetup(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
 		PackOutput output = generator.getPackOutput();
 		CompletableFuture<Provider> provider = event.getLookupProvider();
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
-		boolean includeServer = event.includeServer();
+		boolean server = event.includeServer();
 		WoodworksBlockTagsProvider blockTags = new WoodworksBlockTagsProvider(output, provider, helper);
-		generator.addProvider(includeServer, blockTags);
-		generator.addProvider(includeServer, new WoodworksItemTagsProvider(output, provider, blockTags.contentsGetter(), helper));
-		generator.addProvider(includeServer, new WoodworksLootTableProvider(output, provider));
-		generator.addProvider(includeServer, new WoodworksRecipeProvider(output, provider));
-		generator.addProvider(includeServer, new WoodworksDatapackProvider(output, provider));
+		generator.addProvider(server, blockTags);
+		generator.addProvider(server, new WoodworksItemTagsProvider(output, provider, blockTags.contentsGetter(), helper));
+		generator.addProvider(server, new WoodworksLootTableProvider(output, provider));
+		generator.addProvider(server, new WoodworksRecipeProvider(output, provider));
+		generator.addProvider(server, new WoodworksDatapackProvider(output, provider));
 
-		boolean includeClient = event.includeClient();
-		generator.addProvider(includeClient, new WoodworksSplashProvider(output));
-		generator.addProvider(includeClient, new WoodworksBlockStateProvider(output, helper));
-		generator.addProvider(includeClient, new WoodworksLanguageProvider(output));
-		generator.addProvider(includeClient, new WoodworksSoundDefinitionsProvider(output, helper));
+		boolean client = event.includeClient();
+		generator.addProvider(client, new WoodworksSplashProvider(output));
+		generator.addProvider(client, new WoodworksBlockStateProvider(output, helper));
+		generator.addProvider(client, new WoodworksLanguageProvider(output));
+		generator.addProvider(client, new WoodworksSoundDefinitionsProvider(output, helper));
 	}
 
 	@OnlyIn(Dist.CLIENT)

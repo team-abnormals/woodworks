@@ -7,6 +7,7 @@ import com.teamabnormals.blueprint.common.block.chest.BlueprintChestBlock;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintTrappedChestBlock;
 import com.teamabnormals.blueprint.core.util.PropertyUtil.WoodSetProperties;
 import com.teamabnormals.blueprint.core.util.item.CreativeModeTabContentsPopulator;
+import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.woodworks.common.block.*;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.WoodworksConfig;
@@ -26,6 +27,7 @@ import static net.minecraft.world.item.crafting.Ingredient.of;
 
 public class WoodworksBlocks {
 	public static final WoodworksBlockSubRegistryHelper BLOCKS = Woodworks.REGISTRY_HELPER.getBlockSubHelper();
+	public static final ItemSubRegistryHelper ITEMS = Woodworks.REGISTRY_HELPER.getItemSubHelper();
 
 	public static final DeferredBlock<Block> SAWMILL = BLOCKS.createBlock("sawmill", () -> new SawmillBlock(WoodworksProperties.SAWMILL));
 

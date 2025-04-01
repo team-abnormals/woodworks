@@ -40,8 +40,8 @@ public class WoodworksBlockSubRegistryHelper extends BlockSubRegistryHelper {
 
 	public DeferredBlock<TrappedClosetBlock> createTrappedClosetBlock(String name, Block.Properties properties) {
 		String modId = this.parent.getModId();
-		DeferredBlock<TrappedClosetBlock> block = this.deferredRegister.register("trapped_" + name + "_closet", () -> new TrappedClosetBlock(modId + ":" + name + "_trapped", properties));
 		String chestMaterialsName = BlueprintChestMaterials.registerMaterials(modId, name, true);
+		DeferredBlock<TrappedClosetBlock> block = this.deferredRegister.register("trapped_" + name + "_closet", () -> new TrappedClosetBlock(chestMaterialsName, properties));
 		var item = this.itemRegister.register("trapped_" + name + "_closet", () -> new BlockItem(block.get(), new Item.Properties()));
 		if (FMLEnvironment.dist == Dist.CLIENT) {
 			this.clientItemExtensions.put(item, closetBEWLRItemExtensions(block, true));
