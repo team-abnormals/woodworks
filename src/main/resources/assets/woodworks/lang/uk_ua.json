@@ -89,5 +89,8 @@
   "container.woodworks.closet": "Комірка",
   "container.woodworks.closetDouble": "Велика комірка",
   "container.woodworks.sawmill": "Пилорама",
-  "gui.woodworks.category.sawmill": "Пиляння"
+  "gui.woodworks.category.sawmill": "Пиляння",
+  "subtitles.woodworks.block.closet.close": "Комірка зачиняється",
+  "subtitles.woodworks.block.closet.locked": "Комірка замикається",
+  "subtitles.woodworks.block.closet.open": "Комірка відчиняється"
 }
