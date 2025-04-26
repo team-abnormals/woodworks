@@ -72,7 +72,7 @@ public class WoodworksBlockStateProvider extends BlueprintBlockStateProvider {
 	}
 
 	public void sawmillBlock(DeferredBlock<Block> sawmill) {
-		this.horizontalBlock(sawmill.get(), new ModelFile.UncheckedModelFile(ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, "block/sawmill")));
+		this.horizontalBlock(sawmill.get(), new ModelFile.UncheckedModelFile(Woodworks.location("block/sawmill")));
 		this.blockItem(sawmill);
 	}
 }

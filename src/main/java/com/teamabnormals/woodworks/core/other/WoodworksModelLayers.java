@@ -23,7 +23,7 @@ public class WoodworksModelLayers {
 	}
 
 	public static ModelLayerLocation register(String name, String layer) {
-		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, name), layer);
+		return new ModelLayerLocation(Woodworks.location(name), layer);
 	}
 
 	@SubscribeEvent

@@ -39,10 +39,10 @@ public class WoodworksLanguageProvider extends BlueprintLanguageProvider {
 	}
 
 	private void add(String block) {
-		this.add(Util.makeDescriptionId("block", ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, block)), format(block));
+		this.add(Util.makeDescriptionId("block", Woodworks.location(block)), format(block));
 	}
 
 	private void subtitle(String key, String subtitle) {
-		this.add(Util.makeDescriptionId("subtitles", ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, key)), subtitle);
+		this.add(Util.makeDescriptionId("subtitles", Woodworks.location(key)), subtitle);
 	}
 }

@@ -22,7 +22,7 @@ import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
-	private static final ResourceLocation BG_LOCATION = ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, "textures/gui/container/sawmill.png");
+	private static final ResourceLocation BG_LOCATION = Woodworks.location("textures/gui/container/sawmill.png");
 	private float scrollOffs;
 	private boolean scrolling;
 	private int startIndex;
