@@ -1,12 +1,10 @@
 package com.teamabnormals.woodworks.core.registry.datapack;
 
-import com.teamabnormals.blueprint.common.world.modification.structure.SimpleStructureRepaletter;
 import com.teamabnormals.blueprint.common.world.modification.structure.StructureRepaletterEntry;
 import com.teamabnormals.blueprint.core.registry.BlueprintDataPackRegistries;
 import com.teamabnormals.woodworks.core.Woodworks;
 import com.teamabnormals.woodworks.core.registry.WoodworksBlocks;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -16,9 +14,8 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.neoforged.neoforge.common.conditions.ICondition;
 
 import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+import static com.teamabnormals.blueprint.common.world.modification.structure.StructureRepaletterEntry.*;
 import static com.teamabnormals.woodworks.core.other.WoodworksConditions.*;
 import static net.minecraft.world.level.levelgen.structure.BuiltinStructures.*;
 
@@ -70,16 +67,7 @@ public class WoodworksStructureRepaletters {
 
 	@SafeVarargs
 	private static void register(BootstrapContext<StructureRepaletterEntry> context, HolderGetter<Structure> structures, ResourceKey<StructureRepaletterEntry> key, Block replacesBlock, Block replacesWith, ResourceKey<Structure>... keys) {
-		context.register(key, StructureRepaletterEntry.repalette().repaletters(simple(replacesBlock, replacesWith)).select(holder(structures, keys)));
-	}
-
-	@SafeVarargs
-	public static HolderSet<Structure> holder(HolderGetter<Structure> structures, ResourceKey<Structure>... keys) {
-		return HolderSet.direct(Stream.of(keys).map(structures::getOrThrow).collect(Collectors.toList()));
-	}
-
-	public static SimpleStructureRepaletter simple(Block replaces, Block replacesWith) {
-		return new SimpleStructureRepaletter(replaces, replacesWith);
+		context.register(key, repalette().repaletters(simple(replacesBlock, replacesWith)).select(holder(structures, keys)));
 	}
 
 	private static ResourceKey<StructureRepaletterEntry> create(String name) {
