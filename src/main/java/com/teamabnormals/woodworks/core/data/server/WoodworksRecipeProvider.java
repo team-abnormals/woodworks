@@ -20,7 +20,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
@@ -31,8 +30,8 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import static com.teamabnormals.woodworks.core.WoodworksConfig.COMMON;
-import static com.teamabnormals.woodworks.core.registry.WoodworksBlocks.*;
 import static com.teamabnormals.woodworks.core.other.WoodworksConditions.*;
+import static com.teamabnormals.woodworks.core.registry.WoodworksBlocks.*;
 
 public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements IConditionBuilder {
 
@@ -92,11 +91,11 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 		sawmillRecipes(output, BlockFamilies.WARPED_PLANKS, ItemTags.WARPED_STEMS, WARPED_BOARDS.get(), WARPED_LADDER.get());
 	}
 
-	public static void baseRecipes(RecipeOutput output, Block planks, Block slab, Block boards, Block bookshelf, Block chiseledBookshelf, Block ladder, Block beehive, Block chest, Block trappedChest) {
+	public static void baseRecipes(RecipeOutput output, ItemLike planks, ItemLike slab, ItemLike boards, ItemLike bookshelf, ItemLike chiseledBookshelf, ItemLike ladder, ItemLike beehive, ItemLike chest, ItemLike trappedChest) {
 		baseRecipes(output, planks, slab, boards, bookshelf, chiseledBookshelf, ladder, beehive, chest, trappedChest, Woodworks.MOD_ID);
 	}
 
-	public static void baseRecipes(RecipeOutput output, Block planks, Block slab, Block boards, Block bookshelf, Block chiseledBookshelf, Block ladder, Block beehive, Block chest, Block trappedChest, String modid) {
+	public static void baseRecipes(RecipeOutput output, ItemLike planks, ItemLike slab, ItemLike boards, ItemLike bookshelf, ItemLike chiseledBookshelf, ItemLike ladder, ItemLike beehive, ItemLike chest, ItemLike trappedChest, String modid) {
 		boolean compat = !modid.equals(Woodworks.MOD_ID);
 
 		ICondition boardsCondition = compat ? compat(WOODEN_BOARDS) : WOODEN_BOARDS;
@@ -109,10 +108,10 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 		if (boards != null) {
 			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, boards).define('#', slab).pattern("#").pattern("#").group("wooden_boards").unlockedBy(getHasName(slab), has(slab)).save(output.withConditions(boardsCondition));
 		}
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, bookshelf).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").group("wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(bookshelfCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(bookshelf).getPath()));
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chiseledBookshelf).define('#', planks).define('X', slab).pattern("###").pattern("XXX").pattern("###").group("chiseled_wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(bookshelfCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(chiseledBookshelf).getPath()));
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', Items.STICK).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_stick", has(Items.STICK)).save(output.withConditions(ladderCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(ladder).getPath()));
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, beehive).define('#', planks).define('H', Items.HONEYCOMB).pattern("###").pattern("HHH").pattern("###").group("wooden_beehive").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)).save(output.withConditions(beehiveCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.BLOCK.getKey(beehive).getPath()));
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, bookshelf).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").group("wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(bookshelfCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.ITEM.getKey(bookshelf.asItem()).getPath()));
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chiseledBookshelf).define('#', planks).define('X', slab).pattern("###").pattern("XXX").pattern("###").group("chiseled_wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(bookshelfCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.ITEM.getKey(chiseledBookshelf.asItem()).getPath()));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', Items.STICK).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_stick", has(Items.STICK)).save(output.withConditions(ladderCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.ITEM.getKey(ladder.asItem()).getPath()));
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, beehive).define('#', planks).define('H', Items.HONEYCOMB).pattern("###").pattern("HHH").pattern("###").group("wooden_beehive").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)).save(output.withConditions(beehiveCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.ITEM.getKey(beehive.asItem()).getPath()));
 		if (chest != null) {
 			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, chest).define('#', planks).pattern("###").pattern("# #").pattern("###").group("wooden_chest").unlockedBy("has_lots_of_items", CriteriaTriggers.INVENTORY_CHANGED.createCriterion(new InventoryChangeTrigger.TriggerInstance(Optional.empty(), new InventoryChangeTrigger.TriggerInstance.Slots(MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY), List.of()))).save(output.withConditions(chestCondition));
 		}
@@ -121,44 +120,44 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 		}
 	}
 
-	private static void alternateStickRecipes(RecipeOutput output, Block planks, Block fence, Block fenceGate, Block ladder, Item stick) {
+	private static void alternateStickRecipes(RecipeOutput output, ItemLike planks, ItemLike fence, ItemLike fenceGate, ItemLike ladder, Item stick) {
 		alternateStickRecipes(output, planks, fence, fenceGate, ladder, stick, Woodworks.MOD_ID);
 	}
 
-	public static void alternateStickRecipes(RecipeOutput output, Block planks, Block fence, Block fenceGate, Block ladder, Item stick, String modid) {
+	public static void alternateStickRecipes(RecipeOutput output, ItemLike planks, ItemLike fence, ItemLike fenceGate, ItemLike ladder, Item stick, String modid) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, fence, 3).define('W', planks).define('#', stick).pattern("W#W").pattern("W#W").group("wooden_custom_fence").unlockedBy("has_planks", has(planks)).save(output, getConversionRecipeName(modid, fence, stick));
 		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, fenceGate).define('#', stick).define('W', planks).pattern("#W#").pattern("#W#").group("wooden_custom_fence_gate").unlockedBy("has_planks", has(planks)).save(output, getConversionRecipeName(modid, fenceGate, stick));
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ladder, 4).define('#', planks).define('S', stick).pattern("S S").pattern("S#S").pattern("S S").group("wooden_ladder").unlockedBy("has_bamboo", has(Items.BAMBOO)).save(output.withConditions(WOODEN_LADDERS), getConversionRecipeName(modid, ladder, stick));
 	}
 
-	public static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder) {
+	public static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, ItemLike boards, ItemLike ladder) {
 		sawmillRecipes(output, family, logs, boards, ladder, false);
 	}
 
-	private static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, boolean half) {
+	private static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, ItemLike boards, ItemLike ladder, boolean half) {
 		sawmillRecipes(output, family, logs, boards, ladder, Woodworks.MOD_ID, half);
 	}
 
-	public static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, String modid) {
+	public static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, ItemLike boards, ItemLike ladder, String modid) {
 		sawmillRecipes(output, family, logs, boards, ladder, modid, false);
 	}
 
-	public static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, Block boards, Block ladder, String modid, boolean half) {
+	public static void sawmillRecipes(RecipeOutput output, BlockFamily family, TagKey<Item> logs, ItemLike boards, ItemLike ladder, String modid, boolean half) {
 		boolean compat = !modid.equals(Woodworks.MOD_ID);
 		boolean full = !half;
 
-		Block planks = family.getBaseBlock();
-		Block button = family.get(BlockFamily.Variant.BUTTON);
-		Block door = family.get(BlockFamily.Variant.DOOR);
-		Block fence = family.get(BlockFamily.Variant.FENCE);
+		ItemLike planks = family.getBaseBlock();
+		ItemLike button = family.get(BlockFamily.Variant.BUTTON);
+		ItemLike door = family.get(BlockFamily.Variant.DOOR);
+		ItemLike fence = family.get(BlockFamily.Variant.FENCE);
 		if (fence == null) fence = family.get(BlockFamily.Variant.CUSTOM_FENCE);
-		Block fenceGate = family.get(BlockFamily.Variant.FENCE_GATE);
+		ItemLike fenceGate = family.get(BlockFamily.Variant.FENCE_GATE);
 		if (fenceGate == null) fenceGate = family.get(BlockFamily.Variant.CUSTOM_FENCE_GATE);
-		Block pressurePlate = family.get(BlockFamily.Variant.PRESSURE_PLATE);
-		Block sign = family.get(BlockFamily.Variant.SIGN);
-		Block slab = family.get(BlockFamily.Variant.SLAB);
-		Block stairs = family.get(BlockFamily.Variant.STAIRS);
-		Block trapdoor = family.get(BlockFamily.Variant.TRAPDOOR);
+		ItemLike pressurePlate = family.get(BlockFamily.Variant.PRESSURE_PLATE);
+		ItemLike sign = family.get(BlockFamily.Variant.SIGN);
+		ItemLike slab = family.get(BlockFamily.Variant.SLAB);
+		ItemLike stairs = family.get(BlockFamily.Variant.STAIRS);
+		ItemLike trapdoor = family.get(BlockFamily.Variant.TRAPDOOR);
 
 		ICondition sawmillCondition = compat ? compat(SAWMILL_ENABLED) : SAWMILL_ENABLED;
 		sawmillRecipe(output, sawmillCondition, RecipeCategory.BUILDING_BLOCKS, logs, planks, full ? 4 : 2, "", modid);
