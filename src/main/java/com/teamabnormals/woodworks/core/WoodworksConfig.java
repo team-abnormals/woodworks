@@ -10,6 +10,8 @@ public class WoodworksConfig {
 	public static class Common {
 		@ConfigKey("sawmill")
 		public final BooleanValue sawmill;
+		@ConfigKey("force_keep_tag_recipes")
+		public final BooleanValue keepVanillaRecipes;
 		@ConfigKey("wooden_boards")
 		public final BooleanValue woodenBoards;
 		@ConfigKey("wooden_bookshelves")
@@ -31,6 +33,9 @@ public class WoodworksConfig {
 		public final BooleanValue woodenChestsInVillages;
 
 		public Common(ModConfigSpec.Builder builder) {
+			builder.push("tweaks");
+			this.keepVanillaRecipes = builder.comment("If generic tag recipes for chests, fences, bookshelves, beehives etc. should be kept (potentially increases compatibility with other mods)").define("Force Keep Vanilla Recipes", false);
+			builder.pop();
 			builder.push("blocks");
 			this.sawmill = builder.define("Sawmill", true);
 			this.woodenBoards = builder.define("Wooden boards", true);
