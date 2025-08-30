@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "woodworks:woodworks_chests"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:chest"
+  }
+}

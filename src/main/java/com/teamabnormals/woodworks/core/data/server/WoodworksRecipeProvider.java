@@ -4,6 +4,8 @@ import com.teamabnormals.blueprint.core.api.conditions.BlueprintAndCondition;
 import com.teamabnormals.blueprint.core.data.server.BlueprintRecipeProvider;
 import com.teamabnormals.woodworks.common.item.crafting.SawmillRecipe;
 import com.teamabnormals.woodworks.core.Woodworks;
+import com.teamabnormals.woodworks.core.data.server.tags.WoodworksItemTagsProvider;
+
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.MinMaxBounds;
@@ -48,6 +50,12 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.BEEHIVE).define('P', ItemTags.PLANKS).define('H', Items.HONEYCOMB).pattern("PPP").pattern("HHH").pattern("PPP").unlockedBy("has_honeycomb", has(Items.HONEYCOMB)).save(output.withConditions(config(COMMON.woodenBeehives, "wooden_beehives", true)));
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.CHEST).define('#', ItemTags.PLANKS).pattern("###").pattern("# #").pattern("###").unlockedBy("has_lots_of_items", CriteriaTriggers.INVENTORY_CHANGED.createCriterion(new InventoryChangeTrigger.TriggerInstance(Optional.empty(), new InventoryChangeTrigger.TriggerInstance.Slots(MinMaxBounds.Ints.atLeast(10), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY), List.of()))).save(output.withConditions(config(COMMON.woodenChests, "wooden_chests", true)));
 
+		/* Allow crafting vanilla chests from Woodworks chests */
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, Blocks.CHEST)
+			.requires(WoodworksItemTagsProvider.WOODWORKS_CHESTS)
+			.unlockedBy("has_woodworks_chest", has(WoodworksItemTagsProvider.WOODWORKS_CHESTS))
+			.save(output, ResourceLocation.fromNamespaceAndPath(Woodworks.MOD_ID, "chest_from_modded_chest"));
+		
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, Blocks.TRAPPED_CHEST).requires(Tags.Items.CHESTS_WOODEN).requires(Blocks.TRIPWIRE_HOOK).unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)).save(output.withConditions(config(COMMON.woodenChests, "wooden_chests", true)));
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, Blocks.TRAPPED_CHEST).requires(Blocks.CHEST).requires(Blocks.TRIPWIRE_HOOK).unlockedBy("has_tripwire_hook", has(Blocks.TRIPWIRE_HOOK)).save(output.withConditions(WOODEN_CHESTS), Woodworks.location("trapped_chest"));
 		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, Blocks.LECTERN).define('S', ItemTags.WOODEN_SLABS).define('B', Tags.Items.BOOKSHELVES).pattern("SSS").pattern(" B ").pattern(" S ").unlockedBy("has_book", has(Items.BOOK)).save(output);
