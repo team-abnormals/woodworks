@@ -7,6 +7,7 @@ import com.teamabnormals.woodworks.core.data.client.WoodworksBlockStateProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksLanguageProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksSoundDefinitionsProvider;
 import com.teamabnormals.woodworks.core.data.client.WoodworksSplashProvider;
+import com.teamabnormals.woodworks.core.data.server.WoodworksAdvancementProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksDatapackProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksLootTableProvider;
 import com.teamabnormals.woodworks.core.data.server.WoodworksRecipeProvider;
@@ -86,6 +87,7 @@ public class Woodworks {
 		generator.addProvider(server, new WoodworksLootTableProvider(output, provider));
 		generator.addProvider(server, new WoodworksRecipeProvider(output, provider));
 		generator.addProvider(server, new WoodworksDatapackProvider(output, provider));
+		generator.addProvider(server, WoodworksAdvancementProvider.create(output, provider, helper));
 
 		boolean client = event.includeClient();
 		generator.addProvider(client, new WoodworksSplashProvider(output));
