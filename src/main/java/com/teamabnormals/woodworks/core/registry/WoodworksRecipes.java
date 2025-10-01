@@ -1,5 +1,6 @@
 package com.teamabnormals.woodworks.core.registry;
 
+import com.teamabnormals.woodworks.common.WoodenChestRecipe;
 import com.teamabnormals.woodworks.common.item.crafting.SawmillRecipe;
 import com.teamabnormals.woodworks.core.Woodworks;
 import net.minecraft.client.RecipeBookCategories;
@@ -7,6 +8,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraft.world.item.crafting.SingleItemRecipe;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -21,6 +23,7 @@ public class WoodworksRecipes {
 		public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, Woodworks.MOD_ID);
 		public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<SawmillRecipe>> SAWMILL = RECIPE_SERIALIZERS.register("sawmill", () -> new SingleItemRecipe.Serializer<>(SawmillRecipe::new) {
 		});
+		public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<WoodenChestRecipe>> WOODEN_CHEST = RECIPE_SERIALIZERS.register("crafting_special_woodenchest", () -> new SimpleCraftingRecipeSerializer<>(WoodenChestRecipe::new));
 	}
 
 	public static class WoodworksRecipeTypes {

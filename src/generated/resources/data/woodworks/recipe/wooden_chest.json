@@ -1,0 +1,10 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "woodworks:config",
+      "value": "mixed_chest_crafting"
+    }
+  ],
+  "type": "woodworks:crafting_special_woodenchest",
+  "category": "misc"
+}

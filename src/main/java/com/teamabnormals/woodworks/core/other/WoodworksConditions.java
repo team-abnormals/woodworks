@@ -23,6 +23,7 @@ public class WoodworksConditions {
 	public static final ConfigValueCondition WOODEN_LADDERS = config(COMMON.woodenLadders, "wooden_ladders");
 	public static final ConfigValueCondition WOODEN_BEEHIVES = config(COMMON.woodenBeehives, "wooden_beehives");
 	public static final ConfigValueCondition WOODEN_CHESTS = config(COMMON.woodenChests, "wooden_chests");
+	public static final ConfigValueCondition MIXED_CHEST_CRAFTING = config(COMMON.mixedChestCrafting, "mixed_chest_crafting");
 	public static final ConfigValueCondition WOODEN_BOARDS = config(COMMON.woodenBoards, "wooden_boards");
 	public static final ConfigValueCondition LEAF_PILES = config(COMMON.leafPiles, "leaf_piles");
 

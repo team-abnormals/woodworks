@@ -20,6 +20,8 @@ public class WoodworksConfig {
 		public final BooleanValue woodenBeehives;
 		@ConfigKey("wooden_chests")
 		public final BooleanValue woodenChests;
+		@ConfigKey("mixed_chest_crafting")
+		public final BooleanValue mixedChestCrafting;
 		@ConfigKey("leaf_piles")
 		public final BooleanValue leafPiles;
 
@@ -38,6 +40,7 @@ public class WoodworksConfig {
 			this.woodenLadders = builder.define("Wooden ladders", true);
 			this.woodenBeehives = builder.define("Wooden beehives", true);
 			this.woodenChests = builder.define("Wooden chests", true);
+			this.mixedChestCrafting = builder.comment("If the vanilla Chest can be crafted from mixing woods or woods without a chest variant").define("Mixed chest crafting", true);
 			this.leafPiles = builder.define("Leaf piles", true);
 			builder.pop();
 			builder.push("generation");
