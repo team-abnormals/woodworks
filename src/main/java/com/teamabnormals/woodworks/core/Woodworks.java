@@ -33,8 +33,11 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.capabilities.Capabilities.ItemHandler;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -54,6 +57,8 @@ public class Woodworks {
 		WoodworksMenuTypes.MENU_TYPES.register(bus);
 		WoodworksRecipeSerializers.RECIPE_SERIALIZERS.register(bus);
 		WoodworksRecipeTypes.RECIPE_TYPES.register(bus);
+
+		bus.addListener(this::registerCapabilities);
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
@@ -94,6 +99,11 @@ public class Woodworks {
 		generator.addProvider(client, new WoodworksBlockStateProvider(output, helper));
 		generator.addProvider(client, new WoodworksLanguageProvider(output));
 		generator.addProvider(client, new WoodworksSoundDefinitionsProvider(output, helper));
+	}
+
+	private void registerCapabilities(RegisterCapabilitiesEvent event) {
+		event.registerBlockEntity(ItemHandler.BLOCK, WoodworksBlockEntityTypes.CLOSET.get(), (container, side) -> new InvWrapper(container.getContainer()));
+		event.registerBlockEntity(ItemHandler.BLOCK, WoodworksBlockEntityTypes.TRAPPED_CLOSET.get(), (container, side) -> new InvWrapper(container.getContainer()));
 	}
 
 	public static ResourceLocation location(String path) {

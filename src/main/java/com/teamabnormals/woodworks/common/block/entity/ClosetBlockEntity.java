@@ -26,6 +26,10 @@ public class ClosetBlockEntity extends ChestBlockEntity {
 	public static final String CONTAINER_CLOSET = "container." + Woodworks.MOD_ID + ".closet";
 	public static final String CONTAINER_CLOSET_DOUBLE = "container." + Woodworks.MOD_ID + ".closetDouble";
 
+	public Container getContainer() {
+		return ChestBlock.getContainer((ChestBlock) this.getBlockState().getBlock(), this.getBlockState(), this.getLevel(), this.getBlockPos(), true);
+	}
+
 	private final ContainerOpenersCounter newOpenersCounter = new ContainerOpenersCounter() {
 		protected void onOpen(Level level, BlockPos pos, BlockState state) {
 			playSound(level, pos, state, WoodworksSoundEvents.BAMBOO_WOOD_CLOSET_OPEN.get());
