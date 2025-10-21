@@ -60,14 +60,14 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 	public final String type;
 
 	private static final DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> MENU_PROVIDER_COMBINER = new DoubleBlockCombiner.Combiner<>() {
-		public Optional<MenuProvider> acceptDouble(final ChestBlockEntity chest1, final ChestBlockEntity chest2) {
-			final Container container = new CompoundContainer(chest2, chest1);
+		public Optional<MenuProvider> acceptDouble(final ChestBlockEntity closet1, final ChestBlockEntity closet2) {
+			final Container container = new CompoundContainer(closet1, closet2);
 			return Optional.of(new MenuProvider() {
 				@Nullable
 				public AbstractContainerMenu createMenu(int num, Inventory inventory, Player player) {
-					if (chest1.canOpen(player) && chest2.canOpen(player)) {
-						chest1.unpackLootTable(inventory.player);
-						chest2.unpackLootTable(inventory.player);
+					if (closet1.canOpen(player) && closet2.canOpen(player)) {
+						closet1.unpackLootTable(inventory.player);
+						closet2.unpackLootTable(inventory.player);
 						return ChestMenu.sixRows(num, inventory, container);
 					} else {
 						return null;
@@ -75,10 +75,10 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 				}
 
 				public Component getDisplayName() {
-					if (chest1.hasCustomName()) {
-						return chest1.getDisplayName();
+					if (closet1.hasCustomName()) {
+						return closet1.getDisplayName();
 					} else {
-						return chest2.hasCustomName() ? chest2.getDisplayName() : Component.translatable(ClosetBlockEntity.CONTAINER_CLOSET_DOUBLE);
+						return closet2.hasCustomName() ? closet2.getDisplayName() : Component.translatable(ClosetBlockEntity.CONTAINER_CLOSET_DOUBLE);
 					}
 				}
 			});
@@ -127,7 +127,16 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 			bipredicate = ClosetBlock::isChestBlockedAt;
 		}
 
-		return DoubleBlockCombiner.combineWithNeigbour(this.blockEntityType.get(), ChestBlock::getBlockType, ClosetBlock::getConnectedDirection, FACING, state, level, pos, bipredicate);
+		return DoubleBlockCombiner.combineWithNeigbour(this.blockEntityType.get(), ClosetBlock::getBlockType, ClosetBlock::getConnectedDirection, FACING, state, level, pos, bipredicate);
+	}
+
+	public static DoubleBlockCombiner.BlockType getBlockType(BlockState state) {
+		ChestType chesttype = state.getValue(TYPE);
+		if (chesttype == ChestType.SINGLE) {
+			return DoubleBlockCombiner.BlockType.SINGLE;
+		} else {
+			return chesttype == ChestType.LEFT ? DoubleBlockCombiner.BlockType.FIRST : DoubleBlockCombiner.BlockType.SECOND;
+		}
 	}
 
 	@Override
@@ -141,17 +150,12 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 			VoxelShape east = tall ? EAST_AABB_TALL : EAST_AABB;
 			VoxelShape west = tall ? WEST_AABB_TALL : WEST_AABB;
 
-			switch (state.getValue(FACING)) {
-				default:
-				case NORTH:
-					return !left ? north : south;
-				case SOUTH:
-					return !left ? south : north;
-				case WEST:
-					return left ? west : east;
-				case EAST:
-					return left ? east : west;
-			}
+			return switch (state.getValue(FACING)) {
+				default -> !left ? north : south;
+				case SOUTH -> !left ? south : north;
+				case WEST -> left ? west : east;
+				case EAST -> left ? east : west;
+			};
 		} else if (tall) {
 			return AABB_TALL;
 		}
