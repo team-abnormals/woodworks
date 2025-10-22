@@ -184,10 +184,10 @@ public class ClosetBlock extends ChestBlock implements IChestBlock {
 			level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 		}
 
-		if (otherState.is(this) && direction.getAxis().isVertical()) {
-			ChestType chesttype = otherState.getValue(TYPE);
-			if (state.getValue(TYPE) == ChestType.SINGLE && chesttype != ChestType.SINGLE && state.getValue(FACING) == otherState.getValue(FACING) && getConnectedDirection(otherState) == direction.getOpposite()) {
-				return state.setValue(TYPE, chesttype.getOpposite());
+		if (otherState.is(this) && direction.getAxis().isVertical() && state.getValue(HINGE) == otherState.getValue(HINGE)) {
+			ChestType otherChestType = otherState.getValue(TYPE);
+			if (state.getValue(TYPE) == ChestType.SINGLE && otherChestType != ChestType.SINGLE && state.getValue(FACING) == otherState.getValue(FACING) && getConnectedDirection(otherState) == direction.getOpposite()) {
+				return state.setValue(TYPE, otherChestType.getOpposite());
 			}
 		} else if (getConnectedDirection(state) == direction) {
 			return state.setValue(TYPE, ChestType.SINGLE);
