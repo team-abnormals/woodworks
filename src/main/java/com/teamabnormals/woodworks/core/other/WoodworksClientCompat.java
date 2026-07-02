@@ -26,7 +26,8 @@ public class WoodworksClientCompat {
 		event.register((stack, color) -> {
 			BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
 			return colors.getColor(blockstate, null, null, color);
-		}, WoodworksBlocks.OAK_LEAF_PILE, WoodworksBlocks.SPRUCE_LEAF_PILE, WoodworksBlocks.BIRCH_LEAF_PILE, WoodworksBlocks.JUNGLE_LEAF_PILE, WoodworksBlocks.ACACIA_LEAF_PILE, WoodworksBlocks.DARK_OAK_LEAF_PILE, WoodworksBlocks.MANGROVE_LEAF_PILE);
+		}, WoodworksBlocks.OAK_LEAF_PILE, WoodworksBlocks.SPRUCE_LEAF_PILE, WoodworksBlocks.BIRCH_LEAF_PILE, WoodworksBlocks.JUNGLE_LEAF_PILE, WoodworksBlocks.ACACIA_LEAF_PILE, WoodworksBlocks.DARK_OAK_LEAF_PILE);
+		event.register((item, tintIndex) -> FoliageColor.getMangroveColor(), WoodworksBlocks.MANGROVE_LEAF_PILE);
 	}
 
 	@SubscribeEvent
