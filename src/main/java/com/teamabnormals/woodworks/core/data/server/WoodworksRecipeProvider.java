@@ -109,7 +109,7 @@ public class WoodworksRecipeProvider extends BlueprintRecipeProvider implements 
 
 		String prefix = planks == Blocks.OAK_PLANKS ? "oak_" : "";
 		if (boards != null) {
-			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, boards).define('#', slab).pattern("#").pattern("#").group("wooden_boards").unlockedBy(getHasName(slab), has(slab)).save(output.withConditions(boardsCondition));
+			ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, boards).define('#', slab).pattern("#").pattern("#").group("wooden_boards").unlockedBy(getHasName(slab), has(slab)).save(output.withConditions(boardsCondition));
 		}
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, bookshelf).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").group("wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(bookshelfCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.ITEM.getKey(bookshelf.asItem()).getPath()));
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chiseledBookshelf).define('#', planks).define('X', slab).pattern("###").pattern("XXX").pattern("###").group("chiseled_wooden_bookshelf").unlockedBy("has_book", has(Items.BOOK)).save(output.withConditions(bookshelfCondition), ResourceLocation.fromNamespaceAndPath(modid, prefix + BuiltInRegistries.ITEM.getKey(chiseledBookshelf.asItem()).getPath()));
